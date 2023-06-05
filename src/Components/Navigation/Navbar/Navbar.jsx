@@ -4,7 +4,6 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 // import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-<<<<<<< HEAD
   const [show, setShow] = React.useState(false);
   const [Arrow, setArrow] = useState("down");
   // const navigate = useNavigate();
@@ -67,9 +66,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-=======
-  return <div>This is Best navbar i have seen in my life</div>;
->>>>>>> c3fc485a36f2b126dd21fac9c60f8e1941c43caf
 };
 
 export default Navbar;
