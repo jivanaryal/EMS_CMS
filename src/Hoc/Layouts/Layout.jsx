@@ -7,15 +7,17 @@ const Layout = () => {
   return (
     <div>
       <div className="grid grid-cols-12">
-        <div className="col-span-2 bg-red-500 h-screen sticky top-0 left-0">
-          <Sidebar />
+        <div className="col-span-2">
+          <div className="sticky top-0 h-screen overflow-hidden">
+            <Sidebar />
+          </div>
         </div>
-        <div className="col-span-10 bg-yellow-500 relative">
+        <div className="col-span-10 bg-red-500 relative">
           <div>
             <Navbar />
           </div>
 
-          <div className="w-11/12 mx-auto ">
+          <div className="w-11/12 mx-auto">
             <Outlet />
           </div>
         </div>
