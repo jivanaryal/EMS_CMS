@@ -8,7 +8,7 @@ const Navbar = () => {
   const [Arrow, setArrow] = useState("down");
   // const navigate = useNavigate();
   return (
-    <div className="h-14 fixed top-0 bg-secondColor w-screen shadow-md">
+    <div className="h-16 fixed top-0 bg-secondColor w-screen navbar">
       <div
         className="w-full  h-full flex items-center
       pl-4 justify-around pr-7"
