@@ -47,13 +47,13 @@ const Sidebar = () => {
     <div className="pl-5 h-full">
       <div className="text-4xl text-center font-extrabold pb-5">We HR</div>
       <div className="text-gray-500">MAIN MENU</div>
-      <div className="flex flex-col h-full gap-8 ">
+      <div className="flex flex-col h-full gap-12 ">
         {Navdata.map((val, i) => {
           return (
             <Link to={val.path}>
               {" "}
               <div
-                className={`flex w-full items-center text-sm text-gray-600 gap-3 capitalize ${
+                className={`flex w-full items-center text-xl  gap-4 capitalize ${
                   location.pathname === val.path && "text-red-500"
                 }`}
               >

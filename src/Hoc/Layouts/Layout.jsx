@@ -8,16 +8,16 @@ const Layout = () => {
     <div>
       <div className="grid grid-cols-12">
         <div className="col-span-2">
-          <div className="sticky top-0 h-screen overflow-hidden bg-mainColor">
+          <div className="sticky top-0 h-screen overflow-hidden">
             <Sidebar />
           </div>
         </div>
-        <div className="col-span-10 relative">
+        <div className="col-span-10 bg-red-500 relative">
           <div>
             <Navbar />
           </div>
 
-          <div className="w-11/12 mx-auto">
+          <div className="relative top-24 mx-auto">
             <Outlet />
           </div>
         </div>
