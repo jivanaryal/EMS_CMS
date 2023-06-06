@@ -5,3 +5,7 @@
 * {
   font-family: "Poppins";
 }
+
+.navbar{
+  box-shadow: 0px 5px 5px -5px rgba(149, 146, 146, 0.75);;
+}
