@@ -5,7 +5,7 @@ import "@fontsource/poppins/400-italic.css"; // Specify weight and style
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Hoc/Layouts/Layout";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";
-import Department from "./Components/Pages/Departments/Department";
+// import Department from "./Components/Pages/Departments/Department";
 import Leaves from "./Components/Pages/Leaves/Leaves";
 import Attendance from "./Components/Pages/Attendances/Attendance";
 import Employee from "./Components/Pages/Employees/Employee";
