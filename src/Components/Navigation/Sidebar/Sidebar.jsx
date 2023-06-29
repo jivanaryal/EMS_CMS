@@ -55,7 +55,8 @@ const Sidebar = () => {
               <div
                 className={`flex w-full items-center text-sm text-gray-700  gap-2 capitalize ${
                   location.pathname === val.path && "text-red-500"
-                }`}>
+                }`}
+              >
                 <div className=" ">{val.logo}</div>
                 <div className="">{val.title}</div>
               </div>
