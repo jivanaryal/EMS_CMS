@@ -7,12 +7,12 @@ const Layout = () => {
   return (
     <div className="flex">
       {/* Sidebar */}
-      <div className="w-2/12 px-6 fixed top-0 h-screen overflow-hidden max-h-screen shadow-xl">
+      <div className="w-2/12 sm:w-1/5 px-6 fixed top-0 h-screen overflow-hidden max-h-screen shadow-xl">
         <Sidebar />
       </div>
 
       {/* Main Content */}
-      <div className="w-10/12 ml-auto">
+      <div className="w-10/12 sm:w-4/5 ml-auto">
         <div>
           <Navbar />
         </div>
