@@ -5,13 +5,13 @@ import Sidebar from "../../Components/Navigation/Sidebar/Sidebar";
 
 const Layout = () => {
   return (
-    <div className="grid grid-cols-12">
+    <div className="relative grid grid-cols-12">
       <div className="col-span-2">
-        <div className="sticky top-0 h-screen overflow-hidden max-h-screen shadow-xl">
+        <div className="fixed w-64 top-0 left-0 z-50  h-screen overflow-hidden max-h-screen  shadow-xl ">
           <Sidebar />
         </div>
       </div>
-      <div className="col-span-10 z-50">
+      <div className="col-span-10 z-50 ">
         <div>
           <Navbar />
         </div>
