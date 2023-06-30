@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddDepartment from "./AddDepartment";
 import ManageDept from "./ManageDept";
 
-const HomePage = () => {
+const Department = () => {
   const [Active, setActive] = useState("add");
   const data = [
     {
@@ -16,7 +16,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-mainColor">
+    <div className="">
       <div className="flex pl-10 gap-4 justify-center">
         {data.map((val, i) => {
           return (
@@ -42,4 +42,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Department;

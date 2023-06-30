@@ -1,9 +1,10 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import * as yup from "yup";
 import axios from "axios";
-import { post } from "../../../services/api";
+import { post, update } from "../../../services/api";
+import { useLocation, useNavigate, useParams } from "react-router";
 // import axios from "axios";
 
 const schema = yup.object().shape({
@@ -21,18 +22,27 @@ const FormField = [
   },
 ];
 
-const AddDepartment = () => {
+const EditDept = () => {
+  const location = useLocation();
+  const { id } = useParams();
+  console.log(id);
+  const navigate = useNavigate();
+
   const postFormData = async (value) => {
-    post("/department", value).then((res) => {
-      toast.success("the department is added");
+    update(`/department/${id}`, value).then((res) => {
+      if (res.status === 200) {
+        toast.success(`the dept_id ${id} is updated`);
+        console.log("hello");
+      }
     });
   };
   return (
     <div className="w-full">
+      <h1 className="text-center text-3xl font-bold">Edit Department</h1>
       <Formik
         initialValues={{
-          dept_name: "",
-          dept_location: "",
+          dept_name: location.state.dept_name,
+          dept_location: location.state.dept_location,
         }}
         validationSchema={schema}
         onSubmit={(val) => {
@@ -52,24 +62,21 @@ const AddDepartment = () => {
                   key={i}
                   className="w-10/12 mx-auto grid grid-cols-12 gap-6 place-content-center place-items-center"
                 >
-                  <label
-                    className="col-span-2 text-sm font-semibold"
-                    htmlFor={val.name}
-                  >
+                  <label className="col-span-2" htmlFor={val.name}>
                     {val.name}
                   </label>
                   <Field
                     type={val.type}
                     name={val.name}
                     className="bg-gray-300 col-span-10 border-2 border-gray-400 rounded-md py-2 px-2 w-full"
-                    placeholder={`Enter ${val.name}`}
+                    placeholder={`enter  ${val.name}`}
                   />
                 </div>
               ))}
-              <div className="flex justify-end mt-9 w-full">
+              <div className="flex justify-end mt-9 w-ful">
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors duration-300"
+                  className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors duration-300 w-auto"
                 >
                   Submit
                 </button>
@@ -83,4 +90,4 @@ const AddDepartment = () => {
   );
 };
 
-export default AddDepartment;
+export default EditDept;
