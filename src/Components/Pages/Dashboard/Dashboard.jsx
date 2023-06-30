@@ -41,17 +41,16 @@ const data = [
 
 const Dashboard = () => {
   return (
-    <div className="w-10/12 mx-auto">
-      <div className="grid grid-cols-3 gap-6">
+    <div className="w-full mx-auto">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
         {data.map((val, i) => {
           console.log(val.colors);
           return (
             <Link to={val.path}>
-              {" "}
               <div
                 key={i}
                 style={{ backgroundColor: val.colors }}
-                className="rounded-lg flex flex-col  gap-2 text-base shadow-md shadow-blue-400 py-10 mx-10  text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000"
+                className="rounded-lg flex flex-col gap-2 text-base shadow-md shadow-blue-400 py-10 mx-2 sm:mx-4 md:mx-6 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000"
               >
                 <div className="text-xl">{val.title}</div>
                 <div>{val.num}</div>

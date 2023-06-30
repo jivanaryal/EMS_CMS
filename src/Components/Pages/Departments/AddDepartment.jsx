@@ -28,7 +28,7 @@ const AddDepartment = () => {
     });
   };
   return (
-    <div className="w-full">
+    <div className="w-full px-10">
       <Formik
         initialValues={{
           dept_name: "",
@@ -45,28 +45,24 @@ const AddDepartment = () => {
             <Form
               onSubmit={handleSubmit}
               encType="multipart/form-data"
-              className="grid grid-cols-2 gap-2 mt-20"
+              className="mt-20"
             >
-              {FormField.map((val, i) => (
-                <div
-                  key={i}
-                  className="w-10/12 mx-auto grid grid-cols-12 gap-6 place-content-center place-items-center"
-                >
-                  <label
-                    className="col-span-2 text-sm font-semibold"
-                    htmlFor={val.name}
-                  >
-                    {val.name}
-                  </label>
-                  <Field
-                    type={val.type}
-                    name={val.name}
-                    className="bg-gray-300 col-span-10 border-2 border-gray-400 rounded-md py-2 px-2 w-full"
-                    placeholder={`Enter ${val.name}`}
-                  />
-                </div>
-              ))}
-              <div className="flex justify-end mt-9 w-full">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {FormField.map((val, i) => (
+                  <div key={i} className="mx-auto">
+                    <label htmlFor={val.name} className="text-sm font-semibold">
+                      {val.name}
+                    </label>
+                    <Field
+                      type={val.type}
+                      name={val.name}
+                      className="border border-gray-400 rounded-md py-2 px-2 w-full"
+                      placeholder={`Enter ${val.name}`}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center mt-9">
                 <button
                   type="submit"
                   className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors duration-300"

@@ -92,7 +92,7 @@ const AddSubSection = () => {
           {({ handleSubmit, values }) => {
             return (
               <Form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-6">
                   {FormFields.map((val, i) => {
                     if (val.type === "select") {
                       return (
