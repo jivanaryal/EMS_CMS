@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import * as yup from "yup";
-import { get, post } from "../../../services/api";
+import { get, update } from "../../../services/api";
 import { useLocation } from "react-router";
 
 // const schema = yup.object().shape({
@@ -67,11 +67,32 @@ const EditEmp = () => {
   ];
 
   const postFormData = (val) => {
-    post(`/employee/${val.dept_name}`, val).then((res) => {
-      if (res.status === 200) {
-        toast.success("the employee is added");
-      }
-    });
+    console.log(val);
+    const selectedOption = FormFields[0].options.find(
+      (option) => option.dept_name === val.dept_name
+    );
+
+    if (selectedOption) {
+      const dept_id = selectedOption.dept_id;
+      console.log(dept_id);
+
+      const data = {
+        dept_id: dept_id,
+        dept_name: val.dept_name,
+        job: val.job,
+        salary: val.salary,
+        first_name: val.first_name,
+        middle_name: val.middle_name,
+        gender: val.gender,
+        last_name: val.last_name,
+      };
+
+      update(`/employee/${dept_id}`, data).then((res) => {
+        if (res.status === 200) {
+          toast.success("The employee is added");
+        }
+      });
+    }
   };
 
   FormFields[0].options = [...employee];

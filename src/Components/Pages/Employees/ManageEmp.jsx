@@ -38,7 +38,7 @@ const ManageEmp = () => {
   // dept_id, salary, job, gender, first_name, middle_name, last_name, dept_name;
   return (
     <div className="my-10">
-      <h1 className="font-bold text-xl">Manage Department</h1>
+      <h1 className="font-bold text-xl">Manage Employee </h1>
       <table className="w-full rounded-lg shadow-sm">
         <thead className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
           <tr>
@@ -48,7 +48,9 @@ const ManageEmp = () => {
             <th className="py-3 px-6 border-r border-b border-gray-200">
               Employee Name
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">job</th>
+            <th className="py-3 px-6 border-r border-b border-gray-200">
+              position
+            </th>
 
             <th>gender</th>
             <th>Department Name</th>

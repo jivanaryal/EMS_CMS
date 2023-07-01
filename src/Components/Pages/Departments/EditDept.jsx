@@ -2,9 +2,8 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import * as yup from "yup";
-import axios from "axios";
-import { post, update } from "../../../services/api";
-import { useLocation, useNavigate, useParams } from "react-router";
+import { update } from "../../../services/api";
+import { useLocation, useParams } from "react-router";
 // import axios from "axios";
 
 const schema = yup.object().shape({
@@ -26,7 +25,7 @@ const EditDept = () => {
   const location = useLocation();
   const { id } = useParams();
   console.log(id);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const postFormData = async (value) => {
     update(`/department/${id}`, value).then((res) => {
