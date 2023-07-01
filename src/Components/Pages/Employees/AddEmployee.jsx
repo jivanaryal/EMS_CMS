@@ -63,11 +63,32 @@ const AddSubSection = () => {
   ];
 
   const postFormData = (val) => {
-    post(`/employee/${val.dept_name}`, val).then((res) => {
-      if (res.status === 200) {
-        toast.success("the employee is added");
-      }
-    });
+    console.log(val);
+    const selectedOption = FormFields[0].options.find(
+      (option) => option.dept_name === val.dept_name
+    );
+
+    if (selectedOption) {
+      const dept_id = selectedOption.dept_id;
+      console.log(dept_id);
+
+      const data = {
+        dept_id: dept_id,
+        dept_name: val.dept_name,
+        job: val.job,
+        salary: val.salary,
+        first_name: val.first_name,
+        middle_name: val.middle_name,
+        gender: val.gender,
+        last_name: val.last_name,
+      };
+
+      post(`/employee/${dept_id}`, data).then((res) => {
+        if (res.status === 200) {
+          toast.success("The employee is added");
+        }
+      });
+    }
   };
 
   FormFields[0].options = [...employee];
@@ -115,7 +136,11 @@ const AddSubSection = () => {
                             {val.options?.map((option, j) => {
                               if (val.name === "dept_name") {
                                 return (
-                                  <option value={option.dept_id} key={j}>
+                                  <option
+                                    key={j}
+                                    value={option.dept_name}
+                                    data-dept-id={option.dept_id}
+                                  >
                                     {option.dept_name}
                                   </option>
                                 );

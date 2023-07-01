@@ -15,6 +15,7 @@ const ManageEmp = () => {
     get("/employee").then((res) => {
       console.log(res.data);
       setInfo(res.data);
+      console.log(res.data);
     });
   };
 
@@ -50,6 +51,7 @@ const ManageEmp = () => {
             <th className="py-3 px-6 border-r border-b border-gray-200">job</th>
 
             <th>gender</th>
+            <th>Department Name</th>
             <th>salary</th>
             <th>Delete</th>
             <th>Edit</th>
@@ -64,6 +66,7 @@ const ManageEmp = () => {
               </td>
               <td className="py-3 px-4 border-l border-r">{val.job}</td>
               <td className="py-3 px-4 border-l border-r">{val.gender}</td>
+              <td className="py-3 px-4 border-l border-r">{val.dept_name}</td>
               <td className="py-3 px-4 border-l border-r">{val.salary}</td>
               <td className="py-3 px-4 border-l border-r text-center">
                 <MdDelete
