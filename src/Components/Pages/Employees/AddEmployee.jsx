@@ -8,10 +8,32 @@ import { get, post } from "../../../services/api";
 //   section_name: yup.string().required("course  is required"),
 //   subSection: yup.string().required("section  is required"),
 // });
-
+const schema = yup.object().shape({
+  dept_name: yup.string().required("Select one department"),
+  job: yup
+    .string()
+    .required("Required*")
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[^0-9]+$/, "Only characters are allowed."),
+  salary: yup
+    .string()
+    .required("Required*")
+    .matches(/^[0-9]+$/, "Only numbers are allowed."),
+  first_name: yup
+    .string()
+    .required("Required*")
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
+  last_name: yup
+    .string()
+    .required("Required*")
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
+});
 const FormFields = [
   {
     name: "dept_name",
+    name1: "department",
     type: "select",
     options: [],
   },
@@ -38,6 +60,7 @@ const FormFields = [
 
   {
     name: "gender",
+    name1: "gender",
     type: "select",
     options: [
       { value: "male", label: "Male" },
@@ -103,8 +126,9 @@ const AddSubSection = () => {
             first_name: "",
             middle_name: "",
             last_name: "",
+            gender: "",
           }}
-          // validationSchema={schema}
+          validationSchema={schema}
           onSubmit={(val) => {
             console.log(val);
             postFormData(val);
@@ -131,7 +155,7 @@ const AddSubSection = () => {
                             className="border border-gray-400 p-2 rounded w-full"
                           >
                             <option value="" selected disabled>
-                              {initData[0].Section}
+                              {`select ${val.name1}`}
                             </option>
                             {val.options?.map((option, j) => {
                               if (val.name === "dept_name") {

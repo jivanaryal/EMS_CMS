@@ -7,8 +7,16 @@ import { post } from "../../../services/api";
 // import axios from "axios";
 
 const schema = yup.object().shape({
-  dept_name: yup.string().required("The name is required"),
-  dept_location: yup.string().required("The name is required"),
+  dept_name: yup
+    .string()
+    .required("The Name is required")
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
+  dept_location: yup
+    .string()
+    .required("The location is required")
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
 });
 const FormField = [
   {
