@@ -72,7 +72,7 @@ const ManageEmp = () => {
               <td className="py-3 px-4 border-l border-r">{val.salary}</td>
               <td className="py-3 px-4 border-l border-r text-center">
                 <MdDelete
-                  onClick={() => deleteItem(val.dept_id)}
+                  onClick={() => deleteItem(val.emp_id)}
                   className="text-3xl hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
                 />
               </td>
