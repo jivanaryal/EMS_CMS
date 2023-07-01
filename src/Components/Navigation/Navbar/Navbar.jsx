@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div className="h-16 border-2 z-40  shadow-lg fixed top-0 w-full bg-secondColor navbar">
       <div
-        className="w-full  h-full flex items-center
+        className="w-full h-full flex items-center
       pl-4 justify-around pr-7"
       >
         {/* search  */}
