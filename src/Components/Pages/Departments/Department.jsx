@@ -3,7 +3,7 @@ import AddDepartment from "./AddDepartment";
 import ManageDept from "./ManageDept";
 
 const Department = () => {
-  const [Active, setActive] = useState("add");
+  const [Active, setActive] = useState("view");
   const data = [
     {
       id: "add",

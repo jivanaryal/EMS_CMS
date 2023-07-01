@@ -3,7 +3,7 @@ import AddEmployee from "./AddEmployee";
 import ManageEmp from "./ManageEmp";
 
 const Employee = () => {
-  const [Active, setActive] = useState("add");
+  const [Active, setActive] = useState("view");
   const data = [
     {
       id: "add",
