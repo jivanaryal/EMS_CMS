@@ -204,7 +204,7 @@ const AddSubSection = () => {
                       );
                     }
                   })}
-                  <ToastContainer />
+                  <ToastContainer position="bottom-right" />
                 </div>
 
                 <button

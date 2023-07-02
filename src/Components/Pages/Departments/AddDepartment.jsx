@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import * as yup from "yup";
-import axios from "axios";
+// import axios from "axios";
 import { post } from "../../../services/api";
 // import axios from "axios";
 
@@ -81,7 +81,7 @@ const AddDepartment = () => {
           </Form>
         )}
       </Formik>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };
