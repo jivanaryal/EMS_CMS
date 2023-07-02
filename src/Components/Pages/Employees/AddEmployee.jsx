@@ -4,10 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import * as yup from "yup";
 import { get, post } from "../../../services/api";
 
-// const schema = yup.object().shape({
-//   section_name: yup.string().required("course  is required"),
-//   subSection: yup.string().required("section  is required"),
-// });
+// validation schema
 const schema = yup.object().shape({
   dept_name: yup.string().required("Select one department"),
   job: yup
@@ -24,12 +21,18 @@ const schema = yup.object().shape({
     .required("Required*")
     .max(15, "Character length should not exceed 15")
     .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
+  middle_name: yup
+    .string()
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[^0-9]+$/, "Only characters are allowed."),
   last_name: yup
     .string()
     .required("Required*")
     .max(15, "Character length should not exceed 15")
     .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
+  gender: yup.string().required("Select Gender"),
 });
+// form fields
 const FormFields = [
   {
     name: "dept_name",
@@ -77,13 +80,6 @@ const AddSubSection = () => {
       setEmployee(res.data);
     });
   }, []);
-
-  let initData = [
-    {
-      _id: "0",
-      Section: "Choose Department",
-    },
-  ];
 
   const postFormData = (val) => {
     console.log(val);
