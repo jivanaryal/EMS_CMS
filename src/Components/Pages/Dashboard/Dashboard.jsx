@@ -76,9 +76,9 @@ const Dashboard = () => {
                   <div className="text-gray-600  col-span-2">
                     {emp.first_name} {emp.middle_name} {emp.last_name}
                   </div>
-                  <div className="  ">{emp.job}</div>
-                  <div className="  ">{emp.dept_name}</div>
-                  <div className="  ">${emp.salary}</div>
+                  <div>{emp.dept_name}</div>
+                  <div>{emp.job}</div>
+                  <div>${emp.salary}</div>
                 </div>
               </div>
             ))}
