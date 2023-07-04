@@ -28,7 +28,7 @@ const data = [
     title: "Leave Request",
     num: "24",
     intro: "View Leave Request",
-    colors: "green",
+    colors: "#F1F9FB",
     path: "/leave",
   },
 ];
@@ -62,7 +62,7 @@ const Dashboard = () => {
             </Link>
           ))}
         </div>
-        <div className="employee_data px-6 ">
+        <div className="employee_data px-6">
           <h1 className="text-2xl font-bold mb-4">Top Employees</h1>
           <div className="shadow-xl bg-white rounded-lg p-4">
             {employee.slice(1, 4).map((emp, index) => (

@@ -26,8 +26,8 @@ const Department = () => {
                 className={`border-2 capitalize py-1 px-4 text-xl cursor-pointer rounded-md w-fit   mt-4
                                     ${
                                       val.id === Active
-                                        ? "bg-green-500 text-white scale-110"
-                                        : "bg-mainColor"
+                                        ? "bg-mainColor  text-[#ffffff] scale-110"
+                                        : "bg-secondColor"
                                     }`}
               >
                 {val.name}
