@@ -5,7 +5,7 @@ import Sidebar from "../../Components/Navigation/Sidebar/Sidebar";
 
 const Layout = () => {
   return (
-    <div className="flex">
+    <div className="flex jivan">
       <div className="flex-none w-1/6">
         <div className="sticky top-0 min-h-screen max-h-screen overflow-hidden shadow-xl ">
           <Sidebar />

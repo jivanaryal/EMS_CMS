@@ -161,7 +161,7 @@ const ManageEmp = () => {
           ))}
         </tbody>
       </table>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-left" />
     </div>
   );
 };
