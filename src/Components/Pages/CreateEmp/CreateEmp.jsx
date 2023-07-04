@@ -4,12 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import * as yup from "yup";
 import axios from "axios";
 import { get, post } from "../../../services/api";
-// import axios from "axios";
 
-// const schema = yup.object().shape({
-//   dept_name: yup.string().required("The name is required"),
-//   dept_location: yup.string().required("The name is required"),
-// });
 const FormFields = [
   {
     name: "emp_name",
@@ -63,7 +58,7 @@ const CreateEmp = () => {
         onSubmit={(values) => {
           postFormData(values);
           console.log(values);
-          toast.success("Form submitted successfully!");
+          toast.success("New employee created");
         }}
       >
         {({ handleSubmit }) => (
@@ -131,7 +126,6 @@ const CreateEmp = () => {
                   );
                 }
               })}
-              <ToastContainer />
             </div>
 
             <button
@@ -143,7 +137,7 @@ const CreateEmp = () => {
           </Form>
         )}
       </Formik>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

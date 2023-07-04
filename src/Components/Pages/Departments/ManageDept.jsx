@@ -86,7 +86,7 @@ const ManageDept = () => {
           ))}
         </tbody>
       </table>
-      <ToastContainer position="bottom-left" />
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

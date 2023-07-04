@@ -91,7 +91,7 @@ const EditEmp = () => {
 
       update(`/employee/${dept_id}`, data).then((res) => {
         if (res.status === 200) {
-          toast.success("The employee is added");
+          toast.success("The employee is updated");
         }
       });
     }
@@ -190,7 +190,7 @@ const EditEmp = () => {
                       );
                     }
                   })}
-                  <ToastContainer />
+                  <ToastContainer position="bottom-right" />
                 </div>
 
                 <button
