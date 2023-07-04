@@ -45,7 +45,7 @@ const AddDepartment = () => {
         validationSchema={schema}
         onSubmit={(values) => {
           postFormData(values);
-          toast.success("Form submitted successfully!");
+          // toast.success("Form submitted successfully!");
         }}
       >
         {({ handleSubmit }) => (

@@ -38,7 +38,7 @@ const ManageDept = () => {
 
   const newData = useMemo(() => newCallBack(), [toggle]);
   return (
-    <div className="my-10">
+    <div className="my-10 mx-10">
       <h1 className="font-bold text-xl">Manage Department</h1>
       <table className="w-full rounded-lg shadow-sm">
         <thead className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
@@ -53,8 +53,12 @@ const ManageDept = () => {
               Location
             </th>
 
-            <th>Delete</th>
-            <th>Edit</th>
+            <th className="py-3 px-6 border-r border-b border-gray-200">
+              Delete
+            </th>
+            <th className="py-3 px-6 border-r border-b border-gray-200">
+              Edit
+            </th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-sm font-light">
@@ -86,7 +90,7 @@ const ManageDept = () => {
           ))}
         </tbody>
       </table>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="bottom-left" />
     </div>
   );
 };

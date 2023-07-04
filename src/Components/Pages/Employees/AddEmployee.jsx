@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
-import * as yup from "yup";
 import { get, post } from "../../../services/api";
-
-// const schema = yup.object().shape({
-//   section_name: yup.string().required("course  is required"),
-//   subSection: yup.string().required("section  is required"),
-// });
 
 const FormFields = [
   {
@@ -47,9 +41,15 @@ const FormFields = [
       { value: "others", label: "Others" },
     ],
   },
+  {
+    name: "image",
+    type: "file",
+  },
 ];
 const AddSubSection = () => {
   const [employee, setEmployee] = useState([]);
+  const [first, setFirst] = useState("");
+  const [newImg, setNewImg] = useState("");
 
   useEffect(() => {
     get("/department").then((res) => {
@@ -64,6 +64,12 @@ const AddSubSection = () => {
     },
   ];
 
+  const handleChange = (e) => {
+    console.log(e.target.files);
+    setFirst(e.target.files);
+    setNewImg(e.target.files[0]);
+  };
+
   const postFormData = (val) => {
     console.log(val);
     const selectedOption = FormFields[0].options.find(
@@ -74,18 +80,29 @@ const AddSubSection = () => {
       const dept_id = selectedOption.dept_id;
       console.log(dept_id);
 
-      const data = {
-        dept_id: dept_id,
-        dept_name: val.dept_name,
-        job: val.job,
-        salary: val.salary,
-        first_name: val.first_name,
-        middle_name: val.middle_name,
-        gender: val.gender,
-        last_name: val.last_name,
-      };
+      // const data = {
+      //   dept_id: dept_id,
+      //   dept_name: val.dept_name,
+      //   job: val.job,
+      //   salary: val.salary,
+      //   first_name: val.first_name,
+      //   middle_name: val.middle_name,
+      //   gender: val.gender,
+      //   last_name: val.last_name,
+      // };
 
-      post(`/employee/${dept_id}`, data).then((res) => {
+      const formData = new FormData();
+      formData.append("dept_id", val.dept_id);
+      formData.append("dept_name", val.dept_name);
+      formData.append("job", val.job);
+      formData.append("salary", val.salary);
+      formData.append("first_name", val.first_name);
+      formData.append("middle_name", val.middle_name);
+      formData.append("last_name", val.last_name);
+      formData.append("gender", val.gender);
+      formData.append("file", first[0]);
+
+      post(`/employee/${dept_id}`, formData).then((res) => {
         if (res.status === 200) {
           toast.success("The employee is added");
         }
@@ -105,6 +122,7 @@ const AddSubSection = () => {
             first_name: "",
             middle_name: "",
             last_name: "",
+            image: [],
           }}
           // validationSchema={schema}
           onSubmit={(val) => {
@@ -162,6 +180,34 @@ const AddSubSection = () => {
                           />
                         </div>
                       );
+                    } else if (val.type === "file") {
+                      return (
+                        <div>
+                          <label htmlFor={val.type} className="block font-bold">
+                            {val.name}
+                          </label>
+                          <br />
+                          <div className="flex">
+                            <input
+                              type={val.type}
+                              name={val.name}
+                              accept=".png,.jpg,.jpeg,.gif"
+                              required
+                              multiple
+                              onChange={(e) => handleChange(e)}
+                            />
+                            <img
+                              src={
+                                newImg
+                                  ? URL.createObjectURL(newImg)
+                                  : "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Employeval.svg/1687px-Employeval.svg.png"
+                              }
+                              className="w-40 relative right-5 bottom-14"
+                              alt="preview"
+                            />
+                          </div>
+                        </div>
+                      );
                     } else {
                       return (
                         <div key={i}>
@@ -191,7 +237,7 @@ const AddSubSection = () => {
 
                 <button
                   type="submit"
-                  className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+                  className="bg-blue-500 mb-5 relative  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
                 >
                   Submit
                 </button>

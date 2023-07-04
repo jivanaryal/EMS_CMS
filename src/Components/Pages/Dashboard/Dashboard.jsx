@@ -27,22 +27,15 @@ const data = [
     title: " Leave Request",
     num: "24",
     intro: "View Leave Request",
-    colors: "#3D4499",
+    colors: "green",
     path: "/leave",
-  },
-  {
-    title: "Create EmployeeId",
-    num: "24",
-    intro: "View Attendance",
-    colors: "#CA7CE2",
-    path: "/create",
   },
 ];
 
 const Dashboard = () => {
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 w-8/12 ">
+    <div className="w-full flex">
+      <div className="grid grid-cols-1 gap-6  md:grid-cols-2 w-6/12">
         {data.map((val, i) => {
           console.log(val.colors);
           return (

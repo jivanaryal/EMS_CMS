@@ -23,7 +23,7 @@ const ManageEmp = () => {
     remove(`/employee/${id}`).then((res) => {
       if (res.status === 200) {
         setToggle(!toggle);
-        toast.error("The department is removed", {
+        toast.error("The Employee record is removed", {
           className: "custom-toast",
         });
       }
@@ -48,15 +48,26 @@ const ManageEmp = () => {
             <th className="py-3 px-6 border-r border-b border-gray-200">
               Employee Name
             </th>
+            <th>Images</th>
             <th className="py-3 px-6 border-r border-b border-gray-200">
               position
             </th>
 
-            <th>gender</th>
-            <th>Department Name</th>
-            <th>salary</th>
-            <th>Delete</th>
-            <th>Edit</th>
+            <th className="py-3 px-6 border-r border-b border-gray-200">
+              gender
+            </th>
+            <th className="py-3 px-6 border-r border-b border-gray-200">
+              Department Name
+            </th>
+            <th className="py-3 px-6 border-r border-b border-gray-200">
+              salary
+            </th>
+            <th className="py-3 px-6 border-r border-b border-gray-200">
+              Delete
+            </th>
+            <th className="py-3 px-6 border-r border-b border-gray-200">
+              Edit
+            </th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-sm font-light">
@@ -65,6 +76,15 @@ const ManageEmp = () => {
               <td className="py-3 px-4 border-l text-center">{i + 1}</td>
               <td className="py-3 px-4 border-l border-r">
                 {val.first_name + " " + val.middle_name + " " + val.last_name}
+              </td>
+              <td className="py-3 px-4 border-l border-r">
+                <div className="h-32 w-32">
+                  <img
+                    src={`http://localhost:5000/${val.image}`}
+                    className="object-cover w-full h-full"
+                    alt="Course"
+                  />
+                </div>
               </td>
               <td className="py-3 px-4 border-l border-r">{val.job}</td>
               <td className="py-3 px-4 border-l border-r">{val.gender}</td>
@@ -91,7 +111,7 @@ const ManageEmp = () => {
           ))}
         </tbody>
       </table>
-      <ToastContainer position="bottom-left" />
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };
