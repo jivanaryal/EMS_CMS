@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { MdDelete, MdOutlineUpdate } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,14 +7,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ManageEmp = () => {
   const [info, setInfo] = useState([]);
-  // const navigate = useNavigate();
+  const [selectedDept, setSelectedDept] = useState("");
   const [toggle, setToggle] = useState([]);
 
   const fetchData = async () => {
     get("/employee").then((res) => {
       console.log(res.data);
       setInfo(res.data);
-      console.log(res.data);
     });
   };
 
@@ -30,15 +28,67 @@ const ManageEmp = () => {
     });
   };
 
+  const handleDeptChange = (event) => {
+    setSelectedDept(event.target.value);
+  };
+
+  const filterByDepartment = useCallback(() => {
+    if (selectedDept === "") {
+      fetchData();
+    } else {
+      const filteredData = info.filter((emp) => emp.dept_name === selectedDept);
+      setInfo(filteredData);
+    }
+  }, [selectedDept, info]);
+
+  const handleFilter = () => {
+    filterByDepartment();
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const newCallBack = useCallback(() => {
     fetchData();
   }, []);
 
   const newData = useMemo(() => newCallBack(), [toggle]);
-  // dept_id, salary, job, gender, first_name, middle_name, last_name, dept_name;
+
+  // Get unique department names
+  const uniqueDepartments = useMemo(() => {
+    const departmentSet = new Set(info.map((emp) => emp.dept_name));
+    return Array.from(departmentSet);
+  }, [info]);
+
   return (
     <div className="my-10">
       <h1 className="font-bold text-xl">Manage Employee </h1>
+
+      {/* Department filter */}
+      <div className="my-4">
+        <label className="mr-2">Filter by Department:</label>
+        <select
+          value={selectedDept}
+          onChange={handleDeptChange}
+          className="border border-gray-400 rounded px-2 py-1"
+        >
+          <option value="">All</option>
+          {/* Render the unique department options */}
+          {uniqueDepartments.map((dept) => (
+            <option key={dept} value={dept}>
+              {dept}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={handleFilter}
+          className="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+        >
+          Filter
+        </button>
+      </div>
+
       <table className="w-full rounded-lg shadow-sm">
         <thead className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
           <tr>
