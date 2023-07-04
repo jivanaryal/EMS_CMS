@@ -1,7 +1,6 @@
-import axios from "axios";
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { MdDelete, MdOutlineUpdate } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { get, remove } from "../../../services/api";
 import "react-toastify/dist/ReactToastify.css";
@@ -44,7 +43,7 @@ const ManageDept = () => {
       <table className="w-full rounded-lg shadow-sm">
         <thead className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
           <tr>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 text-start px-6 border-r border-b border-gray-200">
               S.No
             </th>
             <th className="py-3 px-6 border-r border-b border-gray-200">

@@ -27,22 +27,22 @@ const data = [
     title: " Leave Request",
     num: "24",
     intro: "View Leave Request",
-    colors: "#FDEBF9",
+    colors: "#3D4499",
     path: "/leave",
   },
   {
     title: "Create EmployeeId",
     num: "24",
     intro: "View Attendance",
-    colors: "#FDEBF9",
+    colors: "#CA7CE2",
     path: "/create",
   },
 ];
 
 const Dashboard = () => {
   return (
-    <div className="w-full mx-auto">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+    <div className="w-full">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 w-8/12 ">
         {data.map((val, i) => {
           console.log(val.colors);
           return (
@@ -50,9 +50,9 @@ const Dashboard = () => {
               <div
                 key={i}
                 style={{ backgroundColor: val.colors }}
-                className="rounded-lg flex flex-col gap-2 text-base shadow-md shadow-blue-400 py-10 mx-2 sm:mx-4 md:mx-6 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000"
+                className="rounded-lg flex flex-col gap-2 text-sm shadow-md shadow-blue-400 py-10 mx-2 sm:mx-4 md:mx-6 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000"
               >
-                <div className="text-xl">{val.title}</div>
+                <div className="text-lg">{val.title}</div>
                 <div>{val.num}</div>
                 <div>{val.intro}</div>
               </div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://192.168.18.7:5000/api/v1";
+const API_BASE_URL = "http://localhost:5000/api/v1";
 
 export const get = (url, params) => {
   return axios.get(API_BASE_URL + url, { params });

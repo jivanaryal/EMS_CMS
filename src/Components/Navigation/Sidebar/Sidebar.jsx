@@ -53,7 +53,7 @@ const Sidebar = () => {
             <Link to={val.path}>
               {" "}
               <div
-                className={`flex w-full items-center text-sm text-gray-700  gap-2 capitalize ${
+                className={`flex w-full items-center text-base text-gray-700  gap-2 capitalize ${
                   location.pathname === val.path && "text-red-500"
                 }`}
               >

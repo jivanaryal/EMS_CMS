@@ -13,6 +13,7 @@ import { useLocation } from "react-router";
 const FormFields = [
   {
     name: "dept_name",
+    name1: "department",
     type: "select",
     options: [],
   },
@@ -39,6 +40,7 @@ const FormFields = [
 
   {
     name: "gender",
+    name1: "gender",
     type: "select",
     options: [
       { value: "male", label: "Male" },
@@ -138,7 +140,7 @@ const EditEmp = () => {
                             className="border border-gray-400 p-2 rounded w-full"
                           >
                             <option value="" selected disabled>
-                              {initData[0].Section}
+                              {`select ${val.name1}`}
                             </option>
                             {val.options?.map((option, j) => {
                               console.log(option.gender, "hello");
