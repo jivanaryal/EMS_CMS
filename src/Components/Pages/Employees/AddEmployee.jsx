@@ -265,7 +265,7 @@ const AddSubSection = () => {
 
                 <button
                   type="submit"
-                  className="bg-blue-500 mb-5 relative  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+                  className="bg-mainColor mb-5 relative  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
                 >
                   Submit
                 </button>
