@@ -33,7 +33,7 @@ const CreateEmp = () => {
   const postFormData = async (value) => {
     console.log(value.emp_name);
     post(`/createemp/signup/${value.emp_name}`, value).then((res) => {
-      toast.success("the department is added");
+      // toast.success("the department is added");
     });
   };
 
