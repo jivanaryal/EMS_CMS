@@ -2,7 +2,35 @@ import React, { useEffect, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { get, post } from "../../../services/api";
+import * as yup from "yup";
 
+const schema = yup.object().shape({
+  dept_name: yup.string().required("Select one department"),
+  job: yup
+    .string()
+    .required("Required*")
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[^0-9]+$/, "Only characters are allowed."),
+  salary: yup
+    .string()
+    .required("Required*")
+    .matches(/^[0-9]+$/, "Only numbers are allowed."),
+  first_name: yup
+    .string()
+    .required("Required*")
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
+  middle_name: yup
+    .string()
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[^0-9]+$/, "Only characters are allowed."),
+  last_name: yup
+    .string()
+    .required("Required*")
+    .max(15, "Character length should not exceed 15")
+    .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
+  gender: yup.string().required("Select Gender"),
+});
 const FormFields = [
   {
     name: "dept_name",
@@ -124,7 +152,7 @@ const AddSubSection = () => {
             last_name: "",
             image: [],
           }}
-          // validationSchema={schema}
+          validationSchema={schema}
           onSubmit={(val) => {
             console.log(val);
             postFormData(val);

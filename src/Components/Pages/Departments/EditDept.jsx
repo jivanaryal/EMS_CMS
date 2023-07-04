@@ -84,7 +84,7 @@ const EditDept = () => {
           );
         }}
       </Formik>
-      <ToastContainer />
+      <ToastContainer position="bottom-left" />
     </div>
   );
 };
