@@ -23,11 +23,7 @@ const PieChart = ({ employee }) => {
       {
         id: 1,
         label: "",
-<<<<<<< HEAD
         data: [maleNumber, femaleNumber],
-=======
-        data: [10, 8],
->>>>>>> 41a40bfa9d9a99ffaa05590f1ace7a73a46eef9c
       },
     ],
   };

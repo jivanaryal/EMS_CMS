@@ -95,17 +95,32 @@ const LeaveApprovalList = () => {
               <td className="py-4 px-4">{request.end_date}</td>
               <td className="py-4 px-4">{request.status}</td>
               <td className="py-4 px-4">
-                {request.status === "pending" && (
+                {request.status === "pending" ? (
                   <div>
                     <button
                       onClick={() => handleApprove(request.emp_id)}
-                      className="text-green-500 pr-4 hover:text-green-700"
+                      className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mr-2"
                     >
                       Approve
                     </button>
                     <button
                       onClick={() => handleReject(request.emp_id)}
-                      className="text-red-500 hover:text-red-700"
+                      className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+                    >
+                      Reject
+                    </button>
+                  </div>
+                ) : (
+                  <div>
+                    <button
+                      disabled
+                      className="bg-green-300 text-gray-600 py-2 px-4 rounded mr-2 cursor-not-allowed"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      disabled
+                      className="bg-red-300 text-gray-600 py-2 px-4 rounded cursor-not-allowed"
                     >
                       Reject
                     </button>
