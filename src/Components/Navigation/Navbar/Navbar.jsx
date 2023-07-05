@@ -57,7 +57,7 @@ const Navbar = () => {
               }}
             />
             {show && (
-              <div className="w-40 text-black absolute top-12 rounded-lg right-1 z-20 p-2 cursor-pointer border-1 border-gray-300 h-20 bg-secondColor">
+              <div className="w-40 text-white absolute top-12 rounded-lg right-2 z-20 p-3 cursor-pointer border-1 border-gray-300 h-20 bg-mainColor">
                 <p>LogOut</p>
               </div>
             )}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MdOutlineCheck } from "react-icons/md";
+// import { MdOutlineCheck } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
 import { get, update } from "../../../services/api";
 
@@ -69,7 +69,7 @@ const LeaveApprovalList = () => {
   return (
     <div className="my-10">
       <h1 className="font-bold text-2xl mb-6">Leave Approval List</h1>
-      <table className="w-full bg-white shadow-md rounded-lg overflow-hidden">
+      <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
         <thead className="bg-gray-200 text-gray-700 text-center">
           <tr>
             <th className="py-3 px-4">ID</th>
@@ -94,7 +94,7 @@ const LeaveApprovalList = () => {
               <td className="py-4 px-4">{request.start_date}</td>
               <td className="py-4 px-4">{request.end_date}</td>
               <td className="py-4 px-4">{request.status}</td>
-              <td className="py-4 px-4">
+              <td className="py-4 px-4 ">
                 {request.status === "pending" ? (
                   <div>
                     <button
@@ -111,16 +111,16 @@ const LeaveApprovalList = () => {
                     </button>
                   </div>
                 ) : (
-                  <div>
+                  <div className=" flex">
                     <button
                       disabled
-                      className="bg-green-300 text-gray-600 py-2 px-4 rounded mr-2 cursor-not-allowed"
+                      className="bg-green-300 text-gray-600 py-2 px-4 rounded mr-2 cursor-not-allowed md:px-1 md:py-1 md:text-sm"
                     >
                       Approve
                     </button>
                     <button
                       disabled
-                      className="bg-red-300 text-gray-600 py-2 px-4 rounded cursor-not-allowed"
+                      className="bg-red-300 text-gray-600 py-2 px-4 rounded cursor-not-allowed md:px-1 md:py-1 md:text-md md:text-sm"
                     >
                       Reject
                     </button>
