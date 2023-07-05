@@ -78,15 +78,15 @@ const Dashboard = () => {
   const topEmployees = sortedEmployees.slice(0, 5);
 
   return (
-    <div className="grid grid-cols-12">
+    <div className="grid grid-cols-12 gap-4 ">
       <div className="ml-5 col-span-8">
-        <div className="flex mt-10 gap-14  w-full">
-          <div className="grid grid-cols-1 gap-2 md:grid-cols-2 h-46 w-5/12 shadow-sm shadow-gray-400 p-2">
+        <div className="flex mt-10 gap-14">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 h-46 w-7/12  shadow-sm shadow-gray-400 p-4">
             {data.map((val, i) => (
               <Link to={val.path} key={i}>
                 <div
                   style={{ backgroundColor: val.colors }}
-                  className="rounded-lg h-36 flex flex-col gap-2 items-center text-sm shadow-md shadow-gray-300 py-4 mx-2 sm:mx-4 md:mx-2 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-2"
+                  className="rounded-lg h-32   w-full flex flex-col  gap-2 items-center text-sm shadow-md shadow-gray-300 py-4 mx-2 sm:mx-4 md:mx-2 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-6"
                 >
                   <div
                     className="text-xl font-bold text-white p-1 rounded-md flex"
@@ -100,7 +100,7 @@ const Dashboard = () => {
               </Link>
             ))}
           </div>
-          <div className="w-80">
+          <div className="w-80 flex-auto">
             <PieChart employee={employee} />
           </div>
         </div>
