@@ -3,7 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import * as yup from "yup";
 import { get, update } from "../../../services/api";
-import { useLocation } from "react-router";
+import { useLocation, useParams } from "react-router";
 
 // const schema = yup.object().shape({
 //   section_name: yup.string().required("course  is required"),
@@ -14,7 +14,7 @@ const schema = yup.object().shape({
   job: yup
     .string()
     .required("Required*")
-    .max(15, "Character length should not exceed 15")
+    .max(30, "Character length should not exceed 15")
     .matches(/^[^0-9]+$/, "Only characters are allowed."),
   salary: yup
     .string()
@@ -78,6 +78,9 @@ const FormFields = [
 const EditEmp = () => {
   const [employee, setEmployee] = useState([]);
 
+  const { id } = useParams();
+  console.log(id, "hiiiii");
+
   const location = useLocation();
   console.log(location.state.gender);
 
@@ -86,13 +89,6 @@ const EditEmp = () => {
       setEmployee(res.data);
     });
   }, []);
-
-  let initData = [
-    {
-      _id: "0",
-      Section: "Choose Department",
-    },
-  ];
 
   const postFormData = (val) => {
     console.log(val);
@@ -115,7 +111,7 @@ const EditEmp = () => {
         last_name: val.last_name,
       };
 
-      update(`/employee/${dept_id}`, data).then((res) => {
+      update(`/employee/${id}`, data).then((res) => {
         if (res.status === 200) {
           toast.success("The employee is updated");
         }

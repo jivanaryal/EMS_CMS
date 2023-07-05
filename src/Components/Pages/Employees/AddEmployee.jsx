@@ -9,7 +9,7 @@ const schema = yup.object().shape({
   job: yup
     .string()
     .required("Required*")
-    .max(15, "Character length should not exceed 15")
+    .max(30, "Character length should not exceed 15")
     .matches(/^[^0-9]+$/, "Only characters are allowed."),
   salary: yup
     .string()
@@ -84,13 +84,6 @@ const AddSubSection = () => {
       setEmployee(res.data);
     });
   }, []);
-
-  let initData = [
-    {
-      _id: "0",
-      Section: "Choose Department",
-    },
-  ];
 
   const handleChange = (e) => {
     console.log(e.target.files);

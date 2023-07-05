@@ -14,7 +14,7 @@ const Navbar = () => {
       pl-4 justify-around pr-7"
       >
         {/* search  */}
-        <div className="searchbox flex items-center relative border-2 border-gray-200 rounded-md ">
+        <div className="searchbox invisible flex items-center relative border-2 border-gray-200 rounded-md ">
           <input
             type="search"
             className="text-black focus:outline-none p-2 pl-10 font-4xl bg-[#FAFAFA]"

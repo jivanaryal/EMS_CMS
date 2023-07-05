@@ -130,7 +130,7 @@ const ManageEmp = () => {
               <td className="py-3 px-4 border-l border-r">
                 <div className="h-32 w-32">
                   <img
-                    src={`http://192.168.18.7:5000/${val.image}`}
+                    src={`http://localhost:5000/${val.image}`}
                     className="object-cover w-full h-full"
                     alt="Course"
                   />

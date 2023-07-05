@@ -15,7 +15,7 @@ const Layout = () => {
         <div className="z-50">
           <Navbar />
         </div>
-        <div className="relative pl-2 mt-20 -z-10">
+        <div className="relative pl-2 mt-20 -z-10 ">
           <Outlet />
         </div>
       </div>
