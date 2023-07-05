@@ -17,12 +17,12 @@ const PieChart = () => {
       {
         id: 1,
         label: "",
-        data: [10, 5],
+        data: [10, 8],
       },
     ],
   };
   return (
-    <div>
+    <div className="shadow-sm shadow-gray-400 p-2">
       <Pie
         datasetIdKey="id"
         data={data}
