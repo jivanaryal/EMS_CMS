@@ -6,7 +6,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GiArchiveRegister } from "react-icons/gi";
 import { FcLeave } from "react-icons/fc";
-
+import logo from "../../../assets/Image/logo.png";
 const Navdata = [
   {
     title: "dashboard",
@@ -30,7 +30,7 @@ const Navdata = [
     logo: <GiArchiveRegister />,
   },
   {
-    title: "createEmployee",
+    title: "create EID",
     path: "/create",
     logo: <AiOutlineUsergroupAdd />,
   },
@@ -44,11 +44,11 @@ const Navdata = [
 const Sidebar = () => {
   const location = useLocation();
   return (
-    <div className="pl-5   h-full">
-      <div className="text-4xl text-[#FDF7FF] text-center font-extrabold pb-5">
-        EMS
+    <div className="pl-5  h-full">
+      <div className=" text-[#FDF7FF] font-extrabold">
+        <img src={logo} alt="logo" className="h-24 w-28 bg-transparent" />
       </div>
-      <div className="text-[#e2cefd] py-6">MAIN MENU</div>
+      <div className="text-[#e2cefd] pb-4">MAIN MENU</div>
       <div className="flex flex-col h-full gap-8 ">
         {Navdata.map((val, i) => {
           return (
@@ -61,7 +61,7 @@ const Sidebar = () => {
                 }`}
               >
                 <div className=" text-lg   ">{val.logo}</div>
-                <div className="">{val.title}</div>
+                <div className="text-sm">{val.title}</div>
               </div>
             </Link>
           );

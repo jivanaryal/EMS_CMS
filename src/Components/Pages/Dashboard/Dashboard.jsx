@@ -69,15 +69,15 @@ const Dashboard = () => {
             <Link to={val.path} key={i}>
               <div
                 style={{ backgroundColor: val.colors }}
-                className="rounded-lg h-40 flex flex-col gap-2 items-center text-sm shadow-md shadow-blue-400 py-4 mx-2 sm:mx-4 md:mx-6 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000"
+                className="rounded-lg h-36 flex flex-col gap-2 items-center text-sm shadow-md shadow-blue-400 py-4 mx-2 sm:mx-4 md:mx-6 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-2"
               >
                 <div
-                  className="text-2xl font-bold text-white p-2  rounded-sm "
+                  className="text-xl font-bold text-white p-1 rounded-sm "
                   style={{ backgroundColor: val.colors1 }}
                 >
                   {val.icons}
                 </div>
-                <div className="text-lg font-bold">{val.title}</div>
+                <div className="text-md font-bold">{val.title}</div>
                 <div className="">{val.num}</div>
               </div>
             </Link>
@@ -87,6 +87,7 @@ const Dashboard = () => {
           <PieChart />
         </div>
       </div>
+      {/* Top salary employee */}
       <div className="employee_data ml-5  pl-6 shadow-sm  shadow-mainColor w-[70%]  rounded-lg  ">
         <h1 className="text-2xl font-bold mb-8 pt-6 mt-4">
           Top Salary Employees
