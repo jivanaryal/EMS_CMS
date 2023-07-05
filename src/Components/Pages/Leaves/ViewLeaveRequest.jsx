@@ -74,7 +74,7 @@ const LeaveApprovalList = () => {
           <tr>
             <th className="py-3 px-4">ID</th>
             <th className="py-3 px-4">Employee Name</th>
-            <th className="py-3 px-4">Department Name</th>
+            <th className="py-3 px-4">Image</th>
             <th className="py-3 px-4">Start Date</th>
             <th className="py-3 px-4">End Date</th>
             <th className="py-3 px-4">Status</th>
@@ -90,7 +90,9 @@ const LeaveApprovalList = () => {
                 {request.middle_name}
                 {request.last_name}
               </td>
-              <td className="py-4 px-4">{request.dept_name}</td>
+              <td className="py-4 px-4">
+                <img src={`http:localhost:5000/${request.image}`} alt="" />
+              </td>
               <td className="py-4 px-4">{request.start_date}</td>
               <td className="py-4 px-4">{request.end_date}</td>
               <td className="py-4 px-4">{request.status}</td>
