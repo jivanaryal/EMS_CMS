@@ -10,14 +10,20 @@ import {
 
 import { Pie } from "react-chartjs-2";
 
-const PieChart = () => {
+const PieChart = ({ employee }) => {
+  const datas = employee.filter((val) => val.gender === "male");
+  const datas1 = employee.filter((val) => val.gender === "female");
+
+  const maleNumber = datas.length;
+  const femaleNumber = datas1.length;
+
   const data = {
     labels: ["Male", "Female"],
     datasets: [
       {
         id: 1,
         label: "",
-        data: [10, 5],
+        data: [maleNumber, femaleNumber],
       },
     ],
   };

@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Hoc/Layouts/Layout";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";
-import Leaves from "./Components/Pages/Leaves/Leaves";
+import Leave from "./Components/Pages/Leaves/Leaves";
 import Attendance from "./Components/Pages/Attendances/Attendance";
 import Employee from "./Components/Pages/Employees/Employee";
 import CreateEmp from "./Components/Pages/CreateEmp/CreateEmp";
@@ -27,7 +27,7 @@ const App = () => {
             <Route path="employee/:id" element={<EditEmp />} />
             <Route path="attendance" element={<Attendance />} />
             <Route path="create" element={<CreateEmp />} />
-            <Route path="leave" element={<Leaves />} />
+            <Route path="leave" element={<Leave />} />
           </Route>
         </Routes>
       </Router>

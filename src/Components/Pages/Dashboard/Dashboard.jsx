@@ -45,6 +45,7 @@ const data = [
 
 const Dashboard = () => {
   const [employee, setEmployee] = useState([]);
+  // const [genderEmployee, setGenderEmployee] = useState("");
 
   useEffect(() => {
     get("/employee").then((res) => {
@@ -54,6 +55,8 @@ const Dashboard = () => {
       }
     });
   }, []);
+
+  // console.log(genderEmployee);
 
   // Sort the employees by salary in descending order
   const sortedEmployees = [...employee].sort((a, b) => b.salary - a.salary);
@@ -84,7 +87,7 @@ const Dashboard = () => {
           ))}
         </div>
         <div className="w-80">
-          <PieChart />
+          <PieChart employee={employee} />
         </div>
       </div>
       {/* Top salary employee */}
