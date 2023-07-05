@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { get } from "../../../services/api";
-import { BsBuilding } from "react-icons/bs";
 import PieChart from "./PieChart";
+import { HiBuildingOffice2 } from "react-icons/hi2";
+import { HiUserGroup } from "react-icons/hi";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import { IoMdExit } from "react-icons/io";
 
 const data = [
   {
@@ -12,7 +15,7 @@ const data = [
     colors: "#FFEFE7",
     colors1: "#EC9E09",
     path: "/department",
-    icons: <BsBuilding />,
+    icons: <HiBuildingOffice2 />,
   },
   {
     title: "Total Employee",
@@ -21,7 +24,7 @@ const data = [
     colors: "#E8F0FB",
     colors1: "#595FF0",
     path: "/employee",
-    icons: <BsBuilding />,
+    icons: <HiUserGroup />,
   },
   {
     title: "Total Attendance",
@@ -30,7 +33,7 @@ const data = [
     colors: "#FDEBF9",
     colors1: "#16C6BC",
     path: "/attendance",
-    icons: <BsBuilding />,
+    icons: <AiOutlineUsergroupAdd />,
   },
   {
     title: "Leave Request",
@@ -39,7 +42,7 @@ const data = [
     colors: "#F1F9FB",
     colors1: "#F74E61",
     path: "/leave",
-    icons: <BsBuilding />,
+    icons: <IoMdExit />,
   },
 ];
 
@@ -65,17 +68,17 @@ const Dashboard = () => {
   const topEmployees = sortedEmployees.slice(0, 5);
 
   return (
-    <div className="">
-      <div className="flex gap-20">
-        <div className="grid grid-cols-1 mt-10 gap-5 md:grid-cols-2 h-46 w-5/12">
+    <div className="ml-5">
+      <div className="flex gap-10 mt-10">
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 h-46 w-5/12 shadow-sm shadow-gray-400 p-2">
           {data.map((val, i) => (
             <Link to={val.path} key={i}>
               <div
                 style={{ backgroundColor: val.colors }}
-                className="rounded-lg h-36 flex flex-col gap-2 items-center text-sm shadow-md shadow-blue-400 py-4 mx-2 sm:mx-4 md:mx-6 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-2"
+                className="rounded-lg h-36 flex flex-col gap-2 items-center text-sm shadow-md shadow-gray-300 py-4 mx-2 sm:mx-4 md:mx-2 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-2"
               >
                 <div
-                  className="text-xl font-bold text-white p-1 rounded-sm "
+                  className="text-xl font-bold text-white p-1 rounded-md flex"
                   style={{ backgroundColor: val.colors1 }}
                 >
                   {val.icons}
@@ -91,7 +94,7 @@ const Dashboard = () => {
         </div>
       </div>
       {/* Top salary employee */}
-      <div className="employee_data ml-5  pl-6 shadow-sm  shadow-mainColor w-[70%]  rounded-lg  ">
+      <div className="employee_data pl-6 shadow-sm  shadow-mainColor w-[70%]  rounded-lg  ">
         <h1 className="text-2xl font-bold mb-8 pt-6 mt-4">
           Top Salary Employees
         </h1>
