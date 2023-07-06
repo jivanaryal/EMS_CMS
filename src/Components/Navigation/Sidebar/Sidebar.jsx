@@ -6,6 +6,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { GiArchiveRegister } from "react-icons/gi";
 import { FcLeave } from "react-icons/fc";
+import { BiTask } from "react-icons/bi";
 import logo from "../../../assets/Image/logo.png";
 const Navdata = [
   {
@@ -25,19 +26,24 @@ const Navdata = [
     logo: <HiUserGroup />,
   },
   {
+    title: "task",
+    path: "/task",
+    logo: <BiTask />,
+  },
+  {
     title: "attendance",
     path: "/attendance",
     logo: <GiArchiveRegister />,
   },
   {
-    title: "create EID",
-    path: "/create",
-    logo: <AiOutlineUsergroupAdd />,
-  },
-  {
     title: "leave",
     path: "/leave",
     logo: <FcLeave />,
+  },
+  {
+    title: "create EID",
+    path: "/create",
+    logo: <AiOutlineUsergroupAdd />,
   },
 ];
 
@@ -49,13 +55,13 @@ const Sidebar = () => {
         <img src={logo} alt="logo" className="h-24 w-28 bg-transparent" />
       </div>
       <div className="text-[#e2cefd] pb-4">MAIN MENU</div>
-      <div className="flex flex-col h-full gap-8 ">
+      <div className="flex flex-col h-full gap-6 ">
         {Navdata.map((val, i) => {
           return (
             <Link to={val.path}>
               {" "}
               <div
-                className={`flex pl-4 py-1 shadow-base rounded-sm   items-center mr-4 text-base text-[#ece1fc] border-2 text-center  gap-2 capitalize ${
+                className={`flex pl-4 py-2  shadow-base rounded-lg   items-center mr-4 text-base text-[#ece1fc] border-2 text-center  gap-2 capitalize ${
                   location.pathname === val.path &&
                   "text-gray-700 bg-[#F1F9FB] "
                 }`}

@@ -9,8 +9,8 @@ import { IoMdExit } from "react-icons/io";
 
 const data = [
   {
-    title: "Total Department",
-    num: "24",
+    title: "View Department",
+    // num: "24",
     intro: "View Department",
     colors: "#FFEFE7",
     colors1: "#EC9E09",
@@ -18,8 +18,8 @@ const data = [
     icons: <HiBuildingOffice2 />,
   },
   {
-    title: "Total Employee",
-    num: "24",
+    title: "View Employee",
+    // num: "24",
     intro: "View Employee",
     colors: "#E8F0FB",
     colors1: "#595FF0",
@@ -27,8 +27,8 @@ const data = [
     icons: <HiUserGroup />,
   },
   {
-    title: "Total Attendance",
-    num: "24",
+    title: "View Attendance",
+    // num: "24",
     intro: "View Attendance",
     colors: "#FDEBF9",
     colors1: "#16C6BC",
@@ -37,7 +37,7 @@ const data = [
   },
   {
     title: "Leave Request",
-    num: "24",
+    // num: "24",
     intro: "View Leave Request",
     colors: "#F1F9FB",
     colors1: "#F74E61",
@@ -89,12 +89,12 @@ const Dashboard = () => {
                   className="rounded-lg h-32   w-full flex flex-col  gap-2 items-center text-sm shadow-md shadow-gray-300 py-4 mx-2 sm:mx-4 md:mx-2 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-6"
                 >
                   <div
-                    className="text-xl font-bold text-white p-1 rounded-md flex"
+                    className="text-2xl font-bold text-white p-1 rounded-md flex"
                     style={{ backgroundColor: val.colors1 }}
                   >
                     {val.icons}
                   </div>
-                  <div className="text-md font-bold">{val.title}</div>
+                  <div className="text-lg font-bold">{val.title}</div>
                   <div className="">{val.num}</div>
                 </div>
               </Link>
@@ -111,7 +111,7 @@ const Dashboard = () => {
             {topEmployees.map((emp, index) => (
               <div key={index} className="flex items-center mb-4 w-full">
                 <img
-                  src={`http://192.168.18.7:5000/${emp.image}`}
+                  src={`http://localhost:5000/${emp.image}`}
                   alt="Employee"
                   className="w-12 h-12 rounded-full mr-5"
                 />

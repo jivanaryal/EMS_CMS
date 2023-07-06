@@ -106,17 +106,6 @@ const AddSubSection = () => {
       const dept_id = selectedOption.dept_id;
       console.log(dept_id);
 
-      // const data = {
-      //   dept_id: dept_id,
-      //   dept_name: val.dept_name,
-      //   job: val.job,
-      //   salary: val.salary,
-      //   first_name: val.first_name,
-      //   middle_name: val.middle_name,
-      //   gender: val.gender,
-      //   last_name: val.last_name,
-      // };
-
       const formData = new FormData();
       console.log(dept_id);
       formData.append("dept_id", dept_id);
@@ -220,7 +209,6 @@ const AddSubSection = () => {
                               type={val.type}
                               name={val.name}
                               accept=".png,.jpg,.jpeg,.gif"
-                              required
                               multiple
                               onChange={(e) => handleChange(e)}
                             />
@@ -230,7 +218,7 @@ const AddSubSection = () => {
                                   ? URL.createObjectURL(newImg)
                                   : `http://localhost:5000/${location.state.image}`
                               }
-                              className="w-40 relative right-5 bottom-14"
+                              className="w-44 h-44 rounded-xl border-2 bg-black px-2 border-black py-2 shadow-mainColor shadow-lg relative right-14 bottom-14"
                               alt="preview"
                             />
                           </div>

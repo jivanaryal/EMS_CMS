@@ -30,6 +30,7 @@ const schema = yup.object().shape({
     .max(15, "Character length should not exceed 15")
     .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
   gender: yup.string().required("Select Gender"),
+  // image:yup.string().required("the image is required");
 });
 const FormFields = [
   {
@@ -217,15 +218,17 @@ const AddSubSection = () => {
                               multiple
                               onChange={(e) => handleChange(e)}
                             />
-                            <img
-                              src={
-                                newImg
-                                  ? URL.createObjectURL(newImg)
-                                  : "https://cdn-icons-png.flaticon.com/512/1869/1869679.png"
-                              }
-                              className="w-40 rounded-xl border-2 bg-black px-2 border-black py-2 shadow-mainColor shadow-lg relative right-5 bottom-14"
-                              alt="preview"
-                            />
+                            <div className=" ">
+                              <img
+                                src={
+                                  newImg
+                                    ? URL.createObjectURL(newImg)
+                                    : "https://cdn-icons-png.flaticon.com/512/1869/1869679.png"
+                                }
+                                className="w-44 h-44 rounded-xl border-2 bg-black px-2 border-black py-2 shadow-mainColor shadow-lg relative right-14 bottom-14"
+                                alt="preview"
+                              />
+                            </div>
                           </div>
                         </div>
                       );
@@ -258,7 +261,7 @@ const AddSubSection = () => {
 
                 <button
                   type="submit"
-                  className="bg-mainColor mb-5 relative bottom-20  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+                  className="bg-mainColor mb-5 relative bottom-24  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
                 >
                   Submit
                 </button>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { MdDelete, MdOutlineUpdate } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { get, remove } from "../../../services/api";
 import "react-toastify/dist/ReactToastify.css";
@@ -75,8 +75,8 @@ const ManageEmp = () => {
         >
           <option value="">All</option>
           {/* Render the unique department options */}
-          {uniqueDepartments.map((dept) => (
-            <option key={dept} value={dept}>
+          {uniqueDepartments.map((dept, i) => (
+            <option key={i} value={dept}>
               {dept}
             </option>
           ))}
