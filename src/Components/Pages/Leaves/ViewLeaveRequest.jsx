@@ -31,7 +31,7 @@ const LeaveApprovalList = () => {
         setLeaveRequests((prevRequests) =>
           prevRequests.map((request) =>
             request.emp_id === leaveRequestId
-              ? { ...request, status: "approved" }
+              ? { ...request, status: "Approved" }
               : request
           )
         );
@@ -46,7 +46,7 @@ const LeaveApprovalList = () => {
   const handleReject = async (leaveRequestId) => {
     try {
       const response = await update(`/leave/approve/${leaveRequestId}`, {
-        status: "rejected",
+        status: "Rejected",
       });
 
       if (response.status === 200) {
@@ -54,7 +54,7 @@ const LeaveApprovalList = () => {
         setLeaveRequests((prevRequests) =>
           prevRequests.map((request) =>
             request.emp_id === leaveRequestId
-              ? { ...request, status: "rejected" }
+              ? { ...request, status: "Rejected" }
               : request
           )
         );
@@ -98,22 +98,22 @@ const LeaveApprovalList = () => {
               <td className="py-4 px-4">{request.status}</td>
               <td className="py-4 px-4 ">
                 {request.status === "pending" ? (
-                  <div>
+                  <div className="flex">
                     <button
                       onClick={() => handleApprove(request.emp_id)}
-                      className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mr-2"
+                      className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mr-2  md:px-1 md:py-1 md:text-sm"
                     >
                       Approve
                     </button>
                     <button
                       onClick={() => handleReject(request.emp_id)}
-                      className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+                      className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded  md:px-1 md:py-1 md:text-sm"
                     >
                       Reject
                     </button>
                   </div>
                 ) : (
-                  <div className=" flex">
+                  <div className="flex">
                     <button
                       disabled
                       className="bg-green-300 text-gray-600 py-2 px-4 rounded mr-2 cursor-not-allowed md:px-1 md:py-1 md:text-sm"
