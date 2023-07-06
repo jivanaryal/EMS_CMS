@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
+import { get, post, update } from "../../../services/api";
 import * as yup from "yup";
-import { get, update } from "../../../services/api";
 import { useLocation, useParams } from "react-router";
 
-// const schema = yup.object().shape({
-//   section_name: yup.string().required("course  is required"),
-//   subSection: yup.string().required("section  is required"),
-// });
 const schema = yup.object().shape({
   dept_name: yup.string().required("Select one department"),
   job: yup
@@ -74,21 +70,31 @@ const FormFields = [
       { value: "others", label: "Others" },
     ],
   },
+  {
+    name: "image",
+    type: "file",
+  },
 ];
-const EditEmp = () => {
+const AddSubSection = () => {
   const [employee, setEmployee] = useState([]);
+  const [first, setFirst] = useState("");
+  const [newImg, setNewImg] = useState("");
 
   const { id } = useParams();
-  console.log(id, "hiiiii");
 
   const location = useLocation();
-  console.log(location.state.gender);
 
   useEffect(() => {
     get("/department").then((res) => {
       setEmployee(res.data);
     });
   }, []);
+
+  const handleChange = (e) => {
+    console.log(e.target.files);
+    setFirst(e.target.files);
+    setNewImg(e.target.files[0]);
+  };
 
   const postFormData = (val) => {
     console.log(val);
@@ -100,20 +106,32 @@ const EditEmp = () => {
       const dept_id = selectedOption.dept_id;
       console.log(dept_id);
 
-      const data = {
-        dept_id: dept_id,
-        dept_name: val.dept_name,
-        job: val.job,
-        salary: val.salary,
-        first_name: val.first_name,
-        middle_name: val.middle_name,
-        gender: val.gender,
-        last_name: val.last_name,
-      };
+      // const data = {
+      //   dept_id: dept_id,
+      //   dept_name: val.dept_name,
+      //   job: val.job,
+      //   salary: val.salary,
+      //   first_name: val.first_name,
+      //   middle_name: val.middle_name,
+      //   gender: val.gender,
+      //   last_name: val.last_name,
+      // };
 
-      update(`/employee/${id}`, data).then((res) => {
+      const formData = new FormData();
+      console.log(dept_id);
+      formData.append("dept_id", dept_id);
+      formData.append("dept_name", val.dept_name);
+      formData.append("job", val.job);
+      formData.append("salary", val.salary);
+      formData.append("first_name", val.first_name);
+      formData.append("middle_name", val.middle_name);
+      formData.append("last_name", val.last_name);
+      formData.append("gender", val.gender);
+      formData.append("file", first[0]);
+
+      update(`/employee/${id}`, formData).then((res) => {
         if (res.status === 200) {
-          toast.success("The employee is updated");
+          toast.success("The employee is added");
         }
       });
     }
@@ -122,7 +140,6 @@ const EditEmp = () => {
   FormFields[0].options = [...employee];
   return (
     <div>
-      <h1 className="text-center text-3xl font-bold">Edit Employee</h1>
       <div className="mt-20 px-20">
         <Formik
           initialValues={{
@@ -131,8 +148,9 @@ const EditEmp = () => {
             salary: location.state.salary,
             first_name: location.state.first_name,
             middle_name: location.state.middle_name,
-            gender: location.state.gender,
             last_name: location.state.last_name,
+            image: location.state.image,
+            gender: location.state.gender,
           }}
           validationSchema={schema}
           onSubmit={(val) => {
@@ -145,7 +163,6 @@ const EditEmp = () => {
               <Form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-2 gap-6">
                   {FormFields.map((val, i) => {
-                    console.log(val);
                     if (val.type === "select") {
                       return (
                         <div key={i}>
@@ -165,10 +182,13 @@ const EditEmp = () => {
                               {`select ${val.name1}`}
                             </option>
                             {val.options?.map((option, j) => {
-                              console.log(option.gender, "hello");
                               if (val.name === "dept_name") {
                                 return (
-                                  <option value={option.dept_id} key={j}>
+                                  <option
+                                    key={j}
+                                    value={option.dept_name}
+                                    data-dept-id={option.dept_id}
+                                  >
                                     {option.dept_name}
                                   </option>
                                 );
@@ -186,6 +206,34 @@ const EditEmp = () => {
                             component={"div"}
                             className="text-red-600"
                           />
+                        </div>
+                      );
+                    } else if (val.type === "file") {
+                      return (
+                        <div>
+                          <label htmlFor={val.type} className="block font-bold">
+                            {val.name}
+                          </label>
+                          <br />
+                          <div className="flex">
+                            <input
+                              type={val.type}
+                              name={val.name}
+                              accept=".png,.jpg,.jpeg,.gif"
+                              required
+                              multiple
+                              onChange={(e) => handleChange(e)}
+                            />
+                            <img
+                              src={
+                                newImg
+                                  ? URL.createObjectURL(newImg)
+                                  : `http://localhost:5000/${location.state.image}`
+                              }
+                              className="w-40 relative right-5 bottom-14"
+                              alt="preview"
+                            />
+                          </div>
                         </div>
                       );
                     } else {
@@ -217,7 +265,7 @@ const EditEmp = () => {
 
                 <button
                   type="submit"
-                  className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+                  className="bg-mainColor mb-5 relative  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
                 >
                   Submit
                 </button>
@@ -230,4 +278,4 @@ const EditEmp = () => {
   );
 };
 
-export default EditEmp;
+export default AddSubSection;

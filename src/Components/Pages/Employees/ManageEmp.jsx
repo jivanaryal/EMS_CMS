@@ -127,11 +127,11 @@ const ManageEmp = () => {
               <td className="py-3 px-4 border-l border-r">
                 {val.first_name + " " + val.middle_name + " " + val.last_name}
               </td>
-              <td className="py-3 px-4 border-l border-r">
-                <div className="h-32 w-32">
+              <td className="py-3 px-4  border-l border-r">
+                <div className="h-28 w-28 rounded-full">
                   <img
                     src={`http://localhost:5000/${val.image}`}
-                    className="object-cover w-full h-full"
+                    className="object-cover rounded-full w-full h-full"
                     alt="Course"
                   />
                 </div>

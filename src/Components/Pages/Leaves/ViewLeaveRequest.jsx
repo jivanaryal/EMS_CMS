@@ -66,6 +66,10 @@ const LeaveApprovalList = () => {
     }
   };
 
+  const fileterEmployee = leaveRequests.filter(
+    (val) => val.status === "pending"
+  );
+
   return (
     <div className="my-10">
       <h1 className="font-bold text-2xl mb-6">Leave Approval List</h1>
@@ -82,7 +86,7 @@ const LeaveApprovalList = () => {
           </tr>
         </thead>
         <tbody className="text-gray-600 text-center">
-          {leaveRequests.map((request) => (
+          {fileterEmployee.map((request) => (
             <tr key={request.emp_id} className="border-b">
               <td className="py-4 px-4">{request.emp_id}</td>
               <td className="py-4 px-4">
@@ -91,7 +95,11 @@ const LeaveApprovalList = () => {
                 {request.last_name}
               </td>
               <td className="py-4 px-4">
-                <img src={`http:localhost:5000/${request.image}`} alt="" />
+                <img
+                  src={`http://localhost:5000/${request.image}`}
+                  alt=""
+                  className="w-24 rounded-full h-24"
+                />
               </td>
               <td className="py-4 px-4">{request.start_date}</td>
               <td className="py-4 px-4">{request.end_date}</td>

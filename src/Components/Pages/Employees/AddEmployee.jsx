@@ -221,9 +221,9 @@ const AddSubSection = () => {
                               src={
                                 newImg
                                   ? URL.createObjectURL(newImg)
-                                  : "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Employeval.svg/1687px-Employeval.svg.png"
+                                  : "https://cdn-icons-png.flaticon.com/512/1869/1869679.png"
                               }
-                              className="w-40 relative right-5 bottom-14"
+                              className="w-40 rounded-xl border-2 bg-black px-2 border-black py-2 shadow-mainColor shadow-lg relative right-5 bottom-14"
                               alt="preview"
                             />
                           </div>
@@ -258,7 +258,7 @@ const AddSubSection = () => {
 
                 <button
                   type="submit"
-                  className="bg-mainColor mb-5 relative  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+                  className="bg-mainColor mb-5 relative bottom-20  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
                 >
                   Submit
                 </button>
