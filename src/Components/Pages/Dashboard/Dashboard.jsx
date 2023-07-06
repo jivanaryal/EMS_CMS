@@ -104,15 +104,14 @@ const Dashboard = () => {
             <PieChart employee={employee} />
           </div>
         </div>
-        <div className="employee_data pl-6 shadow-sm shadow-mainColor w-11/12 rounded-lg">
-          <h1 className="text-2xl font-bold mb-8 pt-6 mt-4">
-            Top Salary Employees
-          </h1>
+        {/* Top employee */}
+        <div className="employee_data pl-6 shadow-sm shadow-mainColor w-11/12 rounded-lg pb-2 mb-2">
+          <h1 className="text-2xl font-bold mb-8 pt-6 mt-4">Top Employees</h1>
           <div className="w-full">
             {topEmployees.map((emp, index) => (
               <div key={index} className="flex items-center mb-4 w-full">
                 <img
-                  src={`http://localhost:5000/${emp.image}`}
+                  src={`http://192.168.18.7:5000/${emp.image}`}
                   alt="Employee"
                   className="w-12 h-12 rounded-full mr-5"
                 />
@@ -129,9 +128,10 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="col-span-4 w-full">
+      {/*             Pending Leave Requests */}
+      <div className="col-span-4 w-full mt-4">
         <div className="employee_data pl-6 shadow-xl shadow-gray-300 rounded-lg">
-          <h1 className="text-2xl font-bold mb-8 pt-6 mt-4">
+          <h1 className="text-xl font-bold mb-8 pt-6 mt-4">
             Pending Leave Requests
           </h1>
           {uniquePendingLeaves.length > 0 ? (
