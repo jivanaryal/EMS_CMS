@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast, ToastContainer } from "react-toastify";
-import * as yup from "yup";
-import axios from "axios";
 import { get, post } from "../../../services/api";
 
 const FormFields = [

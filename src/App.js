@@ -14,6 +14,7 @@ import CreateEmp from "./Components/Pages/CreateEmp/CreateEmp";
 import Department from "./Components/Pages/Departments/Department";
 import EditDept from "./Components/Pages/Departments/EditDept";
 import EditEmp from "./Components/Pages/Employees/EditEmp";
+import Example1 from "./dummy/Example1";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="create" element={<CreateEmp />} />
             <Route path="leave" element={<Leave />} />
             <Route path="task" element={<Task />} />
+            <Route path="eg1" element={<Example1 />} />
           </Route>
         </Routes>
       </Router>

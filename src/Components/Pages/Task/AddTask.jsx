@@ -14,6 +14,16 @@ const FormFields = [
     options: [],
   },
   {
+    name: "task_priority",
+    type: "select",
+    options: [
+      { value: "normal", label: "Normal" },
+      { value: "medium", label: "Medium" },
+      { value: "urgent", label: "Urgent" },
+      { value: "most_urgent", label: "Most Urgent" },
+    ],
+  },
+  {
     name: "description",
     type: "text",
   },
@@ -55,11 +65,12 @@ const AddTask = () => {
   FormFields[0].options = department;
 
   return (
-    <div>
+    <div className="mt-20 px-20">
       <Formik
         initialValues={{
           dept_name: "",
           emp_name: "",
+          description: "",
         }}
         onSubmit={(values) => {
           console.log(values);
@@ -68,60 +79,80 @@ const AddTask = () => {
         {({ handleSubmit, setFieldValue, values }) => {
           return (
             <Form onSubmit={handleSubmit}>
-              {FormFields.map((val, i) => {
-                if (val.type === "select") {
-                  return (
-                    <div key={i}>
-                      <label htmlFor={val.name}>{val.name}</label>
-                      <Field
-                        as="select"
-                        placeholder={`select ${val.name}`}
-                        name={val.name}
-                        onChange={
-                          val.name === "dept_name"
-                            ? (e) => handleChangeDept(e, setFieldValue)
-                            : (e) => handleChangeEmp(e, setFieldValue)
-                        }
-                        value={values[val.name]}
-                      >
-                        <option
-                          value=""
-                          disabled
-                        >{`choose ${val.name}`}</option>
-                        {val.options?.map((option, j) => {
-                          if (val.name === "dept_name") {
-                            return (
-                              <option key={j} value={option.dept_name}>
-                                {option.dept_name}
-                              </option>
-                            );
-                          } else if (val.name === "emp_name") {
-                            return (
-                              <option key={j} value={option.first_name}>
-                                {option.first_name} {option.middle_name}
-                                {option.last_name}
-                              </option>
-                            );
+              <div className="grid grid-cols-2 gap-6">
+                {FormFields.map((val, i) => {
+                  if (val.type === "select") {
+                    return (
+                      <div key={i}>
+                        <label
+                          htmlFor={val.name}
+                          className="block font-bold mb-2"
+                        >
+                          {val.name}
+                        </label>
+                        <Field
+                          as="select"
+                          placeholder={`select ${val.name}`}
+                          name={val.name}
+                          onChange={
+                            val.name === "dept_name"
+                              ? (e) => handleChangeDept(e, setFieldValue)
+                              : (e) => handleChangeEmp(e, setFieldValue)
                           }
-                          return null;
-                        })}
-                      </Field>
-                    </div>
-                  );
-                } else {
-                  return (
-                    <div key={i}>
-                      <Field
-                        key={i}
-                        type={val.type}
-                        name={val.name}
-                        placeholder={`enter ${val.name}`}
-                      />
-                    </div>
-                  );
-                }
-              })}
-              <button type="submit">Submit</button>
+                          className="border border-gray-400 p-2 rounded w-full"
+                        >
+                          <option
+                            value=""
+                            selected
+                            disabled
+                          >{`choose ${val.name}`}</option>
+                          {val.options?.map((option, j) => {
+                            if (val.name === "dept_name") {
+                              return (
+                                <option key={j} value={option.dept_name}>
+                                  {option.dept_name}
+                                </option>
+                              );
+                            } else if (val.name === "emp_name") {
+                              return (
+                                <option key={j} value={option.first_name}>
+                                  {option.first_name} {option.middle_name}
+                                  {option.last_name}
+                                </option>
+                              );
+                            } else {
+                              return (
+                                <option key={j} value={option.value}>
+                                  {option.label}
+                                </option>
+                              );
+                            }
+                          })}
+                        </Field>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div key={i}>
+                        <label
+                          htmlFor={val.name}
+                          className="block font-bold mb-2"
+                        >
+                          {val.name}
+                        </label>
+                        <Field
+                          key={i}
+                          type={val.type}
+                          name={val.name}
+                          placeholder={`enter ${val.name}`}
+                          className="border border-gray-400 p-2 rounded w-full"
+                        />
+                      </div>
+                    );
+                  }
+                })}
+                <button type="submit">Submit</button>
+              </div>
             </Form>
           );
         }}

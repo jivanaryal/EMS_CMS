@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
-import { get, post, update } from "../../../services/api";
+import { get, update } from "../../../services/api";
 import * as yup from "yup";
 import { useLocation, useParams } from "react-router";
 
