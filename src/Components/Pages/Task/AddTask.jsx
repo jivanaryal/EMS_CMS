@@ -24,7 +24,11 @@ const FormFields = [
     ],
   },
   {
-    name: "description",
+    name: "task_title",
+    type: "text",
+  },
+  {
+    name: "task_description",
     type: "text",
   },
 ];
@@ -65,7 +69,7 @@ const AddTask = () => {
   FormFields[0].options = department;
 
   return (
-    <div className="mt-20 px-20">
+    <div className="mt-10 px-20">
       <Formik
         initialValues={{
           dept_name: "",
@@ -79,7 +83,7 @@ const AddTask = () => {
         {({ handleSubmit, setFieldValue, values }) => {
           return (
             <Form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 w-7/12 gap-4">
                 {FormFields.map((val, i) => {
                   if (val.type === "select") {
                     return (
@@ -99,7 +103,7 @@ const AddTask = () => {
                               ? (e) => handleChangeDept(e, setFieldValue)
                               : (e) => handleChangeEmp(e, setFieldValue)
                           }
-                          className="border border-gray-400 p-2 rounded w-full"
+                          className="border border-gray-400 p-1 rounded w-full"
                         >
                           <option
                             value=""
@@ -145,13 +149,18 @@ const AddTask = () => {
                           type={val.type}
                           name={val.name}
                           placeholder={`enter ${val.name}`}
-                          className="border border-gray-400 p-2 rounded w-full"
+                          className="border border-gray-400 p-1 rounded w-full"
                         />
                       </div>
                     );
                   }
                 })}
-                <button type="submit">Submit</button>
+                <button
+                  type="submit"
+                  className="bg-mainColor mb-5 w-fit  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+                >
+                  Submit
+                </button>
               </div>
             </Form>
           );
