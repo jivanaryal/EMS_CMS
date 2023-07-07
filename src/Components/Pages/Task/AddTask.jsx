@@ -1,7 +1,133 @@
-import React from "react";
+import { Field, Form, Formik } from "formik";
+import React, { useEffect, useState } from "react";
+import { get } from "../../../services/api";
+
+const FormFields = [
+  {
+    name: "dept_name",
+    type: "select",
+    options: [],
+  },
+  {
+    name: "emp_name",
+    type: "select",
+    options: [],
+  },
+  {
+    name: "description",
+    type: "text",
+  },
+];
 
 const AddTask = () => {
-  return <div>AddTask</div>;
+  const [department, setDepartment] = useState([]);
+  const [employee, setEmployee] = useState([]);
+  const [filteredEmployee, setFilteredEmployee] = useState([]);
+
+  useEffect(() => {
+    get("/department").then((res) => {
+      if (res.status === 200) {
+        setDepartment(res.data);
+      }
+    });
+    get("/employee").then((res) => {
+      setEmployee(res.data);
+    });
+  }, []);
+
+  const handleChangeDept = (e, setFieldValue) => {
+    const deptName = e.target.value;
+    setFieldValue("dept_name", deptName); // Update the value of the "dept_name" field
+    setFieldValue("emp_name", ""); // Reset the value of the "emp_name" field
+    const filteredData = employee.filter((emp) => emp.dept_name === deptName);
+    setFilteredEmployee(filteredData);
+  };
+
+  const handleChangeEmp = (e, setFieldValue) => {
+    const empName = e.target.value;
+    setFieldValue("emp_name", empName); // Update the value of the "emp_name" field
+  };
+
+  useEffect(() => {
+    FormFields[1].options = filteredEmployee;
+  }, [filteredEmployee]);
+
+  FormFields[0].options = department;
+
+  return (
+    <div>
+      <Formik
+        initialValues={{
+          dept_name: "",
+          emp_name: "",
+        }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        {({ handleSubmit, setFieldValue, values }) => {
+          return (
+            <Form onSubmit={handleSubmit}>
+              {FormFields.map((val, i) => {
+                if (val.type === "select") {
+                  return (
+                    <div key={i}>
+                      <label htmlFor={val.name}>{val.name}</label>
+                      <Field
+                        as="select"
+                        placeholder={`select ${val.name}`}
+                        name={val.name}
+                        onChange={
+                          val.name === "dept_name"
+                            ? (e) => handleChangeDept(e, setFieldValue)
+                            : (e) => handleChangeEmp(e, setFieldValue)
+                        }
+                        value={values[val.name]}
+                      >
+                        <option
+                          value=""
+                          disabled
+                        >{`choose ${val.name}`}</option>
+                        {val.options?.map((option, j) => {
+                          if (val.name === "dept_name") {
+                            return (
+                              <option key={j} value={option.dept_name}>
+                                {option.dept_name}
+                              </option>
+                            );
+                          } else if (val.name === "emp_name") {
+                            return (
+                              <option key={j} value={option.first_name}>
+                                {option.first_name} {option.middle_name}
+                                {option.last_name}
+                              </option>
+                            );
+                          }
+                          return null;
+                        })}
+                      </Field>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div key={i}>
+                      <Field
+                        key={i}
+                        type={val.type}
+                        name={val.name}
+                        placeholder={`enter ${val.name}`}
+                      />
+                    </div>
+                  );
+                }
+              })}
+              <button type="submit">Submit</button>
+            </Form>
+          );
+        }}
+      </Formik>
+    </div>
+  );
 };
 
 export default AddTask;

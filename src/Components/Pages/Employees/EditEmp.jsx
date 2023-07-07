@@ -117,6 +117,7 @@ const AddSubSection = () => {
       formData.append("last_name", val.last_name);
       formData.append("gender", val.gender);
       formData.append("file", first[0]);
+      console.log(first[0]);
 
       update(`/employee/${id}`, formData).then((res) => {
         if (res.status === 200) {

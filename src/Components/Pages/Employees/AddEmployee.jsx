@@ -78,7 +78,7 @@ const FormFields = [
 const AddSubSection = () => {
   const [employee, setEmployee] = useState([]);
   const [first, setFirst] = useState("");
-  const [newImg, setNewImg] = useState("");
+  // const [newImg, setNewImg] = useState("");
 
   useEffect(() => {
     get("/department").then((res) => {
@@ -88,8 +88,8 @@ const AddSubSection = () => {
 
   const handleChange = (e) => {
     console.log(e.target.files);
-    setFirst(e.target.files);
-    setNewImg(e.target.files[0]);
+    setFirst(e.target.files[0]);
+    // setNewImg(e.target.files[0]);
   };
 
   const postFormData = (val) => {
@@ -122,7 +122,7 @@ const AddSubSection = () => {
       formData.append("middle_name", val.middle_name);
       formData.append("last_name", val.last_name);
       formData.append("gender", val.gender);
-      formData.append("file", first[0]);
+      formData.append("file", first);
 
       post(`/employee/${dept_id}`, formData).then((res) => {
         if (res.status === 200) {
@@ -221,8 +221,8 @@ const AddSubSection = () => {
                             <div className=" ">
                               <img
                                 src={
-                                  newImg
-                                    ? URL.createObjectURL(newImg)
+                                  first
+                                    ? URL.createObjectURL(first)
                                     : "https://cdn-icons-png.flaticon.com/512/1869/1869679.png"
                                 }
                                 className="w-44 h-44 rounded-xl border-2 bg-black px-2 border-black py-2 shadow-mainColor shadow-lg relative right-14 bottom-14"

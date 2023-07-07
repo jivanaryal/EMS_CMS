@@ -7,7 +7,7 @@ const Department = () => {
   const data = [
     {
       id: "add",
-      name: "Add Task",
+      name: "Assign Task",
     },
     {
       id: "view",
