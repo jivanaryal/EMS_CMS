@@ -8,6 +8,7 @@ import Layout from "./Hoc/Layouts/Layout";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";
 import Leave from "./Components/Pages/Leaves/Leaves";
 import Task from "./Components/Pages/Task/Task";
+import TaskStatus from "./Components/Pages/TaskStatus/TaskStatus";
 import Attendance from "./Components/Pages/Attendances/Attendance";
 import Employee from "./Components/Pages/Employees/Employee";
 import CreateEmp from "./Components/Pages/CreateEmp/CreateEmp";
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="create" element={<CreateEmp />} />
             <Route path="leave" element={<Leave />} />
             <Route path="task" element={<Task />} />
+            <Route path="taskstatus" element={<TaskStatus />} />
             <Route path="eg1" element={<Example1 />} />
           </Route>
         </Routes>

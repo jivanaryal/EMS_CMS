@@ -31,6 +31,10 @@ const FormFields = [
     name: "task_description",
     type: "text",
   },
+  {
+    name: "task_end_date",
+    type: "date",
+  },
 ];
 
 const AddTask = () => {
@@ -58,8 +62,11 @@ const AddTask = () => {
   };
 
   const handleChangeEmp = (e, setFieldValue) => {
-    const empName = e.target.value;
-    setFieldValue("emp_name", empName); // Update the value of the "emp_name" field
+    const fieldName = e.target.name;
+    if (fieldName === "emp_name") {
+      const empName = e.target.value;
+      setFieldValue(fieldName, empName); // Update the value of the "emp_name" field
+    }
   };
 
   useEffect(() => {
