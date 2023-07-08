@@ -90,12 +90,12 @@ const ManageEmp = () => {
       </div>
 
       <table className="w-full rounded-lg shadow-sm">
-        <thead className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+        <thead className="bg-gray-100 text-[#000000] uppercase text-sm leading-normal">
           <tr>
             <th className="py-3 px-6 border-r border-b border-gray-200">
               S.No
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-1 border-r border-b border-gray-200">
               Employee Name
             </th>
             <th>Images</th>
@@ -120,15 +120,18 @@ const ManageEmp = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="text-gray-600 text-sm font-light">
+        <tbody className="text-gray-600 text-sm font-bold">
           {info.map((val, i) => (
-            <tr key={i} className="border-b border-gray-200 hover:bg-gray-100">
+            <tr
+              key={i}
+              className="py-3 text-center px-2 border-r border-b border-gray-200"
+            >
               <td className="py-3 px-4 border-l text-center">{i + 1}</td>
               <td className="py-3 px-4 border-l border-r">
                 {val.first_name + " " + val.middle_name + " " + val.last_name}
               </td>
               <td className="py-3 px-4  border-l border-r">
-                <div className="h-28 w-28 rounded-full">
+                <div className="h-28 w-28  rounded-full">
                   <img
                     src={`http://localhost:5000/${val.image}`}
                     className="object-cover rounded-full w-full h-full"
@@ -143,18 +146,18 @@ const ManageEmp = () => {
               <td className="py-3 px-4 border-l border-r text-center">
                 <MdDelete
                   onClick={() => deleteItem(val.emp_id)}
-                  className="text-3xl hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
+                  className="text-3xl mx-auto hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
                 />
               </td>
               <td className="py-3 px-4 border-l border-r text-center">
                 <Link
                   state={val}
-                  className="hover:scale-110 transition-all delay-100 duration-300 hover:text-blue-500"
+                  className="hover:scale-110 mx-auto transition-all delay-100 duration-300 hover:text-blue-500"
                   to={{
                     pathname: `/employee/${val.emp_id}`,
                   }}
                 >
-                  <MdOutlineUpdate className="text-3xl" />
+                  <MdOutlineUpdate className="text-3xl mx-auto" />
                 </Link>
               </td>
             </tr>

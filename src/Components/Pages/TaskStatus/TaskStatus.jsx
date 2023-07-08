@@ -23,7 +23,7 @@ const Employee = () => {
             <div key={i}>
               <div
                 onClick={() => setActive(val.id)}
-                className={`border-2 capitalize py-1 px-4 text-xl cursor-pointer rounded-md w-fit   mt-4
+                className={`border-2 capitalize py-1 px-4 shadow-md shadow-gray-700   text-xl cursor-pointer rounded-md w-fit   mt-4
                                     ${
                                       val.id === Active
                                         ? "bg-mainColor  text-[#ffffff] scale-110"

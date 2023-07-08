@@ -68,7 +68,7 @@ const Sidebar = () => {
               <div
                 className={`flex pl-4 py-2  shadow-base rounded-lg   items-center mr-4 text-base text-[#ece1fc] border-2 text-center  gap-2 capitalize ${
                   location.pathname === val.path &&
-                  "text-gray-700 bg-[#F1F9FB] "
+                  "text-gray-700 bg-[#F1F9FB] shadow-md shadow-gray-700 font-bold text-lg "
                 }`}
               >
                 <div className=" text-lg   ">{val.logo}</div>
