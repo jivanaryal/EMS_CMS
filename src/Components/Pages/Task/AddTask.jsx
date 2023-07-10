@@ -1,13 +1,9 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { get } from "../../../services/api";
+import { get, post } from "../../../services/api";
+import { toast, ToastContainer } from "react-toastify";
 
 const FormFields = [
-  {
-    name: "dept_name",
-    type: "select",
-    options: [],
-  },
   {
     name: "emp_name",
     type: "select",
@@ -38,53 +34,55 @@ const FormFields = [
 ];
 
 const AddTask = () => {
-  const [department, setDepartment] = useState([]);
   const [employee, setEmployee] = useState([]);
-  const [filteredEmployee, setFilteredEmployee] = useState([]);
 
   useEffect(() => {
-    get("/department").then((res) => {
-      if (res.status === 200) {
-        setDepartment(res.data);
-      }
-    });
     get("/employee").then((res) => {
       setEmployee(res.data);
     });
   }, []);
 
-  const handleChangeDept = (e, setFieldValue) => {
-    const deptName = e.target.value;
-    setFieldValue("dept_name", deptName); // Update the value of the "dept_name" field
-    setFieldValue("emp_name", ""); // Reset the value of the "emp_name" field
-    const filteredData = employee.filter((emp) => emp.dept_name === deptName);
-    setFilteredEmployee(filteredData);
-  };
+  const postFormData = (values) => {
+    console.log(values);
+    console.log();
+    console.log(values.first_name);
+    const selectedOption = FormFields[0].options.find(
+      (option) =>
+        option.first_name +
+          " " +
+          option.middle_name +
+          " " +
+          option.last_name ===
+        values.emp_name
+    );
+    console.log(selectedOption);
 
-  const handleChangeEmp = (e, setFieldValue) => {
-    const fieldName = e.target.name;
-    if (fieldName === "emp_name") {
-      const empName = e.target.value;
-      setFieldValue(fieldName, empName); // Update the value of the "emp_name" field
+    if (selectedOption) {
+      const emp_id = selectedOption.emp_id;
+      console.log(emp_id);
+
+      post(`/task/${emp_id}`, values).then((res) => {
+        if (res.status === 200) {
+          toast.success("the task is assigned");
+        }
+      });
     }
   };
 
-  useEffect(() => {
-    FormFields[1].options = filteredEmployee;
-  }, [filteredEmployee]);
-
-  FormFields[0].options = department;
+  FormFields[0].options = [...employee];
 
   return (
     <div className="mt-10 px-20">
       <Formik
         initialValues={{
-          dept_name: "",
           emp_name: "",
-          description: "",
+          task_priority: "",
+          task_title: "",
+          task_description: "",
+          task_end_date: "",
         }}
         onSubmit={(values) => {
-          console.log(values);
+          postFormData(values);
         }}
       >
         {({ handleSubmit, setFieldValue, values }) => {
@@ -105,11 +103,6 @@ const AddTask = () => {
                           as="select"
                           placeholder={`select ${val.name}`}
                           name={val.name}
-                          onChange={
-                            val.name === "dept_name"
-                              ? (e) => handleChangeDept(e, setFieldValue)
-                              : (e) => handleChangeEmp(e, setFieldValue)
-                          }
                           className="border border-gray-400 p-1 rounded w-full"
                         >
                           <option
@@ -118,17 +111,13 @@ const AddTask = () => {
                             disabled
                           >{`choose ${val.name}`}</option>
                           {val.options?.map((option, j) => {
-                            if (val.name === "dept_name") {
+                            if (val.name === "emp_name") {
                               return (
-                                <option key={j} value={option.dept_name}>
-                                  {option.dept_name}
-                                </option>
-                              );
-                            } else if (val.name === "emp_name") {
-                              return (
-                                <option key={j} value={option.first_name}>
-                                  {option.first_name} {option.middle_name}
-                                  {option.last_name}
+                                <option
+                                  key={j}
+                                  value={`${option.first_name} ${option.middle_name} ${option.last_name}`}
+                                >
+                                  {`${option.first_name} ${option.middle_name} ${option.last_name}`}
                                 </option>
                               );
                             } else {
@@ -158,17 +147,23 @@ const AddTask = () => {
                           placeholder={`enter ${val.name}`}
                           className="border border-gray-400 p-1 rounded w-full"
                         />
+                        <ErrorMessage
+                          name={val.name}
+                          component={"div"}
+                          className="text-red-600"
+                        />
                       </div>
                     );
                   }
                 })}
-                <button
-                  type="submit"
-                  className="bg-mainColor mb-5 w-fit  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
-                >
-                  Submit
-                </button>
+                <ToastContainer />
               </div>
+              <button
+                type="submit"
+                className="bg-mainColor mb-5 w-fit  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+              >
+                Submit
+              </button>
             </Form>
           );
         }}

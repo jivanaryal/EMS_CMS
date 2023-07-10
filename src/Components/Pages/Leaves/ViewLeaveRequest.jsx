@@ -115,7 +115,7 @@ const LeaveApprovalList = () => {
                     </button>
                     <button
                       onClick={() => handleReject(request.emp_id)}
-                      className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded  md:px-1 md:py-1 md:text-sm"
+                      className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded  md:px-1 md:py-1 md:text-sm "
                     >
                       Reject
                     </button>

@@ -56,8 +56,8 @@ const Sidebar = () => {
   const location = useLocation();
   return (
     <div className="pl-5  h-full">
-      <div className=" text-[#FDF7FF] flex justify-center font-extrabold">
-        <img src={logo} alt="logo" className="h-24 w-28 bg-transparent" />
+      <div className=" text-[#FDF7FF] flex justify-center font-extrabold py-8">
+        <img src={logo} alt="logo" className="h-24 w-28" />
       </div>
       <div className="text-[#e2cefd] pb-4">MAIN MENU</div>
       <div className="flex flex-col h-full gap-6 ">
