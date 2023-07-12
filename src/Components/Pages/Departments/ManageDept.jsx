@@ -3,12 +3,15 @@ import { MdDelete, MdOutlineUpdate } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { get, remove } from "../../../services/api";
+import DangerModal from "../../UI/DangerModal";
 import "react-toastify/dist/ReactToastify.css";
 
 const ManageDept = () => {
   const [info, setInfo] = useState([]);
   // const navigate = useNavigate();
   const [toggle, setToggle] = useState([]);
+  const [showDelete, setShowDelete] = useState(false);
+  const [workingId, setWorkingId] = useState(null);
 
   const fetchData = async () => {
     get("/department").then((res) => {
@@ -22,16 +25,31 @@ const ManageDept = () => {
   // }, []);
 
   const deleteItem = (id) => {
-    remove(`/department/${id}`).then((res) => {
-      if (res.status === 200) {
-        setToggle(!toggle);
-        toast.error("The department is removed", {
-          className: "custom-toast",
-        });
-      }
-    });
+    remove(`/department/${id}`)
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          setToggle(!toggle);
+          toast.success("The department is removed");
+        }
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 409) {
+          toast.error("The department having  foreign key");
+        } else {
+          toast.error("Failed to remove the department");
+        }
+        console.log(err.message);
+      });
   };
 
+  const success = () => {
+    deleteItem(workingId);
+  };
+
+  const failure = () => {
+    setShowDelete(false);
+  };
   const newCallBack = useCallback(() => {
     fetchData();
   }, []);
@@ -39,6 +57,13 @@ const ManageDept = () => {
   const newData = useMemo(() => newCallBack(), [toggle]);
   return (
     <div className="my-10 mx-10">
+      {showDelete && (
+        <DangerModal
+          onClick={success}
+          falseCondition={failure}
+          name="department"
+        />
+      )}
       <h1 className="font-bold text-xl">Manage Department</h1>
       <table className="w-full rounded-lg shadow-sm ">
         <thead className="bg-gray-100 text-[#000000] uppercase text-lg leading-normal">
@@ -73,7 +98,10 @@ const ManageDept = () => {
               </td>
               <td className="py-3  border-l   border-r ">
                 <MdDelete
-                  onClick={() => deleteItem(val.dept_id)}
+                  onClick={() => {
+                    setWorkingId(val.dept_id);
+                    setShowDelete(true);
+                  }}
                   className="text-3xl mx-auto  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
                 />
               </td>

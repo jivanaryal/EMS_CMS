@@ -15,7 +15,11 @@ export const getSingle = (url) => {
 };
 
 export const remove = (url) => {
-  return axios.delete(API_BASE_URL + url);
+  try {
+    return axios.delete(API_BASE_URL + url);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const update = (url, data) => {

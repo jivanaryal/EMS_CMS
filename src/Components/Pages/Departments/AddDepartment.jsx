@@ -31,9 +31,15 @@ const FormField = [
 
 const AddDepartment = () => {
   const postFormData = async (value) => {
-    post("/department", value).then((res) => {
-      toast.success("the department is added");
-    });
+    post("/department", value)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success("the department is added");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="w-full px-6 sm:px-10">

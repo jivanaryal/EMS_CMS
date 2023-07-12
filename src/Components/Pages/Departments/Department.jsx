@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import AddDepartment from "./AddDepartment";
 import ManageDept from "./ManageDept";
+import DangerModal from "../../UI/DangerModal";
 
 const Department = () => {
   const [Active, setActive] = useState("view");
+  const [showDelete, setShowDelete] = useState(false);
   const data = [
     {
       id: "add",
@@ -14,6 +16,13 @@ const Department = () => {
       name: "Manage Dept",
     },
   ];
+
+  const success = () => {
+    console.log("success");
+  };
+  const failure = () => {
+    setShowDelete(false);
+  };
 
   return (
     <div className="">

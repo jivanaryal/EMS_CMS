@@ -3,12 +3,15 @@ import { MdDelete, MdOutlineUpdate } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { get, remove } from "../../../services/api";
+import DangerModal from "../../UI/DangerModal";
 import "react-toastify/dist/ReactToastify.css";
 
 const ManageEmp = () => {
   const [info, setInfo] = useState([]);
   const [selectedDept, setSelectedDept] = useState("");
   const [toggle, setToggle] = useState([]);
+  const [showDelete, setShowDelete] = useState(false);
+  const [workingId, setWorkingId] = useState(null);
 
   const fetchData = async () => {
     get("/employee").then((res) => {
@@ -18,14 +21,22 @@ const ManageEmp = () => {
   };
 
   const deleteItem = (id) => {
-    remove(`/employee/${id}`).then((res) => {
-      if (res.status === 200) {
-        setToggle(!toggle);
-        toast.error("The Employee record is removed", {
-          className: "custom-toast",
-        });
-      }
-    });
+    remove(`/employee/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          setToggle(!toggle);
+          toast.success("The Employee record is removed", {
+            className: "custom-toast",
+          });
+        }
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 409) {
+          toast.error("Can't delete employee having  foreign key reference");
+        } else {
+          toast.error("Failed to remove the employee");
+        }
+      });
   };
 
   const handleDeptChange = (event) => {
@@ -45,9 +56,9 @@ const ManageEmp = () => {
     filterByDepartment();
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   const newCallBack = useCallback(() => {
     fetchData();
@@ -61,8 +72,23 @@ const ManageEmp = () => {
     return Array.from(departmentSet);
   }, [info]);
 
+  const success = () => {
+    deleteItem(workingId);
+  };
+
+  const failure = () => {
+    setShowDelete(false);
+  };
+
   return (
     <div className="my-10">
+      {showDelete && (
+        <DangerModal
+          onClick={success}
+          falseCondition={failure}
+          name="employee"
+        />
+      )}
       <h1 className="font-bold text-xl">Manage Employee </h1>
 
       {/* Department filter */}
@@ -145,7 +171,10 @@ const ManageEmp = () => {
               <td className="py-3 px-4 border-l border-r">{val.salary}</td>
               <td className="py-3 px-4 border-l border-r text-center">
                 <MdDelete
-                  onClick={() => deleteItem(val.emp_id)}
+                  onClick={() => {
+                    setWorkingId(val.emp_id);
+                    setShowDelete(true);
+                  }}
                   className="text-3xl mx-auto hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
                 />
               </td>
