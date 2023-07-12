@@ -52,17 +52,28 @@ const Dashboard = () => {
   const [uniquePendingLeaves, setUniquePendingLeaves] = useState([]);
 
   useEffect(() => {
-    get("/leave").then((res) => {
-      if (res.status === 200) {
-        console.log(res.data);
-        setLeave(res.data);
+    const fetchData = async () => {
+      try {
+        const leaveRes = await get("/leave");
+        if (leaveRes.status === 200) {
+          console.log(leaveRes.data);
+          setLeave(leaveRes.data);
+        }
+      } catch (leaveErr) {
+        console.log(leaveErr.message);
       }
-    });
-    get("/employee").then((res) => {
-      if (res.status === 200) {
-        setEmployee(res.data);
+
+      try {
+        const employeeRes = await get("/employee");
+        if (employeeRes.status === 200) {
+          setEmployee(employeeRes.data);
+        }
+      } catch (employeeErr) {
+        console.log(employeeErr.message);
       }
-    });
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {

@@ -14,15 +14,14 @@ const ManageDept = () => {
   const [workingId, setWorkingId] = useState(null);
 
   const fetchData = async () => {
-    get("/department").then((res) => {
+    try {
+      const res = await get("/department");
       console.log(res.data);
       setInfo(res.data);
-    });
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
 
   const deleteItem = (id) => {
     remove(`/department/${id}`)
@@ -35,7 +34,7 @@ const ManageDept = () => {
       })
       .catch((err) => {
         if (err.response && err.response.status === 409) {
-          toast.error("The department having  foreign key");
+          toast.error("The department having foreign key");
         } else {
           toast.error("Failed to remove the department");
         }

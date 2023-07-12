@@ -37,9 +37,13 @@ const AddTask = () => {
   const [employee, setEmployee] = useState([]);
 
   useEffect(() => {
-    get("/employee").then((res) => {
-      setEmployee(res.data);
-    });
+    get("/employee")
+      .then((res) => {
+        setEmployee(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   }, []);
 
   const postFormData = (values) => {
@@ -61,11 +65,16 @@ const AddTask = () => {
       const emp_id = selectedOption.emp_id;
       console.log(emp_id);
 
-      post(`/task/${emp_id}`, values).then((res) => {
-        if (res.status === 200) {
-          toast.success("the task is assigned");
-        }
-      });
+      post(`/task/${emp_id}`, values)
+        .then((res) => {
+          if (res.status === 200) {
+            toast.success("the task is assigned");
+          }
+        })
+        .catch((err) => {
+          console.log(err.message);
+          toast.error("Failed to assign the task");
+        });
     }
   };
 

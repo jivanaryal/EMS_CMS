@@ -23,16 +23,32 @@ const CreateEmp = () => {
   const [employee, setEmployee] = useState([]);
 
   useEffect(() => {
-    get("/employee").then((res) => {
-      setEmployee(res.data);
-    });
+    get("/employee")
+      .then((res) => {
+        setEmployee(res.data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch employees:", error);
+      });
   }, []);
 
-  const postFormData = async (value) => {
-    console.log(value.emp_name);
-    post(`/createemp/signup/${value.emp_name}`, value).then((res) => {
-      // toast.success("the department is added");
-    });
+  const postFormData = async (values) => {
+    try {
+      const response = await post(
+        `/createemp/signup/${values.emp_name}`,
+        values
+      );
+
+      if (response.status === 200) {
+        toast.success("New employee created");
+      } else {
+        console.error("Failed to create employee.");
+        toast.error("Failed to create employee.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred while creating employee.");
+    }
   };
 
   let initData = [

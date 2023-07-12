@@ -13,31 +13,40 @@ const ManageEmp = () => {
   const [showDelete, setShowDelete] = useState(false);
   const [workingId, setWorkingId] = useState(null);
 
-  const fetchData = async () => {
-    get("/employee").then((res) => {
-      console.log(res.data);
-      setInfo(res.data);
-    });
-  };
+  const fetchData = useCallback(async () => {
+    try {
+      const res = await get("/employee");
+      if (res.status === 200) {
+        setInfo(res.data);
+      } else {
+        console.log("The data is not fetched");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
-  const deleteItem = (id) => {
-    remove(`/employee/${id}`)
-      .then((res) => {
-        if (res.status === 200) {
-          setToggle(!toggle);
-          toast.success("The Employee record is removed", {
-            className: "custom-toast",
-          });
-        }
-      })
-      .catch((err) => {
+  const deleteItem = useCallback(
+    (id) => {
+      try {
+        remove(`/employee/${id}`).then((res) => {
+          if (res.status === 200) {
+            setToggle(!toggle);
+            toast.success("The Employee record is removed", {
+              className: "custom-toast",
+            });
+          }
+        });
+      } catch (err) {
         if (err.response && err.response.status === 409) {
-          toast.error("Can't delete employee having  foreign key reference");
+          toast.error("Can't delete employee having foreign key reference");
         } else {
           toast.error("Failed to remove the employee");
         }
-      });
-  };
+      }
+    },
+    [toggle]
+  );
 
   const handleDeptChange = (event) => {
     setSelectedDept(event.target.value);

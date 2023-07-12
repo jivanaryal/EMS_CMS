@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { MdOutlineCheck } from "react-icons/md";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { get, update } from "../../../services/api";
 
 const LeaveApprovalList = () => {
@@ -8,18 +8,23 @@ const LeaveApprovalList = () => {
 
   // Fetch the pending leave requests from the backend
   const fetchLeaveRequests = async () => {
-    get("/leave").then((res) => {
-      if (res.status === 200) {
-        setLeaveRequests(res.data);
-        console.log(res.data);
+    try {
+      const response = await get("/leave");
+
+      if (response.status === 200) {
+        setLeaveRequests(response.data);
+        console.log(response.data);
+      } else {
+        console.error("Failed to fetch leave requests.");
       }
-    });
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   useEffect(() => {
     fetchLeaveRequests();
   }, []);
-
   const handleApprove = async (leaveRequestId) => {
     try {
       const response = await update(`/leave/approve/${leaveRequestId}`, {
@@ -35,18 +40,21 @@ const LeaveApprovalList = () => {
               : request
           )
         );
+        toast.success("Leave request approved.");
       } else {
         console.error("Failed to approve leave.");
+        toast.error("Failed to approve leave.");
       }
     } catch (error) {
       console.error("Error:", error);
+      toast.error("An error occurred while approving leave.");
     }
   };
 
   const handleReject = async (leaveRequestId) => {
     try {
       const response = await update(`/leave/approve/${leaveRequestId}`, {
-        status: "Rejected",
+        status: "rejected",
       });
 
       if (response.status === 200) {
@@ -58,11 +66,14 @@ const LeaveApprovalList = () => {
               : request
           )
         );
+        toast.success("Leave request rejected.");
       } else {
         console.error("Failed to reject leave.");
+        toast.error("Failed to reject leave.");
       }
     } catch (error) {
       console.error("Error:", error);
+      toast.error("An error occurred while rejecting leave.");
     }
   };
 
@@ -81,6 +92,7 @@ const LeaveApprovalList = () => {
             <th className="py-3 px-4">Image</th>
             <th className="py-3 px-4">Start Date</th>
             <th className="py-3 px-4">End Date</th>
+            <th className="py-3 px-4">Message</th>
             <th className="py-3 px-4">Status</th>
             <th className="py-3 px-4">Action</th>
           </tr>
@@ -103,6 +115,19 @@ const LeaveApprovalList = () => {
               </td>
               <td className="py-4 px-4">{request.start_date}</td>
               <td className="py-4 px-4">{request.end_date}</td>
+              <td className="w-56 h-40">
+                <div className="line-clamp-6 text-justify">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Obcaecati voluptatum, quas molestias explicabo soluta id ipsa
+                  assumenda et praesentium voluptatem earum iste dolorem
+                  corporis rerum magnam, distinctio quae. Est ullam dolorum
+                  explicabo eum quisquam modi ipsum quam ipsa nemo debitis atque
+                  tempore, nesciunt excepturi maxime blanditiis necessitatibus
+                  iste omnis ea doloribus. Laborum cupiditate nesciunt
+                  exercitationem.
+                </div>
+              </td>
+
               <td className="py-4 px-4">{request.status}</td>
               <td className="py-4 px-4 ">
                 {request.status === "pending" ? (
@@ -141,7 +166,7 @@ const LeaveApprovalList = () => {
           ))}
         </tbody>
       </table>
-      <ToastContainer />
+      <ToastContainer position="bottom-left" />
     </div>
   );
 };

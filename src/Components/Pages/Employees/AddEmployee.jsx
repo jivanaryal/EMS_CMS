@@ -81,9 +81,13 @@ const AddSubSection = () => {
   // const [newImg, setNewImg] = useState("");
 
   useEffect(() => {
-    get("/department").then((res) => {
-      setEmployee(res.data);
-    });
+    get("/department")
+      .then((res) => {
+        setEmployee(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const handleChange = (e) => {
@@ -124,11 +128,13 @@ const AddSubSection = () => {
       formData.append("gender", val.gender);
       formData.append("file", first);
 
-      post(`/employee/${dept_id}`, formData).then((res) => {
-        if (res.status === 200) {
-          toast.success("The employee is added");
-        }
-      });
+      post(`/employee/${dept_id}`, formData)
+        .then((res) => {
+          if (res.status === 200) {
+            toast.success("The employee is added");
+          }
+        })
+        .catch((err) => [console.log(err)]);
     }
   };
 
