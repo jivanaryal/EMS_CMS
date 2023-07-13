@@ -35,11 +35,7 @@ const Navdata = [
     path: "/taskstatus",
     logo: <BiTask />,
   },
-  {
-    title: "attendance",
-    path: "/attendance",
-    logo: <GiArchiveRegister />,
-  },
+
   {
     title: "leave",
     path: "/leave",
