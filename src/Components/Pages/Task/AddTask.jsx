@@ -68,12 +68,16 @@ const AddTask = () => {
       post(`/task/${emp_id}`, values)
         .then((res) => {
           if (res.status === 200) {
-            toast.success("the task is assigned");
+            toast.success("The task is assigned");
           }
         })
         .catch((err) => {
           console.log(err.message);
-          toast.error("Failed to assign the task");
+          if (err.response && err.response.data && err.response.data.error) {
+            toast.error(err.response.data.error);
+          } else {
+            toast.error("Failed to assign the task");
+          }
         });
     }
   };
@@ -165,7 +169,7 @@ const AddTask = () => {
                     );
                   }
                 })}
-                <ToastContainer />
+                <ToastContainer position="bottom-left" />
               </div>
               <button
                 type="submit"
