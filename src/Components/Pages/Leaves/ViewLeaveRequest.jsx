@@ -35,7 +35,7 @@ const LeaveApprovalList = () => {
         // Update the leave request status in the UI
         setLeaveRequests((prevRequests) =>
           prevRequests.map((request) =>
-            request.emp_id === leaveRequestId
+            request.leave_id === leaveRequestId
               ? { ...request, status: "Approved" }
               : request
           )
@@ -61,7 +61,7 @@ const LeaveApprovalList = () => {
         // Update the leave request status in the UI
         setLeaveRequests((prevRequests) =>
           prevRequests.map((request) =>
-            request.emp_id === leaveRequestId
+            request.leave_id === leaveRequestId
               ? { ...request, status: "Rejected" }
               : request
           )
