@@ -81,6 +81,8 @@ const LeaveApprovalList = () => {
     (val) => val.status === "pending"
   );
 
+  console.log(fileterEmployee);
+
   return (
     <div className="my-10">
       <h1 className="font-bold text-2xl mb-6">Leave Approval List</h1>
@@ -115,16 +117,9 @@ const LeaveApprovalList = () => {
               </td>
               <td className="py-4 px-4">{request.start_date}</td>
               <td className="py-4 px-4">{request.end_date}</td>
-              <td className="w-56 h-40">
+              <td className="px-4 h-40">
                 <div className="line-clamp-6 text-justify">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Obcaecati voluptatum, quas molestias explicabo soluta id ipsa
-                  assumenda et praesentium voluptatem earum iste dolorem
-                  corporis rerum magnam, distinctio quae. Est ullam dolorum
-                  explicabo eum quisquam modi ipsum quam ipsa nemo debitis atque
-                  tempore, nesciunt excepturi maxime blanditiis necessitatibus
-                  iste omnis ea doloribus. Laborum cupiditate nesciunt
-                  exercitationem.
+                  {request.message}
                 </div>
               </td>
 
@@ -133,13 +128,13 @@ const LeaveApprovalList = () => {
                 {request.status === "pending" ? (
                   <div className="flex">
                     <button
-                      onClick={() => handleApprove(request.emp_id)}
+                      onClick={() => handleApprove(request.leave_id)}
                       className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mr-2  md:px-1 md:py-1 md:text-sm"
                     >
                       Approve
                     </button>
                     <button
-                      onClick={() => handleReject(request.emp_id)}
+                      onClick={() => handleReject(request.leave_id)}
                       className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded  md:px-1 md:py-1 md:text-sm "
                     >
                       Reject

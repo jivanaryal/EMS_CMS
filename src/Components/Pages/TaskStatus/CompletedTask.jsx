@@ -25,7 +25,7 @@ const CompletedTask = () => {
 
   return (
     <div className="my-10 mx-10 shadow-sm  shadow-gray-400 p-4">
-      <h1 className="font-bold text-xl mb-4">View Inprogress Task</h1>
+      <h1 className="font-bold text-xl mb-4">View Completed Task</h1>
       <table className="w-full">
         <thead className=" text-gray-600 uppercase text-md leading-normal bg-gray-300 ">
           <tr className="">
