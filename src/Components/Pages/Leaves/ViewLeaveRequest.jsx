@@ -87,48 +87,51 @@ const LeaveApprovalList = () => {
       <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
         <thead className="bg-gray-200 text-gray-700 text-center">
           <tr>
-            <th className="py-3 px-4">ID</th>
-            <th className="py-3 px-4">Employee Name</th>
-            <th className="py-3 px-4">Image</th>
-            <th className="py-3 px-4">Start Date</th>
-            <th className="py-3 px-4">End Date</th>
-            <th className="py-3 px-4">Message</th>
-            <th className="py-3 px-4">Status</th>
-            <th className="py-3 px-4">Action</th>
+            <th className="py-3 px-4 border-r-2 border-gray-300">ID</th>
+            <th className="py-3 px-4 border-r-2 border-gray-300">
+              Employee Name
+            </th>
+            <th className="py-3 px-4 border-r-2 border-gray-300">Image</th>
+            <th className="py-3 px-4 border-r-2 border-gray-300">Start Date</th>
+            <th className="py-3 px-4 border-r-2 border-gray-300">End Date</th>
+            <th className="py-3 px-4 border-r-2 border-gray-300">Message</th>
+            <th className="py-3 px-4 border-r-2 border-gray-300">Status</th>
+            <th className="py-3 px-4 border-r-2 border-gray-300">Action</th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-center">
           {fileterEmployee.map((request) => (
             <tr key={request.emp_id} className="border-b">
-              <td className="py-4 px-4">{request.emp_id}</td>
-              <td className="py-4 px-4">
+              <td className="py-4 px-4 border-r-2 border-gray-300">
+                {request.emp_id}
+              </td>
+              <td className="py-4 px-4 border-r-2 border-gray-300">
                 {request.first_name}
                 {request.middle_name}
                 {request.last_name}
               </td>
-              <td className="py-4 px-4">
+              <td className="py-4 px-4 border-r-2 border-gray-300">
                 <img
-                  src={`http://localhost:5000/${request.image}`}
+                  src={`http://192.168.18.7:5000/${request.image}`}
                   alt=""
                   className="w-24 rounded-full h-24"
                 />
               </td>
-              <td className="py-4 px-4">{request.start_date}</td>
-              <td className="py-4 px-4">{request.end_date}</td>
-              <td className="w-56 h-40">
-                <div className="line-clamp-6 text-justify">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Obcaecati voluptatum, quas molestias explicabo soluta id ipsa
-                  assumenda et praesentium voluptatem earum iste dolorem
-                  corporis rerum magnam, distinctio quae. Est ullam dolorum
-                  explicabo eum quisquam modi ipsum quam ipsa nemo debitis atque
-                  tempore, nesciunt excepturi maxime blanditiis necessitatibus
-                  iste omnis ea doloribus. Laborum cupiditate nesciunt
-                  exercitationem.
+              <td className="py-4 px-4 border-r-2 border-gray-300">
+                {request.start_date}
+              </td>
+              <td className="py-4 px-4 border-r-2 border-gray-300">
+                {request.end_date}
+              </td>
+              <td className="w-56 h-40 border-r-2 border-gray-300">
+                <div className="line-clamp-6 text-justify px-2 ">
+                  {request.message}
                 </div>
               </td>
 
-              <td className="py-4 px-4">{request.status}</td>
+              <td className="py-4 px-4 border-r-2 border-gray-300">
+                {request.status}
+              </td>
               <td className="py-4 px-4 ">
                 {request.status === "pending" ? (
                   <div className="flex">
