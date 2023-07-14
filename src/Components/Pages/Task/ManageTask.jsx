@@ -145,7 +145,7 @@ const ManageTask = () => {
                   state={val}
                   className="hover:scale-110 mx-auto transition-all delay-100 duration-300 hover:text-blue-500"
                   to={{
-                    pathname: `/task/${val.task_id}`,
+                    pathname: `/task/${val.emp_id}`,
                   }}
                 >
                   <MdOutlineUpdate className="text-3xl mx-auto" />

@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { get, post, update } from "../../../services/api";
 import { toast, ToastContainer } from "react-toastify";
-import { useLocation } from "react-router";
+import { useLocation, useParams } from "react-router";
 
 const FormFields = [
   {
@@ -36,7 +36,10 @@ const FormFields = [
 
 const AddTask = () => {
   const [employee, setEmployee] = useState([]);
+  const [task, setTask] = useState([]);
   const location = useLocation();
+  const { id } = useParams();
+  console.log(id);
   console.log(location.state);
   useEffect(() => {
     get("/employee")
@@ -45,6 +48,16 @@ const AddTask = () => {
       })
       .catch((err) => {
         console.log(err.message);
+      });
+    get(`/task/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data);
+          setTask(res.data);
+        }
+      })
+      .catch((error) => {
+        console.error(error); // Display the error in the console
       });
   }, []);
 
@@ -67,7 +80,25 @@ const AddTask = () => {
       const emp_id = selectedOption.emp_id;
       console.log(emp_id);
 
-      update(`/task/${emp_id}`, values)
+      console.log(task);
+
+      const data = {
+        emp_final_remark: task[0].emp_final_remark,
+        task_complete: task[0].task_complete,
+        status: task[0].status,
+        emp_name: values.emp_name,
+        task_assign_date: task[0].task_assign_date,
+        task_end_date: values.task_end_date,
+        task_priority: values.task_priority,
+        task_description: values.task_description,
+        task_title: task[0].task_title,
+        emp_id: task[0].emp_id,
+      };
+
+      const task_id = task[0].task_id;
+      console.log(task_id);
+
+      update(`/task/${task_id}`, data)
         .then((res) => {
           if (res.status === 200) {
             toast.success("the task is assigned");
