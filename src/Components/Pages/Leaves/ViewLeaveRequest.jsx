@@ -87,55 +87,73 @@ const LeaveApprovalList = () => {
     <div className="my-10">
       <h1 className="font-bold text-2xl mb-6">Leave Approval List</h1>
       <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
-        <thead className="bg-gray-200 text-gray-700 text-center">
+        <thead className="bg-gray-200 text-gray-700 text-center text-lg">
           <tr>
-            <th className="py-3 px-4">ID</th>
-            <th className="py-3 px-4">Employee Name</th>
-            <th className="py-3 px-4">Image</th>
-            <th className="py-3 px-4">Start Date</th>
-            <th className="py-3 px-4">End Date</th>
-            <th className="py-3 px-4">Message</th>
-            <th className="py-3 px-4">Status</th>
-            <th className="py-3 px-4">Action</th>
+            <th className="py-3 px-2  border-r border-b border-gray-200">ID</th>
+            <th className="py-3 px-2  border-r border-b border-gray-200">
+              Employee Name
+            </th>
+            <th className="py-3 px-2  border-r border-b border-gray-200">
+              Image
+            </th>
+            <th className="py-3 px-2 border-r border-b border-gray-200">
+              Start Date
+            </th>
+            <th className="py-3 px-2 border-r border-b border-gray-200">
+              End Date
+            </th>
+            <th className="py-3 px-2 border-r border-b border-gray-200">
+              Message
+            </th>
+            <th className="py-3 px-2 border-r border-b border-gray-200">
+              Status
+            </th>
+            <th className="py-3 px-2 border-r border-b border-gray-200">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-center">
           {fileterEmployee.map((request) => (
-            <tr key={request.emp_id} className="border-b">
-              <td className="py-4 px-4">{request.emp_id}</td>
-              <td className="py-4 px-4">
+            <tr key={request.emp_id} className="border-b font-bold">
+              <td className="py-4 px-2 border-l border-r">{request.emp_id}</td>
+              <td className="py-4 px-2 border-l border-r">
                 {request.first_name}
                 {request.middle_name}
                 {request.last_name}
               </td>
-              <td className="py-4 px-4">
+              <td className="py-4 px-2 border-l border-r">
                 <img
                   src={`http://localhost:5000/${request.image}`}
                   alt=""
                   className="w-24 rounded-full h-24"
                 />
               </td>
-              <td className="py-4 px-4">{request.start_date}</td>
-              <td className="py-4 px-4">{request.end_date}</td>
+              <td className="py-4 px-2 border-l border-r">
+                {request.start_date}
+              </td>
+              <td className="py-4 px-2 border-l border-r">
+                {request.end_date}
+              </td>
               <td className="px-4 h-40">
                 <div className="line-clamp-6 text-justify">
                   {request.message}
                 </div>
               </td>
 
-              <td className="py-4 px-4">{request.status}</td>
-              <td className="py-4 px-4 ">
+              <td className="py-2 px-2 border-l border-r">{request.status}</td>
+              <td className="py-4 px-2 ">
                 {request.status === "pending" ? (
                   <div className="flex">
                     <button
                       onClick={() => handleApprove(request.leave_id)}
-                      className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mr-2  md:px-1 md:py-1 md:text-sm"
+                      className="bg-green-500 hover:bg-green-600 text-white py-2 px-2 rounded mr-2  md:px-1 md:py-1 md:text-sm"
                     >
                       Approve
                     </button>
                     <button
                       onClick={() => handleReject(request.leave_id)}
-                      className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded  md:px-1 md:py-1 md:text-sm "
+                      className="bg-red-500 hover:bg-red-600 text-white py-2 px-2 rounded  md:px-1 md:py-1 md:text-sm "
                     >
                       Reject
                     </button>
@@ -144,13 +162,13 @@ const LeaveApprovalList = () => {
                   <div className="flex">
                     <button
                       disabled
-                      className="bg-green-300 text-gray-600 py-2 px-4 rounded mr-2 cursor-not-allowed md:px-1 md:py-1 md:text-sm"
+                      className="bg-green-300 text-gray-600 py-2 px-2 rounded mr-2 cursor-not-allowed md:px-1 md:py-1 md:text-sm"
                     >
                       Approve
                     </button>
                     <button
                       disabled
-                      className="bg-red-300 text-gray-600 py-2 px-4 rounded cursor-not-allowed md:px-1 md:py-1 md:text-md md:text-sm"
+                      className="bg-red-300 text-gray-600 py-2 px-2 rounded cursor-not-allowed md:px-1 md:py-1 md:text-md md:text-sm"
                     >
                       Reject
                     </button>

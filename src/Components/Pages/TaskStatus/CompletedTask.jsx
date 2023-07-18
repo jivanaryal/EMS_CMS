@@ -59,13 +59,17 @@ const CompletedTask = () => {
         <tbody className="text-gray-600 text-[15px] font-medium ">
           {fileterEmployee.map((val, i) => {
             return (
-              <tr className="border-b border-gray-200 hover:bg-gray-100">
+              <tr className="border-b border-gray-200 hover:bg-gray-100 font-bold">
                 <td className="py-3 px-4 border-l text-center">{i + 1}</td>
                 <td className="py-3 px-4 border-l text-center capitalize">
                   {val.emp_name}
                 </td>
-                <td className="py-3 px-4 border-l text-center capitalize">
-                  <img src={`http://localhost:5000/${val.image}`} alt="" />
+                <td className="py-3 px-4 border-l  text-center capitalize">
+                  <img
+                    src={`http://localhost:5000/${val.image}`}
+                    alt=""
+                    className="w-24 rounded-3xl shadow-lg shadow-gray-200"
+                  />
                 </td>
                 <td className="py-3 px-4 border-l text-center ">
                   {val.task_title}

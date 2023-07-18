@@ -174,9 +174,15 @@ const ManageEmp = () => {
                   />
                 </div>
               </td>
-              <td className="py-3 px-4 border-l border-r">{val.job}</td>
-              <td className="py-3 px-4 border-l border-r">{val.gender}</td>
-              <td className="py-3 px-4 border-l border-r">{val.dept_name}</td>
+              <td className="py-3 px-4 border-l border-r capitalize">
+                {val.job}
+              </td>
+              <td className="py-3 px-4 border-l border-r capitalize">
+                {val.gender}
+              </td>
+              <td className="py-3 px-4 border-l border-r capitalize">
+                {val.dept_name}
+              </td>
               <td className="py-3 px-4 border-l border-r">{val.salary}</td>
               <td className="py-3 px-4 border-l border-r text-center">
                 <MdDelete

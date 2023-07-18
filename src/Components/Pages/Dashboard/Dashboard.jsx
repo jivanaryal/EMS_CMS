@@ -6,6 +6,7 @@ import { HiBuildingOffice2 } from "react-icons/hi2";
 import { HiUserGroup } from "react-icons/hi";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import { IoMdExit } from "react-icons/io";
+import { BiTask } from "react-icons/bi";
 
 const data = [
   {
@@ -27,13 +28,13 @@ const data = [
     icons: <HiUserGroup />,
   },
   {
-    title: "View Attendance",
+    title: "Assign Task",
     // num: "24",
-    intro: "View Attendance",
+    intro: "Assign Task",
     colors: "#FDEBF9",
     colors1: "#16C6BC",
-    path: "/attendance",
-    icons: <AiOutlineUsergroupAdd />,
+    path: "/task",
+    icons: <BiTask />,
   },
   {
     title: "Leave Request",

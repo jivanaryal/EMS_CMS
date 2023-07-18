@@ -3,7 +3,8 @@ import { Formik, Form, Field } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import * as yup from "yup";
 import { update } from "../../../services/api";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { IoArrowBack } from "react-icons/io5";
 // import axios from "axios";
 
 const schema = yup.object().shape({
@@ -24,6 +25,8 @@ const FormField = [
 const EditDept = () => {
   const location = useLocation();
   const { id } = useParams();
+  const navigate = useNavigate();
+  console.log(navigate);
   console.log(id);
   // const navigate = useNavigate();
 
@@ -35,8 +38,15 @@ const EditDept = () => {
       }
     });
   };
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
   return (
     <div className="w-full">
+      <div className="text-3xl">
+        <IoArrowBack onClick={() => handleGoBack()} />
+      </div>
       <h1 className="text-center text-3xl font-bold">Edit Department</h1>
       <Formik
         initialValues={{
