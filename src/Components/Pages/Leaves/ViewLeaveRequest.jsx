@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { MdOutlineCheck } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import { get, update } from "../../../services/api";
+import { Link } from "react-router-dom";
 
 const LeaveApprovalList = () => {
   const [leaveRequests, setLeaveRequests] = useState([]);
@@ -85,7 +86,12 @@ const LeaveApprovalList = () => {
 
   return (
     <div className="my-10">
-      <h1 className="font-bold text-2xl mb-6">Leave Approval List</h1>
+      <Link to="/leave/history">
+        <div className="border-2 absolute right-0 top-[-1px] capitalize py-1 shadow-gray-700 shadow-md px-4 text-xl cursor-pointer rounded-md w-fit   mt-4 hover:bg-mainColor">
+          Leave History
+        </div>
+      </Link>
+      <h1 className="font-bold text-2xl mb-6">Pending Leave</h1>
       <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
         <thead className="bg-gray-200 text-gray-700 text-center text-lg">
           <tr>

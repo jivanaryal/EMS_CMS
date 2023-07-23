@@ -56,13 +56,13 @@ const Sidebar = () => {
         <img src={logo} alt="logo" className="h-24 w-28" />
       </div>
       <div className="text-[#e2cefd] pb-4">MAIN MENU</div>
-      <div className="flex flex-col h-full gap-6 ">
+      <div className="flex flex-col h-full gap-5 ">
         {Navdata.map((val, i) => {
           return (
             <Link to={val.path}>
               {" "}
               <div
-                className={`flex pl-4 py-2  shadow-base rounded-lg   items-center mr-4 text-base text-[#ece1fc] border-2 text-center  gap-2 capitalize ${
+                className={`flex pl-4 py-2  shadow-base rounded-md   items-center mr-4 text-base text-[#ece1fc] border-[1px] text-center  gap-2 capitalize ${
                   location.pathname === val.path &&
                   "text-gray-700 bg-[#F1F9FB] shadow-md shadow-gray-700 font-bold text-lg "
                 }`}
