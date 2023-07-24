@@ -8,7 +8,7 @@ import { IoArrowBack } from "react-icons/io5";
 
 const schema = yup.object().shape({
   dept_name: yup.string().required("Select one department"),
-  job: yup
+  position: yup
     .string()
     .required("Required*")
     .max(30, "Character length should not exceed 15")
@@ -57,7 +57,7 @@ const FormFields = [
     type: "text",
   },
   {
-    name: "job",
+    name: "position",
     type: "text",
   },
 
@@ -112,7 +112,7 @@ const AddSubSection = () => {
       console.log(dept_id);
       formData.append("dept_id", dept_id);
       formData.append("dept_name", val.dept_name);
-      formData.append("job", val.job);
+      formData.append("position", val.position);
       formData.append("salary", val.salary);
       formData.append("first_name", val.first_name);
       formData.append("middle_name", val.middle_name);
@@ -142,7 +142,7 @@ const AddSubSection = () => {
         <Formik
           initialValues={{
             dept_name: location.state.dept_name,
-            job: location.state.job,
+            position: location.state.position,
             salary: location.state.salary,
             first_name: location.state.first_name,
             middle_name: location.state.middle_name,

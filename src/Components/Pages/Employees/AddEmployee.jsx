@@ -6,7 +6,7 @@ import * as yup from "yup";
 
 const schema = yup.object().shape({
   dept_name: yup.string().required("Select one department"),
-  job: yup
+  position: yup
     .string()
     .required("Required*")
     .max(30, "Character length should not exceed 15")
@@ -56,7 +56,7 @@ const FormFields = [
     type: "text",
   },
   {
-    name: "job",
+    name: "position",
     type: "text",
   },
 
@@ -109,7 +109,7 @@ const AddSubSection = () => {
       // const data = {
       //   dept_id: dept_id,
       //   dept_name: val.dept_name,
-      //   job: val.job,
+      //   position: val.position,
       //   salary: val.salary,
       //   first_name: val.first_name,
       //   middle_name: val.middle_name,
@@ -120,7 +120,7 @@ const AddSubSection = () => {
       const formData = new FormData();
       formData.append("dept_id", val.dept_id);
       formData.append("dept_name", val.dept_name);
-      formData.append("job", val.job);
+      formData.append("position", val.position);
       formData.append("salary", val.salary);
       formData.append("first_name", val.first_name);
       formData.append("middle_name", val.middle_name);
@@ -145,7 +145,7 @@ const AddSubSection = () => {
         <Formik
           initialValues={{
             dept_name: "",
-            job: "",
+            position: "",
             salary: "",
             first_name: "",
             middle_name: "",

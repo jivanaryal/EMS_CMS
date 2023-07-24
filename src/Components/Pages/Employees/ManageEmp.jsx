@@ -175,7 +175,7 @@ const ManageEmp = () => {
                 </div>
               </td>
               <td className="py-3 px-4 border-l border-r capitalize">
-                {val.job}
+                {val.position}
               </td>
               <td className="py-3 px-4 border-l border-r capitalize">
                 {val.gender}
