@@ -3,13 +3,15 @@ import { Formik, Form, Field } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import * as yup from "yup";
 import { update } from "../../../services/api";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { IoArrowBack } from "react-icons/io5";
 // import axios from "axios";
 
 const schema = yup.object().shape({
   dept_name: yup.string().required("The name is required"),
   dept_location: yup.string().required("The name is required"),
 });
+
 const FormField = [
   {
     name: "dept_name",
@@ -24,19 +26,44 @@ const FormField = [
 const EditDept = () => {
   const location = useLocation();
   const { id } = useParams();
+  const navigate = useNavigate();
+  console.log(navigate);
   console.log(id);
   // const navigate = useNavigate();
 
   const postFormData = async (value) => {
-    update(`/department/${id}`, value).then((res) => {
-      if (res.status === 200) {
-        toast.success(`the dept_id ${id} is updated`);
-        console.log("hello");
-      }
-    });
+    update(`/department/${id}`, value)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success(`The dept_id ${id} is updated`);
+          console.log("hello");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        if (err.response) {
+          const { data } = err.response;
+          if (data && data.error && data.msg) {
+            toast.error(data.msg);
+          } else {
+            toast.error("An error occurred while updating the department.");
+          }
+        } else if (err.request) {
+          toast.error("No response received from the server.");
+        } else {
+          toast.error("An error occurred while updating the department.");
+        }
+      });
+  };
+
+  const handleGoBack = () => {
+    navigate(-1);
   };
   return (
     <div className="w-full">
+      <div className="text-3xl">
+        <IoArrowBack onClick={() => handleGoBack()} />
+      </div>
       <h1 className="text-center text-3xl font-bold">Edit Department</h1>
       <Formik
         initialValues={{

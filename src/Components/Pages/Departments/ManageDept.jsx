@@ -89,10 +89,10 @@ const ManageDept = () => {
           {info.map((val, i) => (
             <tr key={i} className="border-b border-gray-200 hover:bg-gray-100">
               <td className="py-3 text-center border-l ">{i + 1}</td>
-              <td className="py-3  text-center border-l border-r">
+              <td className="py-3  text-center border-l border-r capitalize">
                 {val.dept_name}
               </td>
-              <td className="py-3 text-center border-l border-r">
+              <td className="py-3 text-center border-l border-r capitalize">
                 {val.dept_location}
               </td>
               <td className="py-3  border-l   border-r ">

@@ -39,7 +39,9 @@ const ManageTask = () => {
         });
       } catch (err) {
         if (err.response && err.response.status === 409) {
-          toast.error("Can't delete employee having foreign key reference");
+          toast.error(
+            "Cannot delete the record as it is referenced by other records."
+          );
         } else {
           toast.error("Failed to remove the employee");
         }
@@ -145,7 +147,7 @@ const ManageTask = () => {
                   state={val}
                   className="hover:scale-110 mx-auto transition-all delay-100 duration-300 hover:text-blue-500"
                   to={{
-                    pathname: `/task/${val.emp_id}`,
+                    pathname: `/task/${val.task_id}`,
                   }}
                 >
                   <MdOutlineUpdate className="text-3xl mx-auto" />

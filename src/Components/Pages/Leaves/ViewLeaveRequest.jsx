@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { MdOutlineCheck } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import { get, update } from "../../../services/api";
+import { Link } from "react-router-dom";
 
 const LeaveApprovalList = () => {
   const [leaveRequests, setLeaveRequests] = useState([]);
@@ -83,66 +84,61 @@ const LeaveApprovalList = () => {
 
   return (
     <div className="my-10">
-      <h1 className="font-bold text-2xl mb-6">Leave Approval List</h1>
+      <Link to="/leave/history">
+        <div className="border-2 absolute right-4 top-[-1px] capitalize py-2  shadow-md px-4 text-xl font-bold  shadow-mainColor cursor-pointer rounded-md w-fit   mt-4 hover:bg-mainColor">
+          Leave History
+        </div>
+      </Link>
+      <h1 className="font-bold text-2xl mb-6">Pending Leave</h1>
       <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
-        <thead className="bg-gray-200 text-gray-700 text-center">
+        <thead className="bg-gray-200 text-gray-700 text-center text-lg">
           <tr>
-            <th className="py-3 px-4 border-r-2 border-gray-300">ID</th>
-            <th className="py-3 px-4 border-r-2 border-gray-300">
-              Employee Name
-            </th>
-            <th className="py-3 px-4 border-r-2 border-gray-300">Image</th>
-            <th className="py-3 px-4 border-r-2 border-gray-300">Start Date</th>
-            <th className="py-3 px-4 border-r-2 border-gray-300">End Date</th>
-            <th className="py-3 px-4 border-r-2 border-gray-300">Message</th>
-            <th className="py-3 px-4 border-r-2 border-gray-300">Status</th>
-            <th className="py-3 px-4 border-r-2 border-gray-300">Action</th>
+            <th className="py-3 px-4">ID</th>
+            <th className="py-3 px-4">Employee Name</th>
+            <th className="py-3 px-4">Image</th>
+            <th className="py-3 px-4">Start Date</th>
+            <th className="py-3 px-4">End Date</th>
+            <th className="py-3 px-4">Message</th>
+            <th className="py-3 px-4">Status</th>
+            <th className="py-3 px-4">Action</th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-center">
           {fileterEmployee.map((request) => (
             <tr key={request.emp_id} className="border-b">
-              <td className="py-4 px-4 border-r-2 border-gray-300">
-                {request.emp_id}
-              </td>
-              <td className="py-4 px-4 border-r-2 border-gray-300">
+              <td className="py-4 px-4">{request.emp_id}</td>
+              <td className="py-4 px-4">
                 {request.first_name}
                 {request.middle_name}
                 {request.last_name}
               </td>
-              <td className="py-4 px-4 border-r-2 border-gray-300">
+              <td className="py-4 px-4">
                 <img
                   src={`http://192.168.18.7:5000/${request.image}`}
                   alt=""
-                  className="w-24 rounded-full h-24"
+                  className="w-24 h-24 mx-auto rounded-md"
                 />
               </td>
-              <td className="py-4 px-4 border-r-2 border-gray-300">
-                {request.start_date}
-              </td>
-              <td className="py-4 px-4 border-r-2 border-gray-300">
-                {request.end_date}
-              </td>
-              <td className="w-56 h-40 border-r-2 border-gray-300">
-                <div className="line-clamp-6 text-justify px-2 ">
+              <td className="py-4 px-4">{request.start_date}</td>
+              <td className="py-4 px-4">{request.end_date}</td>
+              <td className="px-4 h-40">
+                <div className="line-clamp-6 text-justify">
                   {request.message}
                 </div>
               </td>
 
-              <td className="py-4 px-4 border-r-2 border-gray-300">
-                {request.status}
-              </td>
+              <td className="py-4 px-4">{request.status}</td>
               <td className="py-4 px-4 ">
                 {request.status === "pending" ? (
                   <div className="flex">
                     <button
-                      onClick={() => handleApprove(request.emp_id)}
+                      onClick={() => handleApprove(request.leave_id)}
                       className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mr-2  md:px-1 md:py-1 md:text-sm"
                     >
                       Approve
                     </button>
                     <button
-                      onClick={() => handleReject(request.emp_id)}
+                      onClick={() => handleReject(request.leave_id)}
                       className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded  md:px-1 md:py-1 md:text-sm "
                     >
                       Reject
@@ -150,16 +146,10 @@ const LeaveApprovalList = () => {
                   </div>
                 ) : (
                   <div className="flex">
-                    <button
-                      disabled
-                      className="bg-green-300 text-gray-600 py-2 px-4 rounded mr-2 cursor-not-allowed md:px-1 md:py-1 md:text-sm"
-                    >
+                    <button className="btn btn-disabled mr-3" disabled>
                       Approve
                     </button>
-                    <button
-                      disabled
-                      className="bg-red-300 text-gray-600 py-2 px-4 rounded cursor-not-allowed md:px-1 md:py-1 md:text-md md:text-sm"
-                    >
+                    <button className="btn btn-disabled" disabled>
                       Reject
                     </button>
                   </div>

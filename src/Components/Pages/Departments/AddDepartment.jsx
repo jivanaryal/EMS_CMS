@@ -10,7 +10,7 @@ const schema = yup.object().shape({
   dept_name: yup
     .string()
     .required("The Name is required")
-    .max(15, "Character length should not exceed 15")
+    .max(20, "Character length should not exceed 15")
     .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
   dept_location: yup
     .string()
@@ -21,10 +21,12 @@ const schema = yup.object().shape({
 const FormField = [
   {
     name: "dept_name",
+    name1: "department name",
     type: "text",
   },
   {
     name: "dept_location",
+    name1: " location",
     type: "text",
   },
 ];
@@ -34,11 +36,22 @@ const AddDepartment = () => {
     post("/department", value)
       .then((res) => {
         if (res.status === 200) {
-          toast.success("the department is added");
+          toast.success("The department is added");
         }
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response) {
+          const { data } = err.response;
+          if (data && data.error && data.msg) {
+            toast.error(data.msg);
+          } else {
+            toast.error("An error occurred while processing the request.");
+          }
+        } else if (err.request) {
+          toast.error("No response received from the server.");
+        } else {
+          toast.error("An error occurred while processing the request.");
+        }
       });
   };
   return (
@@ -55,17 +68,20 @@ const AddDepartment = () => {
         }}
       >
         {({ handleSubmit }) => (
-          <Form onSubmit={handleSubmit} className="mt-8">
+          <Form onSubmit={handleSubmit} className="mt-16">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {FormField.map((field, index) => (
                 <div key={index}>
-                  <label htmlFor={field.name} className="text-sm font-semibold">
-                    {field.name}
+                  <label
+                    htmlFor={field.name}
+                    className="text-lg pl-2 font-semibold"
+                  >
+                    {field.name1}
                   </label>
                   <Field
                     type={field.type}
                     name={field.name}
-                    className="border border-gray-400 rounded-md py-2 px-3 w-full"
+                    className="border border-gray-400 rounded-md py-2 my-2 px-3 w-full"
                     placeholder={`Enter ${field.name}`}
                   />
                   <ErrorMessage

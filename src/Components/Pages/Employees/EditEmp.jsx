@@ -3,11 +3,12 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import { get, update } from "../../../services/api";
 import * as yup from "yup";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { IoArrowBack } from "react-icons/io5";
 
 const schema = yup.object().shape({
   dept_name: yup.string().required("Select one department"),
-  job: yup
+  position: yup
     .string()
     .required("Required*")
     .max(30, "Character length should not exceed 15")
@@ -56,7 +57,7 @@ const FormFields = [
     type: "text",
   },
   {
-    name: "job",
+    name: "position",
     type: "text",
   },
 
@@ -79,6 +80,7 @@ const AddSubSection = () => {
   const [employee, setEmployee] = useState([]);
   const [first, setFirst] = useState("");
   const [newImg, setNewImg] = useState("");
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -110,7 +112,7 @@ const AddSubSection = () => {
       console.log(dept_id);
       formData.append("dept_id", dept_id);
       formData.append("dept_name", val.dept_name);
-      formData.append("job", val.job);
+      formData.append("position", val.position);
       formData.append("salary", val.salary);
       formData.append("first_name", val.first_name);
       formData.append("middle_name", val.middle_name);
@@ -126,15 +128,21 @@ const AddSubSection = () => {
       });
     }
   };
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   FormFields[0].options = [...employee];
   return (
     <div>
+      <div className="text-3xl">
+        <IoArrowBack onClick={() => handleGoBack()} />
+      </div>
       <div className="mt-20 px-20">
         <Formik
           initialValues={{
             dept_name: location.state.dept_name,
-            job: location.state.job,
+            position: location.state.position,
             salary: location.state.salary,
             first_name: location.state.first_name,
             middle_name: location.state.middle_name,
@@ -254,7 +262,7 @@ const AddSubSection = () => {
 
                 <button
                   type="submit"
-                  className="bg-mainColor mb-5 relative  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+                  className="bg-mainColor mb-5 relative bottom-16  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
                 >
                   Submit
                 </button>

@@ -11,7 +11,7 @@ const Department = () => {
     },
     {
       id: "view",
-      name: "Manage Task",
+      name: " Task History",
     },
   ];
 
