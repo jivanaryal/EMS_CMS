@@ -17,6 +17,7 @@ import EditDept from "./Components/Pages/Departments/EditDept";
 import EditEmp from "./Components/Pages/Employees/EditEmp";
 import Example1 from "./dummy/Example1";
 import EditTask from "./Components/Pages/Task/EditTask";
+import TaskDetails from "./Components/Pages/TaskStatus/TaskDetails";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="task" element={<Task />} />
             <Route path="task/:id" element={<EditTask />} />
             <Route path="taskstatus" element={<TaskStatus />} />
+            <Route path="task/detail/:id" element={<TaskDetails />} />
             <Route path="eg1" element={<Example1 />} />
           </Route>
         </Routes>

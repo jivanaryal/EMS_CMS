@@ -11,6 +11,7 @@ const schema = yup.object().shape({
   dept_name: yup.string().required("The name is required"),
   dept_location: yup.string().required("The name is required"),
 });
+
 const FormField = [
   {
     name: "dept_name",
@@ -31,12 +32,28 @@ const EditDept = () => {
   // const navigate = useNavigate();
 
   const postFormData = async (value) => {
-    update(`/department/${id}`, value).then((res) => {
-      if (res.status === 200) {
-        toast.success(`the dept_id ${id} is updated`);
-        console.log("hello");
-      }
-    });
+    update(`/department/${id}`, value)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success(`The dept_id ${id} is updated`);
+          console.log("hello");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        if (err.response) {
+          const { data } = err.response;
+          if (data && data.error && data.msg) {
+            toast.error(data.msg);
+          } else {
+            toast.error("An error occurred while updating the department.");
+          }
+        } else if (err.request) {
+          toast.error("No response received from the server.");
+        } else {
+          toast.error("An error occurred while updating the department.");
+        }
+      });
   };
 
   const handleGoBack = () => {

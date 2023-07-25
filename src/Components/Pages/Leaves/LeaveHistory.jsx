@@ -29,11 +29,11 @@ const LeaveApprovalList = () => {
     fetchLeaveRequests();
   }, []);
 
-  const fileterEmployee = leaveRequests.filter(
-    (val) => val.status === "rejected" || "approved"
+  const filteredEmployee = leaveRequests.filter(
+    (val) => val.status === "rejected" || val.status === "approved"
   );
 
-  console.log(fileterEmployee);
+  console.log(filteredEmployee);
 
   const handleGoBack = () => {
     navigate(-1);
@@ -64,13 +64,13 @@ const LeaveApprovalList = () => {
             <th className="py-3 px-2 border-r border-b border-gray-200">
               Message
             </th>
-            <th className="py-3 px-2 border-r border-b border-gray-200">
+            <th className="py-3 px-4 border-r border-b border-gray-200">
               Status
             </th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-center">
-          {fileterEmployee.map((request) => (
+          {filteredEmployee.map((request) => (
             <tr key={request.emp_id} className="border-b font-bold">
               <td className="py-4 px-2 border-l border-r">{request.emp_id}</td>
               <td className="py-4 px-2 border-l border-r">
@@ -97,7 +97,13 @@ const LeaveApprovalList = () => {
                 </div>
               </td>
 
-              <td className="py-2 px-2 border-l border-r">{request.status}</td>
+              <td
+                className={`py-3 px-2 border-l border-r text-lg  text-center font-black capitalize ${
+                  request.status === "rejected" && "text-red-700"
+                } ${request.status === "approved" && "text-green-700"}`}
+              >
+                {request.status}
+              </td>
             </tr>
           ))}
         </tbody>
