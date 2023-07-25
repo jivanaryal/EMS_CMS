@@ -66,7 +66,7 @@ const CreateEmp = () => {
   FormFields[0].options = [...employee];
 
   return (
-    <div className="w-full px-6 sm:px-10">
+    <div className="w-full  px-6 sm:px-10">
       <Formik
         initialValues={{
           emp_name: "",
@@ -82,7 +82,7 @@ const CreateEmp = () => {
       >
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit} className="">
-            <div className="shadow-md shadow-gray-400 p-2 w-[60%] grid place-items-center m-auto">
+            <div className="shadow-md shadow-gray-400 bg-red-400 p-2 w-[60%] grid place-items-center m-auto">
               <div className="grid grid-cols-1 gap-6 w-[60%]">
                 <p className="font-bold text-xl">Create Employee ID</p>
                 {FormFields.map((val, i) => {
