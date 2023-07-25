@@ -2,20 +2,25 @@ import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { get, post } from "../../../services/api";
-
+import { TbSelect } from "react-icons/tb";
+import { AiOutlineMail } from "react-icons/ai";
+import { RiLockPasswordFill } from "react-icons/ri";
 const FormFields = [
   {
     name: "emp_name",
     type: "select",
     options: [],
+    icons: <TbSelect />,
   },
   {
     name: "email",
     type: "email",
+    icons: <AiOutlineMail />,
   },
   {
     name: "password",
     type: "password",
+    icons: <RiLockPasswordFill />,
   },
 ];
 
@@ -76,78 +81,88 @@ const CreateEmp = () => {
         }}
       >
         {({ handleSubmit }) => (
-          <Form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-6">
-              {FormFields.map((val, i) => {
-                if (val.type === "select") {
-                  return (
-                    <div key={i}>
-                      <label
-                        htmlFor={val.name}
-                        className="block font-bold mb-2"
-                      >
-                        {val.name}
-                      </label>
-                      <Field
-                        as={val.type}
-                        placeholder={`enter ${val.name}`}
-                        name={val.name}
-                        className="border border-gray-400 p-2 rounded w-full"
-                      >
-                        <option value="" selected disabled>
-                          {initData[0].Section}
-                        </option>
-                        {val.options?.map((option, j) => {
-                          return (
-                            <option key={j} value={option.emp_id}>
-                              {option.first_name +
-                                " " +
-                                option.middle_name +
-                                " " +
-                                option.last_name}
+          <Form onSubmit={handleSubmit} className="">
+            <div className="shadow-md shadow-gray-400 p-2 w-[60%] grid place-items-center m-auto">
+              <div className="grid grid-cols-1 gap-6 w-[60%]">
+                <p className="font-bold text-xl">Create Employee ID</p>
+                {FormFields.map((val, i) => {
+                  if (val.type === "select") {
+                    return (
+                      <div key={i} className="">
+                        <label
+                          htmlFor={val.name}
+                          className="block font-bold mb-2"
+                        >
+                          {val.name}
+                        </label>
+                        <div className="name flex items-center bg-gray-300 border-2 border-gray-300">
+                          <p className="icons p-2 text-lg">{val.icons}</p>
+                          <Field
+                            as={val.type}
+                            placeholder={`enter ${val.name}`}
+                            name={val.name}
+                            className="outline-none py-2 w-full"
+                          >
+                            <option value="" selected disabled>
+                              {initData[0].Section}
                             </option>
-                          );
-                        })}
-                      </Field>
-                      <ErrorMessage
-                        name={val.name}
-                        component={"div"}
-                        className="text-red-600"
-                      />
-                    </div>
-                  );
-                } else {
-                  return (
-                    <div key={i}>
-                      <label
-                        htmlFor={val.name}
-                        className="block font-bold mb-2"
-                      >
-                        {val.name}
-                      </label>
-                      <Field
-                        type={val.type}
-                        placeholder={`enter ${val.name}`}
-                        name={val.name}
-                        className="border border-gray-400 p-2 rounded w-full"
-                      />
-                      <ErrorMessage
-                        name={val.name}
-                        component={"div"}
-                        className="text-red-600"
-                      />
-                    </div>
-                  );
-                }
-              })}
+                            {val.options?.map((option, j) => {
+                              return (
+                                <option key={j} value={option.emp_id}>
+                                  {option.first_name +
+                                    " " +
+                                    option.middle_name +
+                                    " " +
+                                    option.last_name}
+                                </option>
+                              );
+                            })}
+                          </Field>
+                        </div>
+                        <ErrorMessage
+                          name={val.name}
+                          component={"div"}
+                          className="text-red-600"
+                        />
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div key={i}>
+                        <label
+                          htmlFor={val.name}
+                          className="block font-bold mb-2"
+                        >
+                          {val.name}
+                        </label>
+                        <div className="name flex items-center bg-gray-300 border-2 border-gray-300">
+                          <p className="icons p-2 text-lg">{val.icons}</p>
+                          <Field
+                            type={val.type}
+                            placeholder={`enter ${val.name}`}
+                            name={val.name}
+                            className=" outline-none py-2 px-1 w-full"
+                          />
+                        </div>
+                        <ErrorMessage
+                          name={val.name}
+                          component={"div"}
+                          className="text-red-600"
+                        />
+                      </div>
+                    );
+                  }
+                })}
+              </div>
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded "
+                >
+                  Submit
+                </button>
+              </div>
             </div>
-
-            <button
-              type="submit"
-              className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
-            >
-              Submit
-            </button>
           </Form>
         )}
       </Formik>
