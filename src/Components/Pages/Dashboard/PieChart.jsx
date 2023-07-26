@@ -36,6 +36,7 @@ const PieChart = ({ employee }) => {
           plugins: {
             legend: {
               labels: {
+                color: "white", // Set the label color to white
                 font: {
                   size: 10,
                 },

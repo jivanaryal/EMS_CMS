@@ -64,30 +64,30 @@ const ManageDept = () => {
         />
       )}
       <h1 className="font-bold text-xl">Manage Department</h1>
-      <table className="w-full rounded-lg shadow-sm ">
+      <table className="w-full rounded-lg shadow-sm border-[1px] border-gray-400 ">
         <thead className="bg-gray-100 text-[#000000] uppercase text-lg leading-normal">
           <tr>
-            <th className="py-3 text-center px-2 border-r border-b border-gray-200">
+            <th className="py-3 text-center px-2 border-r border-b border-gray-300">
               S.No
             </th>
-            <th className="py-3 px-1 border-r border-b border-gray-200">
+            <th className="py-3 px-1 border-r border-b border-gray-300">
               Department Name
             </th>
-            <th className="py-3 px-2 border-r border-b border-gray-200">
+            <th className="py-3 px-2 border-r border-b border-gray-300">
               Location
             </th>
 
-            <th className="py-3 px-2 border-r border-b border-gray-200">
+            <th className="py-3 px-2 border-r border-b border-gray-300">
               Delete
             </th>
-            <th className="py-3 px-4 border-r border-b border-gray-200">
+            <th className="py-3 px-4 border-r border-b border-gray-300">
               Edit
             </th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-md font-bold">
           {info.map((val, i) => (
-            <tr key={i} className="border-b border-gray-200 hover:bg-gray-100">
+            <tr key={i} className="border-b border-gray-300 hover:bg-gray-100">
               <td className="py-3 text-center border-l ">{i + 1}</td>
               <td className="py-3  text-center border-l border-r capitalize">
                 {val.dept_name}
