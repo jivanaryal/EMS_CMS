@@ -100,7 +100,6 @@ const Dashboard = () => {
   const topEmployees = sortedEmployees.slice(0, 5);
 
   return (
-<<<<<<< HEAD
     <div className="pb-4 w-11/12 mx-auto">
       <div className="grid grid-cols-12 gap-4 ">
         <div className=" col-span-8">
@@ -111,22 +110,6 @@ const Dashboard = () => {
                   <div
                     style={{ backgroundColor: val.colors }}
                     className="rounded-lg h-32   w-full flex flex-col  gap-2 items-center text-sm shadow-md shadow-gray-300 py-4 mx-2 sm:mx-4 md:mx-2 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-6"
-=======
-    <div className="grid grid-cols-12 gap-4 ">
-      <div className="ml-5 col-span-8">
-        <div className="flex mt-10 gap-14">
-          {/* profile */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {data.map((val, i) => (
-              <Link to={val.path} key={i}>
-                <div
-                  style={{ backgroundColor: val.colors }}
-                  className="rounded-lg flex flex-col items-center justify-center text-center shadow-md transition-transform transform hover:scale-105 hover:delay-200 hover:duration-1000"
-                >
-                  <div
-                    className="text-3xl font-bold text-white p-4 rounded-full"
-                    style={{ backgroundColor: val.colors1 }}
->>>>>>> 5afbfbe3cbd1306561233ce284fa11d74067dd1e
                   >
                     <div
                       className="text-2xl font-bold text-white p-1 rounded-md flex"
@@ -137,25 +120,12 @@ const Dashboard = () => {
                     <div className="text-lg font-bold">{val.title}</div>
                     <div className="">{val.num}</div>
                   </div>
-<<<<<<< HEAD
                 </Link>
               ))}
             </div>
             <div className="w-80 flex-auto">
               <PieChart employee={employee} />
             </div>
-=======
-                  <div className="mt-4 text-xl font-semibold">{val.title}</div>
-                  <div className="text-lg">{val.num}</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* pie chart */}
-          <div className="w-80 flex-auto">
-            <PieChart employee={employee} />
->>>>>>> 5afbfbe3cbd1306561233ce284fa11d74067dd1e
           </div>
         </div>
         {/*             Pending Leave Requests */}
@@ -177,9 +147,9 @@ const Dashboard = () => {
                       {pendingLeave.first_name} {pendingLeave.middle_name}{" "}
                       {pendingLeave.last_name}
                     </div>
-                    <div>{pendingLeave.position}</div>
+                    <div>{pendingLeave.job}</div>
                     <Link to={"/leave"}>
-                      <div className="border-2 mr-4 rounded-md hover:bg-blue-500 border-gray-700 py-1 bg-mainColor text-secondColor text-center">
+                      <div className="border-2 mr- rounded-md hover:bg-blue-500 border-gray-700 py-1 bg-mainColor text-secondColor text-center">
                         View
                       </div>
                     </Link>

@@ -114,7 +114,7 @@ const LeaveApprovalList = () => {
               </td>
               <td className="py-4 px-4">
                 <img
-                  src={`http://192.168.18.7:5000/${request.image}`}
+                  src={`http://localhost:5000/${request.image}`}
                   alt=""
                   className="w-24 h-24 mx-auto rounded-md"
                 />
