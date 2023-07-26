@@ -151,9 +151,9 @@ const Dashboard = () => {
                         {pendingLeave.first_name} {pendingLeave.middle_name}{" "}
                         {pendingLeave.last_name}
                       </div>
-                      <div>{pendingLeave.job}</div>
+                      <div>{pendingLeave.position}</div>
                       <Link to={"/leave"}>
-                        <div className="border-2 mr- rounded-md hover:bg-blue-500 border-gray-700 py-1 bg-mainColor text-secondColor text-center">
+                        <div className="border-2 mr-4 rounded-md hover:bg-blue-500 border-gray-700 py-1 bg-mainColor text-secondColor text-center">
                           View
                         </div>
                       </Link>

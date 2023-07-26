@@ -42,7 +42,7 @@ const MyBarChart = ({ task }) => {
         },
         ticks: {
           font: {
-            size: 14,
+            size: 16,
             weight: "bold", // Make X-axis labels bold
             color: "white", // Set X-axis label color to white
           },
@@ -62,7 +62,7 @@ const MyBarChart = ({ task }) => {
     plugins: {
       legend: {
         labels: {
-          color: "white", // Set legend label color to white
+          color: "black", // Set legend label color to white
         },
       },
       tooltip: {
@@ -71,7 +71,7 @@ const MyBarChart = ({ task }) => {
         titleColor: "black",
         bodyColor: "black",
         bodyFont: {
-          size: 14,
+          size: 16,
         },
         displayColors: false,
         cornerRadius: 0,
