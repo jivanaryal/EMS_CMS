@@ -33,7 +33,7 @@ const MyBarChart = ({ task }) => {
     ],
   };
 
-  // Define options (unchanged)
+  // Update options to set label color to white
   const options = {
     scales: {
       x: {
@@ -44,6 +44,7 @@ const MyBarChart = ({ task }) => {
           font: {
             size: 14,
             weight: "bold", // Make X-axis labels bold
+            color: "white", // Set X-axis label color to white
           },
         },
       },
@@ -53,8 +54,27 @@ const MyBarChart = ({ task }) => {
           font: {
             size: 16, // Increase Y-axis label font size
             weight: "bold", // Make Y-axis labels bold
+            color: "white", // Set Y-axis label color to white
           },
         },
+      },
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: "white", // Set legend label color to white
+        },
+      },
+      tooltip: {
+        // Custom CSS styles for the tooltip
+        backgroundColor: "white",
+        titleColor: "black",
+        bodyColor: "black",
+        bodyFont: {
+          size: 14,
+        },
+        displayColors: false,
+        cornerRadius: 0,
       },
     },
   };

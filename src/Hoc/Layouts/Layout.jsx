@@ -11,11 +11,23 @@ const Layout = () => {
           <Sidebar />
         </div>
       </div>
-      <div className="flex-auto z-10  bg-[#F6FAFB] ">
+      <div
+        className="flex-auto z-10  bg-[#F6FAFB] "
+        style={{
+          background:
+            "linear-gradient(to right, #c1d6eb, #e1e7ec, #d6dce6, #c2c9de)",
+        }}
+      >
         <div className="z-50">
           <Navbar />
         </div>
-        <div className="relative pl-2 mt-20 -z-10 ">
+        <div
+          className="relative  mt-[4.1rem] -z-10  "
+          style={{
+            background:
+              "linear-gradient(to right, #c1d6eb, #e1e7ec, #d6dce6, #c2c9de)",
+          }}
+        >
           <Outlet />
         </div>
       </div>

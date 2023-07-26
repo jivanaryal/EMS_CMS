@@ -17,11 +17,15 @@
 
     body {
       overflow-y: scroll;
+      
+           
+      
     
     }
   
     body::-webkit-scrollbar {
       width: 20px;
+      background-color: "linear-gradient(to right, #00011f, #004e92)",
     }
 
         /* main.css (or any appropriate CSS file) */

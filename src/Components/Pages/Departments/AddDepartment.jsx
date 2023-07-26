@@ -55,7 +55,7 @@ const AddDepartment = () => {
       });
   };
   return (
-    <div className="w-full px-6 sm:px-10">
+    <div className="w-full px-6 sm:px-10 ">
       <Formik
         initialValues={{
           dept_name: "",
@@ -74,7 +74,7 @@ const AddDepartment = () => {
                 <div key={index}>
                   <label
                     htmlFor={field.name}
-                    className="text-lg pl-2 font-semibold"
+                    className="text-lg pl-2 font-semibold text-black capitalize"
                   >
                     {field.name1}
                   </label>
