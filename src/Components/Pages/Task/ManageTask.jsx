@@ -80,30 +80,32 @@ const ManageTask = () => {
       <table className="w-full rounded-lg shadow-sm">
         <thead className="bg-gray-100 text-[#000000] uppercase text-sm leading-normal">
           <tr>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               S.No
             </th>
-            <th className="py-3 px-1 border-r border-b border-gray-200">
+            <th className="py-3 px-1 border-r border-b border-gray-400">
               Employee Name
             </th>
-            <th>Images</th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="border-gray-400 py-3 px-6 border-r border-b">
+              Images
+            </th>
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               Task Title
             </th>
 
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               Status
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               Task description
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               Task Priority
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               Delete
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               Edit
             </th>
           </tr>
@@ -112,11 +114,13 @@ const ManageTask = () => {
           {info.map((val, i) => (
             <tr
               key={i}
-              className="py-3 text-center px-2 border-r border-b border-gray-200"
+              className="py-3 text-center px-2 border-r border-b border-gray-400"
             >
               <td className="py-3 px-4 border-l text-center">{i + 1}</td>
-              <td className="py-3 px-4 border-l border-r">{val.emp_name}</td>
-              <td className="py-3 px-4  border-l border-r">
+              <td className="py-3 px-4 border-l border-r border-gray-400">
+                {val.emp_name}
+              </td>
+              <td className="py-3 px-4  border-l border-r border-gray-400">
                 <div className="h-28 w-28  rounded-full">
                   <img
                     src={`http://localhost:5000/${val.image}`}
@@ -125,15 +129,19 @@ const ManageTask = () => {
                   />
                 </div>
               </td>
-              <td className="py-3 px-4 border-l border-r">{val.task_title}</td>
-              <td className="py-3 px-4 border-l border-r">{val.status}</td>
-              <td className="py-3 px-4 border-l border-r">
+              <td className="py-3 px-4 border-l border-r border-gray-400">
+                {val.task_title}
+              </td>
+              <td className="py-3 px-4 border-l border-r border-gray-400">
+                {val.status}
+              </td>
+              <td className="py-3 px-4 border-l border-r border-gray-400">
                 {val.task_description}
               </td>
-              <td className="py-3 px-4 border-l border-r">
+              <td className="py-3 px-4 border-l border-r border-gray-400">
                 {val.task_priority}
               </td>
-              <td className="py-3 px-4 border-l border-r text-center">
+              <td className="py-3 px-4 border-l border-r text-center border-gray-400">
                 <MdDelete
                   onClick={() => {
                     setWorkingId(val.task_id);
@@ -142,7 +150,7 @@ const ManageTask = () => {
                   className="text-3xl mx-auto hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
                 />
               </td>
-              <td className="py-3 px-4 border-l border-r text-center">
+              <td className="py-3 px-4 border-l border-r text-center border-gray-400">
                 <Link
                   state={val}
                   className="hover:scale-110 mx-auto transition-all delay-100 duration-300 hover:text-blue-500"

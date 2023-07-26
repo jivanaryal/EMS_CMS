@@ -16,7 +16,7 @@ const Employee = () => {
   ];
 
   return (
-    <div className="">
+    <div className="px-6">
       <div className="flex pl-10 gap-4 justify-center">
         {data.map((val, i) => {
           return (
