@@ -64,61 +64,68 @@ const ManageDept = () => {
         />
       )}
       <h1 className="font-bold text-xl">Manage Department</h1>
-      <table className="w-full rounded-lg shadow-sm border-[1px] border-gray-400 ">
-        <thead className="bg-gray-100 text-[#000000] uppercase text-lg leading-normal">
-          <tr>
-            <th className="py-3 text-center px-2 border-r border-b border-gray-300">
-              S.No
-            </th>
-            <th className="py-3 px-1 border-r border-b border-gray-300">
-              Department Name
-            </th>
-            <th className="py-3 px-2 border-r border-b border-gray-300">
-              Location
-            </th>
+      <div className="overflow-x-auto">
+        <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
+          <thead className="bg-gray-300 text-[#000000] uppercase text-lg leading-normal">
+            <tr>
+              <th className="py-3 text-center px-2 border-r border-b border-gray-400">
+                S.No
+              </th>
+              <th className="py-3 px-1 border-r border-b border-gray-400">
+                Department Name
+              </th>
+              <th className="py-3 px-2 border-r border-b border-gray-400">
+                Location
+              </th>
 
-            <th className="py-3 px-2 border-r border-b border-gray-300">
-              Delete
-            </th>
-            <th className="py-3 px-4 border-r border-b border-gray-300">
-              Edit
-            </th>
-          </tr>
-        </thead>
-        <tbody className="text-gray-600 text-md font-bold">
-          {info.map((val, i) => (
-            <tr key={i} className="border-b border-gray-300 hover:bg-gray-100">
-              <td className="py-3 text-center border-l ">{i + 1}</td>
-              <td className="py-3  text-center border-l border-r capitalize">
-                {val.dept_name}
-              </td>
-              <td className="py-3 text-center border-l border-r capitalize">
-                {val.dept_location}
-              </td>
-              <td className="py-3  border-l   border-r ">
-                <MdDelete
-                  onClick={() => {
-                    setWorkingId(val.dept_id);
-                    setShowDelete(true);
-                  }}
-                  className="text-3xl mx-auto  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
-                />
-              </td>
-              <td className="py-3  border-l border-r ">
-                <Link
-                  state={val}
-                  className="text-3xl  hover:scale-110 hover:text-blue-500 transition-all delay-100 duration-300"
-                  to={{
-                    pathname: `/department/${val.dept_id}`,
-                  }}
-                >
-                  <MdOutlineUpdate className="text-3xl mx-auto" />
-                </Link>
-              </td>
+              <th className="py-3 px-2 border-r border-b border-gray-400">
+                Delete
+              </th>
+              <th className="py-3 px-4 border-r border-b border-gray-400">
+                Edit
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="text-gray-600 text-md font-bold">
+            {info.map((val, i) => (
+              <tr
+                key={i}
+                className="border-b border-gray-400 hover:bg-gray-100"
+              >
+                <td className="py-3 text-center border-l border-gray-400">
+                  {i + 1}
+                </td>
+                <td className="py-3 text-center border-l border-gray-400 border-r capitalize">
+                  {val.dept_name}
+                </td>
+                <td className="py-3 text-center border-l border-r border-gray-400 capitalize">
+                  {val.dept_location}
+                </td>
+                <td className="py-3 border-l border-r border-gray-400 ">
+                  <MdDelete
+                    onClick={() => {
+                      setWorkingId(val.dept_id);
+                      setShowDelete(true);
+                    }}
+                    className="text-3xl mx-auto  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300 cursor-pointer"
+                  />
+                </td>
+                <td className="py-3 border-l border-r border-gray-400 ">
+                  <Link
+                    state={val}
+                    className="text-3xl  hover:scale-110 hover:text-blue-500 transition-all delay-100 duration-300"
+                    to={{
+                      pathname: `/department/${val.dept_id}`,
+                    }}
+                  >
+                    <MdOutlineUpdate className="text-3xl mx-auto cursor-pointer" />
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <ToastContainer position="bottom-left" />
     </div>
   );

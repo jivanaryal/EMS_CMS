@@ -33,7 +33,7 @@ const MyBarChart = ({ task }) => {
     ],
   };
 
-  // Update options to set label color to white
+  // Update options to set label color to white and adjust height
   const options = {
     scales: {
       x: {
@@ -77,6 +77,8 @@ const MyBarChart = ({ task }) => {
         cornerRadius: 0,
       },
     },
+    // Set the height of the chart to 100
+    height: 80,
   };
 
   return <Bar data={data} options={options} />;

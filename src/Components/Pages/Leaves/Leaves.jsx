@@ -5,7 +5,7 @@ import ViewLeaveRequest from "./ViewLeaveRequest";
 
 const Employee = () => {
   return (
-    <div className="">
+    <div className="min-h-screen px-4">
       <div className="flex pl-10 gap-4 justify-center"></div>
 
       {<ViewLeaveRequest />}

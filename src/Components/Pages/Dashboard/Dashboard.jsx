@@ -190,7 +190,7 @@ const Dashboard = () => {
               ))}
             </div>
           </div>
-          <div className="shadow-md pb-2 shadow-mainColor">
+          <div className="shadow-md  shadow-mainColor">
             <MyBarChart task={task} />
           </div>
         </div>

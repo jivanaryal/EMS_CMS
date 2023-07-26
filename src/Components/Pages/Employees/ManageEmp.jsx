@@ -124,33 +124,33 @@ const ManageEmp = () => {
         </button>
       </div>
 
-      <table className="w-full rounded-lg shadow-sm">
-        <thead className="bg-gray-100 text-[#000000] uppercase text-sm leading-normal">
+      <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
+        <thead className="bg-gray-300 text-[#000000] uppercase text-sm leading-normal">
           <tr>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               S.No
             </th>
-            <th className="py-3 px-1 border-r border-b border-gray-200">
+            <th className="py-3 px-1 border-r border-b border-gray-400">
               Employee Name
             </th>
             <th>Images</th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               position
             </th>
 
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               gender
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               Department Name
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               salary
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               Delete
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-200">
+            <th className="py-3 px-6 border-r border-b border-gray-400">
               Edit
             </th>
           </tr>
@@ -159,13 +159,15 @@ const ManageEmp = () => {
           {info.map((val, i) => (
             <tr
               key={i}
-              className="py-3 text-center px-2 border-r border-b border-gray-200"
+              className="py-3 text-center px-2 border-r border-b border-gray-400"
             >
-              <td className="py-3 px-4 border-l text-center">{i + 1}</td>
-              <td className="py-3 px-4 border-l border-r">
+              <td className="py-3 px-4 border-l border-gray-400 text-center">
+                {i + 1}
+              </td>
+              <td className="py-3 px-4 border-l border-r border-gray-400">
                 {val.first_name + " " + val.middle_name + " " + val.last_name}
               </td>
-              <td className="py-3 px-4  border-l border-r">
+              <td className="py-3 px-4  border-l border-gray-400 border-r">
                 <div className="h-28 w-28  rounded-full">
                   <img
                     src={`http://localhost:5000/${val.image}`}
@@ -174,17 +176,19 @@ const ManageEmp = () => {
                   />
                 </div>
               </td>
-              <td className="py-3 px-4 border-l border-r capitalize">
+              <td className="py-3 px-4 border-l border-r border-gray-400 capitalize">
                 {val.position}
               </td>
-              <td className="py-3 px-4 border-l border-r capitalize">
+              <td className="py-3 px-4 border-l border-r border-gray-400 capitalize">
                 {val.gender}
               </td>
-              <td className="py-3 px-4 border-l border-r capitalize">
+              <td className="py-3 px-4 border-l border-r border-gray-400 capitalize">
                 {val.dept_name}
               </td>
-              <td className="py-3 px-4 border-l border-r">{val.salary}</td>
-              <td className="py-3 px-4 border-l border-r text-center">
+              <td className="py-3 px-4 border-l border-r border-gray-400">
+                {val.salary}
+              </td>
+              <td className="py-3 px-4 border-l border-r text-center border-gray-400">
                 <MdDelete
                   onClick={() => {
                     setWorkingId(val.emp_id);
@@ -193,7 +197,7 @@ const ManageEmp = () => {
                   className="text-3xl mx-auto hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
                 />
               </td>
-              <td className="py-3 px-4 border-l border-r text-center">
+              <td className="py-3 px-4 border-l border-r border-gray-400 text-center">
                 <Link
                   state={val}
                   className="hover:scale-110 mx-auto transition-all delay-100 duration-300 hover:text-blue-500"
