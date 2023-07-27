@@ -89,7 +89,7 @@ const InProgressTask = () => {
                   {val.task_priority}
                 </td>
                 <td className="py-3 px-4 border-l border-gray-400 text-center">
-                  <Link to={`/view/${val.task_id}`} key={i} state={val}>
+                  <Link to={`detail/${val.task_id}`} key={i} state={val}>
                     <div
                       className={`py-1 px-2 bg-mainColor font-medium text-white rounded-sm hover:bg-blue-700 `}
                     >

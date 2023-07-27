@@ -93,42 +93,71 @@ const LeaveApprovalList = () => {
       <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
         <thead className="bg-gray-200 text-gray-700 text-center text-lg">
           <tr>
-            <th className="py-3 px-4">ID</th>
-            <th className="py-3 px-4">Employee Name</th>
-            <th className="py-3 px-4">Image</th>
-            <th className="py-3 px-4">Start Date</th>
-            <th className="py-3 px-4">End Date</th>
-            <th className="py-3 px-4">Message</th>
-            <th className="py-3 px-4">Status</th>
-            <th className="py-3 px-4">Action</th>
+            <th className="py-3 px-4 border-r border-b border-gray-400">ID</th>
+            <th className="py-3 px-4 border-r border-b border-gray-400">
+              Employee Name
+            </th>
+            <th className="py-3 px-4 border-r border-b border-gray-400">
+              Image
+            </th>
+            <th className="py-3 px-4 border-r border-b border-gray-400">
+              Start Date
+            </th>
+            <th className="py-3 px-4 border-r border-b border-gray-400">
+              End Date
+            </th>
+            <th className="py-3 px-4 border-r border-b border-gray-400">
+              Message
+            </th>
+            <th className="py-3 px-4 border-r border-b border-gray-400">
+              Status
+            </th>
+            <th className="py-3 px-4 border-r border-b border-gray-400">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-center">
           {fileterEmployee.map((request) => (
-            <tr key={request.emp_id} className="border-b">
-              <td className="py-4 px-4">{request.emp_id}</td>
-              <td className="py-4 px-4">
+            <tr
+              key={request.emp_id}
+              className="border-b border-gray-400  hover:bg-gray-200 font-bold"
+              style={{
+                background:
+                  "linear-gradient(to right, #c1d6eb, #ccd9ec, #d6dce6, #e1e5ec, #ebeaf0)",
+              }}
+            >
+              <td className="py-4 px-4 border-r border-b border-gray-400">
+                {request.emp_id}
+              </td>
+              <td className="py-4 px-4 border-r border-b border-gray-400">
                 {request.first_name}
                 {request.middle_name}
                 {request.last_name}
               </td>
-              <td className="py-4 px-4">
+              <td className="py-4 px-4 border-r border-b border-gray-400">
                 <img
                   src={`http://localhost:5000/${request.image}`}
                   alt=""
                   className="w-24 h-24 mx-auto rounded-md"
                 />
               </td>
-              <td className="py-4 px-4">{request.start_date}</td>
-              <td className="py-4 px-4">{request.end_date}</td>
-              <td className="px-4 h-40">
+              <td className="py-4 px-4 border-r border-b border-gray-400">
+                {request.start_date}
+              </td>
+              <td className="py-4 px-4 border-r border-b border-gray-400">
+                {request.end_date}
+              </td>
+              <td className="px-4 h-40 border-r border-b border-gray-400">
                 <div className="line-clamp-6 text-justify">
                   {request.message}
                 </div>
               </td>
 
-              <td className="py-4 px-4">{request.status}</td>
-              <td className="py-4 px-4 ">
+              <td className="py-4 px-4 border-r border-b border-gray-400">
+                {request.status}
+              </td>
+              <td className="py-4 px-4 border-r border-b border-gray-400 ">
                 {request.status === "pending" ? (
                   <div className="flex">
                     <button
