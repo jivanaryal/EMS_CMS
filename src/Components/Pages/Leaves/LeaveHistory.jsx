@@ -48,57 +48,66 @@ const LeaveApprovalList = () => {
       <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
         <thead className="bg-gray-200 text-gray-700 text-center text-lg">
           <tr>
-            <th className="py-3 px-2  border-r border-b border-gray-200">ID</th>
-            <th className="py-3 px-2  border-r border-b border-gray-200">
+            <th className="py-3 px-2  border-r border-b border-gray-400">ID</th>
+            <th className="py-3 px-2  border-r border-b border-gray-400">
               Employee Name
             </th>
-            <th className="py-3 px-2  border-r border-b border-gray-200">
+            <th className="py-3 px-2  border-r border-b border-gray-400">
               Image
             </th>
-            <th className="py-3 px-2 border-r border-b border-gray-200">
+            <th className="py-3 px-2 border-r border-b border-gray-400">
               Start Date
             </th>
-            <th className="py-3 px-2 border-r border-b border-gray-200">
+            <th className="py-3 px-2 border-r border-b border-gray-400">
               End Date
             </th>
-            <th className="py-3 px-2 border-r border-b border-gray-200">
+            <th className="py-3 px-2 border-r border-b border-gray-400">
               Message
             </th>
-            <th className="py-3 px-4 border-r border-b border-gray-200">
+            <th className="py-3 px-4 border-r border-b border-gray-400">
               Status
             </th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-center">
           {filteredEmployee.map((request) => (
-            <tr key={request.emp_id} className="border-b font-bold">
-              <td className="py-4 px-2 border-l border-r">{request.emp_id}</td>
-              <td className="py-4 px-2 border-l border-r">
+            <tr
+              key={request.emp_id}
+              className="border-b border-gray-400  hover:bg-gray-200 font-bold"
+              style={{
+                background:
+                  "linear-gradient(to right, #c1d6eb, #ccd9ec, #d6dce6, #e1e5ec, #ebeaf0)",
+              }}
+            >
+              <td className="py-4 px-2 border-l border-r  border-gray-400">
+                {request.emp_id}
+              </td>
+              <td className="py-4 px-2 border-l border-r  border-gray-400">
                 {request.first_name}
                 {request.middle_name}
                 {request.last_name}
               </td>
-              <td className="py-4 px-2 border-l border-r">
+              <td className="py-4 px-2 border-l border-r  border-gray-400">
                 <img
                   src={`http://localhost:5000/${request.image}`}
                   alt=""
                   className="w-24 rounded-full h-24"
                 />
               </td>
-              <td className="py-4 px-2 border-l border-r">
+              <td className="py-4 px-2 border-l border-r  border-gray-400">
                 {request.start_date}
               </td>
-              <td className="py-4 px-2 border-l border-r">
+              <td className="py-4 px-2 border-l border-r  border-gray-400">
                 {request.end_date}
               </td>
-              <td className="px-4 h-40">
+              <td className="px-4 h-40 border-gray-400 border-l border-r">
                 <div className="line-clamp-6 text-justify">
                   {request.message}
                 </div>
               </td>
 
               <td
-                className={`py-3 px-2 border-l border-r text-lg  text-center font-black capitalize ${
+                className={`py-4 px-2 border-l border-r border-gray-400 text-lg  text-center font-black capitalize ${
                   request.status === "rejected" && "text-red-700"
                 } ${request.status === "approved" && "text-green-700"}`}
               >

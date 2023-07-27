@@ -29,9 +29,9 @@ const InProgressTask = () => {
     <div className="my-10 mx-10 shadow-sm  shadow-gray-400 p-4">
       <h1 className="font-bold text-xl mb-4">View Inprogress Task</h1>
       <table className="w-full">
-        <thead className=" text-gray-600 uppercase text-md leading-normal bg-gray-300 ">
+        <thead className=" text-gray-600 uppercase border border-gray-400 text-md leading-normal bg-gray-300 ">
           <tr className="">
-            <th className="py-3 text-start  px-6 border-r border-b border-gray-400">
+            <th className="py-3 text-start   px-6 border-r border-b border-gray-400">
               S.No
             </th>
             <th className="py-3 px-6 border-r border-b border-gray-400">
@@ -62,7 +62,7 @@ const InProgressTask = () => {
         <tbody className="text-gray-600 text-[15px] font-medium ">
           {fileterEmployee.map((val, i) => {
             return (
-              <tr className="border-b border-gray-400 hover:bg-gray-100">
+              <tr className="py-3 text-center px-2 border-r  border-b border-gray-400">
                 <td className="py-3 px-4 border-l text-center border-gray-400 ">
                   {i + 1}
                 </td>

@@ -162,13 +162,13 @@ const LeaveApprovalList = () => {
                   <div className="flex">
                     <button
                       onClick={() => handleApprove(request.leave_id)}
-                      className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mr-2  md:px-1 md:py-1 md:text-sm"
+                      className="bg-green-500 hover:bg-green-600 text-white py-3 px-3  rounded mr-2"
                     >
                       Approve
                     </button>
                     <button
                       onClick={() => handleReject(request.leave_id)}
-                      className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded  md:px-1 md:py-1 md:text-sm "
+                      className="bg-red-500 hover:bg-red-600 text-white  py-3 px-4 rounded "
                     >
                       Reject
                     </button>

@@ -51,8 +51,13 @@ const CreateEmp = () => {
         toast.error("Failed to create employee.");
       }
     } catch (error) {
-      console.error("Error:", error);
-      toast.error("An error occurred while creating employee.");
+      if (error.response && error.response.status === 409) {
+        console.error("Employee with the same ID already exists.");
+        toast.error("Employee with the same ID already exists.");
+      } else {
+        console.error("Error:", error);
+        toast.error("An error occurred while creating employee.");
+      }
     }
   };
 
@@ -76,8 +81,6 @@ const CreateEmp = () => {
         // validationSchema={schema}
         onSubmit={(values) => {
           postFormData(values);
-          console.log(values);
-          toast.success("New employee created");
         }}
       >
         {({ handleSubmit }) => (

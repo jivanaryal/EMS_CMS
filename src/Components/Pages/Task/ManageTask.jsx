@@ -71,7 +71,7 @@ const ManageTask = () => {
   };
 
   return (
-    <div className="my-10">
+    <div className="my-10 mx-2 ">
       {showDelete && (
         <DangerModal onClick={success} falseCondition={failure} name="task" />
       )}

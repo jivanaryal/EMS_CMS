@@ -133,7 +133,9 @@ const ManageEmp = () => {
             <th className="py-3 px-1 border-r border-b border-gray-400">
               Employee Name
             </th>
-            <th>Images</th>
+            <th className="py-3 px-6 border-r border-b border-gray-400">
+              Images
+            </th>
             <th className="py-3 px-6 border-r border-b border-gray-400">
               position
             </th>
