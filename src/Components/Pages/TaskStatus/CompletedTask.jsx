@@ -60,7 +60,7 @@ const InProgressTask = () => {
         <tbody className="text-gray-600 text-[15px] font-medium ">
           {fileterEmployee.map((val, i) => {
             return (
-              <tr className="border-b border-r border-gray-400 hover:bg-gray-100">
+              <tr className="border-b border-r   border-gray-400 hover:bg-gray-100">
                 <td className="py-3 px-4 border-l text-center border-gray-400 ">
                   {i + 1}
                 </td>

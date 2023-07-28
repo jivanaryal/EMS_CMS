@@ -74,10 +74,6 @@ const LeaveApprovalList = () => {
             <tr
               key={request.emp_id}
               className="border-b border-gray-400  hover:bg-gray-200 font-bold"
-              style={{
-                background:
-                  "linear-gradient(to right, #c1d6eb, #ccd9ec, #d6dce6, #e1e5ec, #ebeaf0)",
-              }}
             >
               <td className="py-4 px-2 border-l border-r  border-gray-400">
                 {request.emp_id}

@@ -18,6 +18,7 @@ import EditEmp from "./Components/Pages/Employees/EditEmp";
 import Example1 from "./dummy/Example1";
 import EditTask from "./Components/Pages/Task/EditTask";
 import TaskDetails from "./Components/Pages/TaskStatus/TaskDetails";
+import LoginPage from "./Components/Pages/LoginPage/LoginPage";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="taskstatus/detail/:id" element={<TaskDetails />} />
             <Route path="eg1" element={<Example1 />} />
           </Route>
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Router>
     </div>
