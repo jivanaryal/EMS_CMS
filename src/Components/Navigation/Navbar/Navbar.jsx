@@ -20,6 +20,7 @@ const Navbar = () => {
       pl-4 justify-around pr-7"
       >
         {/* search  */}
+
         <div className="searchbox invisible flex items-center relative border-2 border-gray-200 rounded-md ">
           <input
             type="search"
@@ -28,6 +29,7 @@ const Navbar = () => {
           />
           <GoSearch className="absolute left-3 text-black" />
         </div>
+
         {/* profile */}
         <div className="flex relative  items-center gap-3">
           <div className="font-bold text-lg text-white ">Admin</div>
