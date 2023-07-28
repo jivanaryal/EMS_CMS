@@ -12,50 +12,53 @@ import UserAuthContextApi, {
   UserAuthContext,
 } from "../../../Hoc/ContextApi/UserAuthContextApi";
 
-const data = [
-  {
-    title: "View Department",
-    // num: "24",
-    intro: "View Department",
-    colors: "#FFEFE7",
-    colors1: "#EC9E09",
-    path: "/department",
-    icons: <HiBuildingOffice2 />,
-  },
-  {
-    title: "View Employee",
-    // num: "24",
-    intro: "View Employee",
-    colors: "#E8F0FB",
-    colors1: "#595FF0",
-    path: "/employee",
-    icons: <HiUserGroup />,
-  },
-  {
-    title: "Assign Task",
-    // num: "24",
-    intro: "Assign Task",
-    colors: "#FDEBF9",
-    colors1: "#16C6BC",
-    path: "/task",
-    icons: <BiTask />,
-  },
-  {
-    title: "Leave Request",
-    // num: "24",
-    intro: "View Leave Request",
-    colors: "#F1F9FB",
-    colors1: "#F74E61",
-    path: "/leave",
-    icons: <IoMdExit />,
-  },
-];
-
 const Dashboard = () => {
   const [employee, setEmployee] = useState([]);
   const [leave, setLeave] = useState([]);
   const [uniquePendingLeaves, setUniquePendingLeaves] = useState([]);
   const [task, setTask] = useState([]);
+  const [lemployee, setLEmployee] = useState(0);
+  const [ldepartment, setLdepartment] = useState(0);
+  const [viewReq, setViewReq] = useState(0);
+
+  const data = [
+    {
+      title: `View ${ldepartment} Department`,
+      intro: "View Department",
+      colors: "#FFEFE7",
+      colors1: "#EC9E09",
+      path: "/department",
+      icons: <HiBuildingOffice2 />,
+      num: null,
+    },
+    {
+      title: `View ${lemployee} Employee`,
+      intro: "View Employee",
+      colors: "#E8F0FB",
+      colors1: "#595FF0",
+      path: "/employee",
+      icons: <HiUserGroup />,
+      num: null, // Use the state value here
+    },
+    {
+      title: "Assign Task",
+      intro: "Assign Task",
+      colors: "#FDEBF9",
+      colors1: "#16C6BC",
+      path: "/task",
+      icons: <BiTask />,
+      num: null,
+    },
+    {
+      title: "Leave Request",
+      intro: "View Leave Request",
+      colors: "#F1F9FB",
+      colors1: "#F74E61",
+      path: "/leave",
+      icons: <IoMdExit />,
+      num: null,
+    },
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,11 +71,21 @@ const Dashboard = () => {
       } catch (leaveErr) {
         console.log(leaveErr.message);
       }
+      try {
+        const departmentRes = await get("/department");
+        if (departmentRes.status === 200) {
+          console.log(departmentRes.data);
+          setLdepartment(departmentRes.data.length);
+        }
+      } catch (departmentError) {
+        console.log(departmentError.message);
+      }
 
       try {
         const employeeRes = await get("/employee");
         if (employeeRes.status === 200) {
           setEmployee(employeeRes.data);
+          setLEmployee(employeeRes.data.length);
         }
       } catch (employeeErr) {
         console.log(employeeErr.message);
@@ -106,7 +119,7 @@ const Dashboard = () => {
     <UserAuthContextApi>
       <UserAuthContext.Provider>
         <div className="w-full">
-          <div className="pb-4 w-11/12 mx-auto">
+          <div className="pb-4 w-12/12 mx-4">
             <div className="grid grid-cols-12 gap-4 ">
               <div className=" col-span-8">
                 <div className="flex mt-10 gap-14">
@@ -115,7 +128,7 @@ const Dashboard = () => {
                       <Link to={val.path} key={i}>
                         <div
                           style={{ backgroundColor: val.colors }}
-                          className="rounded-lg h-32   w-full flex flex-col  gap-2 items-center text-sm shadow-md shadow-gray-300 py-4 mx-2 sm:mx-4 md:mx-2 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-6"
+                          className="rounded-lg h-36   w-full flex flex-col  gap-2 items-center text-sm shadow-md shadow-gray-300 py-4 mx-2 sm:mx-4 md:mx-2 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-6"
                         >
                           <div
                             className="text-2xl font-bold text-white p-1 rounded-md flex"
@@ -123,8 +136,9 @@ const Dashboard = () => {
                           >
                             {val.icons}
                           </div>
+
                           <div className="text-lg font-bold">{val.title}</div>
-                          <div className="">{val.num}</div>
+                          <span className="text-base font-bold">{val.num}</span>
                         </div>
                       </Link>
                     ))}
