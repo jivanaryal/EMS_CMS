@@ -125,7 +125,7 @@ const ManageEmp = () => {
       </div>
 
       <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-        <thead className="bg-gray-300 text-[#000000] uppercase text-sm leading-normal">
+        <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
           <tr>
             <th className="py-3 px-6 border-r border-b border-gray-400">
               S.No
@@ -157,7 +157,7 @@ const ManageEmp = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="text-gray-600 text-sm font-bold">
+        <tbody className="text-gray-800 text-sm font-bold">
           {info.map((val, i) => (
             <tr
               key={i}

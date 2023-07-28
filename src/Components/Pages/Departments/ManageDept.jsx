@@ -86,7 +86,7 @@ const ManageDept = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="text-gray-600 text-md font-bold">
+          <tbody className="text-gray-800 text-md font-bold">
             {info.map((val, i) => (
               <tr
                 key={i}

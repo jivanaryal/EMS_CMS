@@ -22,7 +22,7 @@ const PieChart = ({ employee }) => {
     datasets: [
       {
         id: 1,
-        label: "",
+        label: "Total Employee",
         data: [maleNumber, femaleNumber],
       },
     ],

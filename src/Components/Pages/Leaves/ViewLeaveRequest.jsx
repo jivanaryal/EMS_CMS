@@ -91,7 +91,7 @@ const LeaveApprovalList = () => {
       </Link>
       <h1 className="font-bold text-2xl mb-6">Pending Leave</h1>
       <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
-        <thead className="bg-gray-200 text-gray-700 text-center text-lg">
+        <thead className="bg-gray-200 text-black text-center text-lg">
           <tr>
             <th className="py-3 px-4 border-r border-b border-gray-400">ID</th>
             <th className="py-3 px-4 border-r border-b border-gray-400">
@@ -117,7 +117,7 @@ const LeaveApprovalList = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="text-gray-600 text-center">
+        <tbody className="text-gray-800 text-center">
           {fileterEmployee.map((request) => (
             <tr
               key={request.emp_id}
