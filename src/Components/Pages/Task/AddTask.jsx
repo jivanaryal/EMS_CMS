@@ -85,7 +85,7 @@ const AddTask = () => {
   FormFields[0].options = [...employee];
 
   return (
-    <div className="mt-10 px-20">
+    <div className="mt-10 px-20 ">
       <Formik
         initialValues={{
           emp_name: "",
