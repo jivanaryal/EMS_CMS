@@ -122,7 +122,7 @@ const AddTask = () => {
                             value=""
                             selected
                             disabled
-                          >{`choose ${val.name}`}</option>
+                          >{`Choose ${val.name}`}</option>
                           {val.options?.map((option, j) => {
                             if (val.name === "emp_name") {
                               return (
@@ -157,7 +157,7 @@ const AddTask = () => {
                           key={i}
                           type={val.type}
                           name={val.name}
-                          placeholder={`enter ${val.name}`}
+                          placeholder={`Enter ${val.name}`}
                           className="border border-gray-400 p-1 rounded w-full"
                         />
                         <ErrorMessage

@@ -110,7 +110,7 @@ const Dashboard = () => {
             <div className="grid grid-cols-12 gap-4 ">
               <div className=" col-span-8">
                 <div className="flex mt-10 gap-14">
-                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2 h-46 w-7/12  shadow-sm shadow-gray-400 p-4">
+                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2 h-46 w-7/12  shadow-sm shadow-mainColor p-4">
                     {data.map((val, i) => (
                       <Link to={val.path} key={i}>
                         <div
@@ -129,7 +129,7 @@ const Dashboard = () => {
                       </Link>
                     ))}
                   </div>
-                  <div className="w-80 flex-auto">
+                  <div className="w-80 flex-auto shadow-mainColor shadow-2">
                     <PieChart employee={employee} />
                   </div>
                 </div>

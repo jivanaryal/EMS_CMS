@@ -41,7 +41,7 @@ const LeaveApprovalList = () => {
 
   return (
     <div className="my-10 mx-4 min-h-screen">
-      <div className="text-3xl ">
+      <div className="text-3xl cursor-pointer">
         <IoArrowBack onClick={() => handleGoBack()} />
       </div>
       <h1 className="font-bold text-2xl mb-6">Leave History</h1>
