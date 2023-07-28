@@ -35,7 +35,7 @@ const SubNav = () => {
       </div>
       <div
         onClick={() => resetData()}
-        className=" hover:bg-black hover:text-white hover:border-3 hover:rounded-sm hover:p-1 my-1"
+        className=" hover:bg-red-600 hover:text-white hover:border-3 hover:rounded-sm hover:p-1 my-1"
       >
         logout
       </div>

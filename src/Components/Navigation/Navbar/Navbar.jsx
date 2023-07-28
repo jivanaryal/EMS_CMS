@@ -45,7 +45,7 @@ const Navbar = () => {
               className="text-4xl  cursor-pointer "
             />
             {show && (
-              <div className="w-56 text-black bg-white rounded-md shadow-sm shadow-gray-400 absolute top-[3.3rem] font-bold  right-[1px] -z-50  cursor-pointer border-1 border-gray-300 py-2 px-3">
+              <div className="w-44 text-black bg-white rounded-md shadow-sm shadow-gray-400 absolute top-[3.3rem] font-bold  right-[1px] -z-50  cursor-pointer border-1 border-gray-300 py-2 px-3">
                 <div>
                   <SubNav />
                 </div>
