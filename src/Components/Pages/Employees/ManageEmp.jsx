@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { MdDelete, MdOutlineUpdate } from "react-icons/md";
+import { BsEyeFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { get, remove } from "../../../services/api";
@@ -90,7 +91,7 @@ const ManageEmp = () => {
   };
 
   return (
-    <div className="my-10">
+    <div className="my-10 ">
       {showDelete && (
         <DangerModal
           onClick={success}
@@ -141,20 +142,14 @@ const ManageEmp = () => {
             </th>
 
             <th className="py-3 px-6 border-r border-b border-gray-400">
-              gender
-            </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
-              Department Name
-            </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
               salary
             </th>
             <th className="py-3 px-6 border-r border-b border-gray-400">
-              Delete
+              Action
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
+            {/* <th className="py-3 px-6 border-r border-b border-gray-400">
               Edit
-            </th>
+            </th> */}
           </tr>
         </thead>
         <tbody className="text-gray-800 text-sm font-bold">
@@ -181,34 +176,38 @@ const ManageEmp = () => {
               <td className="py-3 px-4 border-l border-r border-gray-400 capitalize">
                 {val.position}
               </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400 capitalize">
-                {val.gender}
-              </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400 capitalize">
-                {val.dept_name}
-              </td>
+
               <td className="py-3 px-4 border-l border-r border-gray-400">
                 {val.salary}
               </td>
-              <td className="py-3 px-4 border-l border-r text-center border-gray-400">
-                <MdDelete
-                  onClick={() => {
-                    setWorkingId(val.emp_id);
-                    setShowDelete(true);
-                  }}
-                  className="text-3xl mx-auto hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
-                />
-              </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400 text-center">
-                <Link
-                  state={val}
-                  className="hover:scale-110 mx-auto transition-all delay-100 duration-300 hover:text-blue-500"
-                  to={{
-                    pathname: `/employee/${val.emp_id}`,
-                  }}
-                >
-                  <MdOutlineUpdate className="text-3xl mx-auto" />
-                </Link>
+              <td className=" border-l border-r border-gray-400  ">
+                <div className="flex justify-center gap-2">
+                  <MdDelete
+                    onClick={() => {
+                      setWorkingId(val.emp_id);
+                      setShowDelete(true);
+                    }}
+                    className="text-3xl  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
+                  />
+                  <Link
+                    state={val}
+                    className="hover:scale-110   transition-all delay-100 duration-300 hover:text-blue-500"
+                    to={{
+                      pathname: `/employee/${val.emp_id}`,
+                    }}
+                  >
+                    <MdOutlineUpdate className="text-3xl" />
+                  </Link>
+                  <Link
+                    state={val}
+                    className="hover:scale-110   transition-all delay-100 duration-300 hover:text-green-500"
+                    to={{
+                      pathname: `/employee/view/${val.emp_id}`,
+                    }}
+                  >
+                    <BsEyeFill className="text-3xl" />
+                  </Link>
+                </div>
               </td>
             </tr>
           ))}

@@ -77,12 +77,8 @@ const ManageDept = () => {
               <th className="py-3 px-2 border-r border-b border-gray-400">
                 Location
               </th>
-
               <th className="py-3 px-2 border-r border-b border-gray-400">
-                Delete
-              </th>
-              <th className="py-3 px-4 border-r border-b border-gray-400">
-                Edit
+                Action
               </th>
             </tr>
           </thead>
@@ -101,25 +97,25 @@ const ManageDept = () => {
                 <td className="py-3 text-center border-l border-r border-gray-400 capitalize">
                   {val.dept_location}
                 </td>
-                <td className="py-3 border-l border-r border-gray-400 ">
-                  <MdDelete
-                    onClick={() => {
-                      setWorkingId(val.dept_id);
-                      setShowDelete(true);
-                    }}
-                    className="text-3xl mx-auto  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300 cursor-pointer"
-                  />
-                </td>
-                <td className="py-3 border-l border-r border-gray-400 ">
-                  <Link
-                    state={val}
-                    className="text-3xl  hover:scale-110 hover:text-blue-500 transition-all delay-100 duration-300"
-                    to={{
-                      pathname: `/department/${val.dept_id}`,
-                    }}
-                  >
-                    <MdOutlineUpdate className="text-3xl mx-auto cursor-pointer" />
-                  </Link>
+                <td className="py-3 border-l  border-r border-gray-400  ">
+                  <div className="flex justify-center gap-3">
+                    <MdDelete
+                      onClick={() => {
+                        setWorkingId(val.dept_id);
+                        setShowDelete(true);
+                      }}
+                      className="text-3xl   hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300 cursor-pointer"
+                    />
+                    <Link
+                      state={val}
+                      className="text-3xl ml-2 hover:scale-110 hover:text-blue-500 transition-all delay-100 duration-300"
+                      to={{
+                        pathname: `/department/${val.dept_id}`,
+                      }}
+                    >
+                      <MdOutlineUpdate className="text-3xl  cursor-pointer" />
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}

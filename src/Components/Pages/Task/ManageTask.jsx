@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { get, remove } from "../../../services/api";
 import DangerModal from "../../UI/DangerModal";
 import "react-toastify/dist/ReactToastify.css";
+import { BsEyeFill } from "react-icons/bs";
 
 const ManageTask = () => {
   const [info, setInfo] = useState([]);
@@ -96,17 +97,9 @@ const ManageTask = () => {
             <th className="py-3 px-6 border-r border-b border-gray-400">
               Status
             </th>
+
             <th className="py-3 px-6 border-r border-b border-gray-400">
-              Task description
-            </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
-              Task Priority
-            </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
-              Delete
-            </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
-              Edit
+              Action
             </th>
           </tr>
         </thead>
@@ -135,31 +128,35 @@ const ManageTask = () => {
               <td className="py-3 px-4 border-l border-r border-gray-400">
                 {val.status}
               </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400">
-                {val.task_description}
-              </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400">
-                {val.task_priority}
-              </td>
-              <td className="py-3 px-4 border-l border-r text-center border-gray-400">
-                <MdDelete
-                  onClick={() => {
-                    setWorkingId(val.task_id);
-                    setShowDelete(true);
-                  }}
-                  className="text-3xl mx-auto hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
-                />
-              </td>
-              <td className="py-3 px-4 border-l border-r text-center border-gray-400">
-                <Link
-                  state={val}
-                  className="hover:scale-110 mx-auto transition-all delay-100 duration-300 hover:text-blue-500"
-                  to={{
-                    pathname: `/task/${val.task_id}`,
-                  }}
-                >
-                  <MdOutlineUpdate className="text-3xl mx-auto" />
-                </Link>
+
+              <td className=" border-l border-r border-gray-400  ">
+                <div className="flex justify-center gap-2">
+                  <MdDelete
+                    onClick={() => {
+                      setWorkingId(val.emp_id);
+                      setShowDelete(true);
+                    }}
+                    className="text-3xl  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
+                  />
+                  <Link
+                    state={val}
+                    className="hover:scale-110   transition-all delay-100 duration-300 hover:text-blue-500"
+                    to={{
+                      pathname: `/task/${val.task_id}`,
+                    }}
+                  >
+                    <MdOutlineUpdate className="text-3xl" />
+                  </Link>
+                  <Link
+                    state={val}
+                    className="hover:scale-110   transition-all delay-100 duration-300 hover:text-green-500"
+                    to={{
+                      pathname: `/taskstatus/detail/${val.task_id}`,
+                    }}
+                  >
+                    <BsEyeFill className="text-3xl" />
+                  </Link>
+                </div>
               </td>
             </tr>
           ))}

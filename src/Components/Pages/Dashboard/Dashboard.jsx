@@ -41,7 +41,7 @@ const Dashboard = () => {
       num: null, // Use the state value here
     },
     {
-      title: "Assign Task",
+      title: "View Task",
       intro: "Assign Task",
       colors: "#FDEBF9",
       colors1: "#16C6BC",

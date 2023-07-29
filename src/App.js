@@ -19,6 +19,7 @@ import Example1 from "./dummy/Example1";
 import EditTask from "./Components/Pages/Task/EditTask";
 import TaskDetails from "./Components/Pages/TaskStatus/TaskDetails";
 import LoginPage from "./Components/Pages/LoginPage/LoginPage";
+import ViewSingleEmployee from "./Components/Pages/Employees/ViewSingleEmployee";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="department/:id" element={<EditDept />} />
             <Route path="employee" element={<Employee />} />
             <Route path="employee/:id" element={<EditEmp />} />
+            <Route path="employee/view/:id" element={<ViewSingleEmployee />} />
 
             <Route path="create" element={<CreateEmp />} />
             <Route path="leave" element={<Leave />} />

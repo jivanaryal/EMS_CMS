@@ -3,7 +3,7 @@ import AddTask from "./AddTask";
 import ManageTask from "./ManageTask";
 
 const Department = () => {
-  const [Active, setActive] = useState("add");
+  const [Active, setActive] = useState("view");
   const data = [
     {
       id: "add",

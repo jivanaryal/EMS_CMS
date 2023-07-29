@@ -60,7 +60,7 @@ const EditDept = () => {
     navigate(-1);
   };
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen">
       <div className="text-3xl">
         <IoArrowBack onClick={() => handleGoBack()} />
       </div>
