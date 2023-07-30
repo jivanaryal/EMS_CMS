@@ -33,10 +33,11 @@ const LoginPage = () => {
       console.log(res.data);
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token);
-        const emp_id = res.data.emp_id;
         console.log(res.data);
-        localStorage.setItem("emp_id", emp_id);
-        navigate("/", { state: { emp_id } });
+        const admin_id = res.data.admin_id;
+        console.log(res.data);
+        localStorage.setItem("admin_id", admin_id);
+        navigate("/", { state: { admin_id } });
       }
     } catch (error) {
       console.log(error);
