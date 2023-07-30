@@ -109,9 +109,7 @@ const LeaveApprovalList = () => {
             <th className="py-3 px-4 border-r border-b border-gray-400">
               Message
             </th>
-            <th className="py-3 px-4 border-r border-b border-gray-400">
-              Status
-            </th>
+
             <th className="py-3 px-4 border-r border-b border-gray-400">
               Action
             </th>
@@ -154,9 +152,6 @@ const LeaveApprovalList = () => {
                 </div>
               </td>
 
-              <td className="py-4 px-4 border-r border-b border-gray-400">
-                {request.status}
-              </td>
               <td className="py-4 px-4 border-r border-b border-gray-400 ">
                 {request.status === "pending" ? (
                   <div className="flex">

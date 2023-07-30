@@ -78,11 +78,11 @@ const LeaveApprovalList = () => {
         <tbody className="text-gray-800 text-center">
           {filteredEmployee.map((request) => (
             <tr
-              key={request.emp_id}
+              key={request.leave_id}
               className="border-b border-gray-400  hover:bg-gray-200 font-bold"
             >
               <td className="py-4 px-2 border-l border-r  border-gray-400">
-                {request.emp_id}
+                {request.leave_id}
               </td>
               <td className="py-4 px-2 border-l border-r  border-gray-400">
                 {request.first_name}

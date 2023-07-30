@@ -30,16 +30,26 @@ const ManageTask = () => {
   const deleteItem = useCallback(
     (id) => {
       try {
-        remove(`/task/${id}`).then((res) => {
-          if (res.status === 200) {
-            setToggle(!toggle);
-            toast.success("The Employee record is removed", {
-              className: "custom-toast",
-            });
-          }
-        });
+        remove(`/task/${id}`)
+          .then((res) => {
+            if (res.status === 200) {
+              setToggle(!toggle);
+              toast.success("The Employee record is removed", {
+                className: "custom-toast",
+              });
+            }
+          })
+          .catch((err) => {
+            if (err.response && err.response.status === 409) {
+              toast.error(
+                "Cannot delete the record as it is referenced by other records"
+              );
+            }
+          });
       } catch (err) {
+        console.log(err);
         if (err.response && err.response.status === 409) {
+          console.log(err.response.message);
           toast.error(
             "Cannot delete the record as it is referenced by other records."
           );
@@ -133,7 +143,7 @@ const ManageTask = () => {
                 <div className="flex justify-center gap-2">
                   <MdDelete
                     onClick={() => {
-                      setWorkingId(val.emp_id);
+                      setWorkingId(val.task_id);
                       setShowDelete(true);
                     }}
                     className="text-3xl  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
