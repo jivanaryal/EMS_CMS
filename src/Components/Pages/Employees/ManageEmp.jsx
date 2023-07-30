@@ -147,7 +147,7 @@ const ManageEmp = () => {
       {/* Search box */}
       <div className="my-4">
         <input
-          type="text"
+          type="search"
           placeholder="Search Here"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -170,7 +170,7 @@ const ManageEmp = () => {
             <th className="py-3 px-1 border-r border-b border-gray-400">
               Employee Name
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
+            <th className="py-3 px-2 border-r border-b border-gray-400">
               Images
             </th>
             <th className="py-3 px-6 border-r border-b border-gray-400">
@@ -197,11 +197,11 @@ const ManageEmp = () => {
               <td className="py-3 px-4 border-l border-r border-gray-400">
                 {val.first_name} {val.middle_name} {val.last_name}
               </td>
-              <td className="py-3 px-4  border-l border-gray-400 border-r">
-                <div className="h-28 w-28  rounded-full">
+              <td className=" py-1 border-l border-gray-400 border-r">
+                <div className="h-28 w-32 mx-auto">
                   <img
                     src={`http://localhost:5000/${val.image}`}
-                    className="object-cover rounded-full w-full h-full"
+                    className="object-cover  w-full h-full rounded-sm"
                     alt="Employee"
                   />
                 </div>

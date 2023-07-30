@@ -52,9 +52,11 @@ const LeaveApprovalList = () => {
             "linear-gradient(to right, #c1d6eb, #ccd9ec, #d6dce6, #e1e5ec, #ebeaf0)",
         }}
       >
-        <thead className="bg-gray-300 text-black text-center text-lg">
+        <thead className="bg-gray-300 text-black text-center text-lg  border-2 border-gray-400">
           <tr>
-            <th className="py-3 px-2  border-r border-b border-gray-400">ID</th>
+            <th className="py-3 px-2  border-r border-b border-gray-400">
+              Leave ID
+            </th>
             <th className="py-3 px-2  border-r border-b border-gray-400">
               Employee Name
             </th>
@@ -75,7 +77,7 @@ const LeaveApprovalList = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="text-gray-800 text-center">
+        <tbody className="text-gray-800 text-center  border-2 border-gray-400">
           {filteredEmployee.map((request) => (
             <tr
               key={request.leave_id}

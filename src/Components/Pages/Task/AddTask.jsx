@@ -101,82 +101,84 @@ const AddTask = () => {
         {({ handleSubmit, setFieldValue, values }) => {
           return (
             <Form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 w-7/12  gap-4">
-                {FormFields.map((val, i) => {
-                  if (val.type === "select") {
-                    return (
-                      <div key={i}>
-                        <label
-                          htmlFor={val.name}
-                          className="block font-bold mb-2"
-                        >
-                          {val.name}
-                        </label>
-                        <Field
-                          as="select"
-                          placeholder={`select ${val.name}`}
-                          name={val.name}
-                          className="border border-gray-400 p-1 rounded w-full"
-                        >
-                          <option
-                            value=""
-                            selected
-                            disabled
-                          >{`Choose ${val.name}`}</option>
-                          {val.options?.map((option, j) => {
-                            if (val.name === "emp_name") {
-                              return (
-                                <option
-                                  key={j}
-                                  value={`${option.first_name} ${option.middle_name} ${option.last_name}`}
-                                >
-                                  {`${option.first_name} ${option.middle_name} ${option.last_name}`}
-                                </option>
-                              );
-                            } else {
-                              return (
-                                <option key={j} value={option.value}>
-                                  {option.label}
-                                </option>
-                              );
-                            }
-                          })}
-                        </Field>
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div key={i}>
-                        <label
-                          htmlFor={val.name}
-                          className="block font-bold mb-2"
-                        >
-                          {val.name}
-                        </label>
-                        <Field
-                          key={i}
-                          type={val.type}
-                          name={val.name}
-                          placeholder={`Enter ${val.name}`}
-                          className="border border-gray-400 p-1 rounded w-full"
-                        />
-                        <ErrorMessage
-                          name={val.name}
-                          component={"div"}
-                          className="text-red-600"
-                        />
-                      </div>
-                    );
-                  }
-                })}
-                <ToastContainer position="bottom-left" />
+              <div className="shadow-2xl shadow-gray-400 px-4  w-7/12">
+                <div className="grid grid-cols-1 w-full mb-3 gap-3">
+                  {FormFields.map((val, i) => {
+                    if (val.type === "select") {
+                      return (
+                        <div key={i}>
+                          <label
+                            htmlFor={val.name}
+                            className="block font-bold mb-1"
+                          >
+                            {val.name}
+                          </label>
+                          <Field
+                            as="select"
+                            placeholder={`select ${val.name}`}
+                            name={val.name}
+                            className="border border-gray-400 p-1 rounded w-full"
+                          >
+                            <option
+                              value=""
+                              selected
+                              disabled
+                            >{`Choose ${val.name}`}</option>
+                            {val.options?.map((option, j) => {
+                              if (val.name === "emp_name") {
+                                return (
+                                  <option
+                                    key={j}
+                                    value={`${option.first_name} ${option.middle_name} ${option.last_name}`}
+                                  >
+                                    {`${option.first_name} ${option.middle_name} ${option.last_name}`}
+                                  </option>
+                                );
+                              } else {
+                                return (
+                                  <option key={j} value={option.value}>
+                                    {option.label}
+                                  </option>
+                                );
+                              }
+                            })}
+                          </Field>
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div key={i}>
+                          <label
+                            htmlFor={val.name}
+                            className="block font-bold mb-2"
+                          >
+                            {val.name}
+                          </label>
+                          <Field
+                            key={i}
+                            type={val.type}
+                            name={val.name}
+                            placeholder={`Enter ${val.name}`}
+                            className="border border-gray-400 p-1 rounded w-full"
+                          />
+                          <ErrorMessage
+                            name={val.name}
+                            component={"div"}
+                            className="text-red-600"
+                          />
+                        </div>
+                      );
+                    }
+                  })}
+                  <ToastContainer position="bottom-left" />
+                </div>
+                <button
+                  type="submit"
+                  className="bg-mainColor mb-5 w-fit  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+                >
+                  Submit
+                </button>
               </div>
-              <button
-                type="submit"
-                className="bg-mainColor mb-5 w-fit  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
-              >
-                Submit
-              </button>
             </Form>
           );
         }}

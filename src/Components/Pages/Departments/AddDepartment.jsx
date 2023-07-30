@@ -55,7 +55,7 @@ const AddDepartment = () => {
       });
   };
   return (
-    <div className="w-full px-6 sm:px-10 ">
+    <div className=" px-6 sm:px-10  ">
       <Formik
         initialValues={{
           dept_name: "",
@@ -69,36 +69,38 @@ const AddDepartment = () => {
       >
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit} className="mt-16">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {FormField.map((field, index) => (
-                <div key={index}>
-                  <label
-                    htmlFor={field.name}
-                    className="text-lg pl-2 font-semibold text-black capitalize"
-                  >
-                    {field.name1}
-                  </label>
-                  <Field
-                    type={field.type}
-                    name={field.name}
-                    className="border border-gray-400 rounded-md py-2 my-2 px-3 w-full"
-                    placeholder={`Enter ${field.name}`}
-                  />
-                  <ErrorMessage
-                    name={field.name}
-                    component="div"
-                    className="text-red-500 text-sm mt-1"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center mt-9">
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors duration-300"
-              >
-                Submit
-              </button>
+            <div className="shadow-2xl shadow-gray-400 w-8/12 p-2">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-1 w-11/12 mx-auto">
+                {FormField.map((field, index) => (
+                  <div key={index}>
+                    <label
+                      htmlFor={field.name}
+                      className="text-lg pl-2 font-semibold text-black capitalize"
+                    >
+                      {field.name1}
+                    </label>
+                    <Field
+                      type={field.type}
+                      name={field.name}
+                      className="border border-gray-400 rounded-md py-2 my-2 px-3 w-full"
+                      placeholder={`Enter ${field.name}`}
+                    />
+                    <ErrorMessage
+                      name={field.name}
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className=" w-11/12 mx-auto pt-3">
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors duration-300"
+                >
+                  Submit
+                </button>
+              </div>
             </div>
           </Form>
         )}

@@ -91,13 +91,13 @@ const LeaveApprovalList = () => {
       </Link>
       <h1 className="font-bold text-2xl mb-6">Pending Leave</h1>
       <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
-        <thead className="bg-gray-200 text-black text-center text-lg">
+        <thead className="bg-gray-300 text-black text-center text-lg first-line border-2 border-gray-400">
           <tr>
             <th className="py-3 px-4 border-r border-b border-gray-400">ID</th>
             <th className="py-3 px-4 border-r border-b border-gray-400">
               Employee Name
             </th>
-            <th className="py-3 px-4 border-r border-b border-gray-400">
+            <th className="py-2 px-2 border-r border-b border-gray-400">
               Image
             </th>
             <th className="py-3 px-4 border-r border-b border-gray-400">
@@ -115,7 +115,7 @@ const LeaveApprovalList = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="text-gray-800 text-center">
+        <tbody className="text-gray-800 text-center  border-2 border-gray-400">
           {fileterEmployee.map((request) => (
             <tr
               key={request.emp_id}
@@ -133,11 +133,11 @@ const LeaveApprovalList = () => {
                 {request.middle_name}
                 {request.last_name}
               </td>
-              <td className="py-4 px-4 border-r border-b border-gray-400">
+              <td className=" border-r border-b border-gray-400">
                 <img
                   src={`http://localhost:5000/${request.image}`}
                   alt=""
-                  className="w-24 h-24 mx-auto rounded-md"
+                  className="w-32 h-32 mx-auto rounded-sm"
                 />
               </td>
               <td className="py-4 px-4 border-r border-b border-gray-400">
@@ -146,10 +146,8 @@ const LeaveApprovalList = () => {
               <td className="py-4 px-4 border-r border-b border-gray-400">
                 {request.end_date}
               </td>
-              <td className="px-4 h-40 border-r border-b border-gray-400">
-                <div className="line-clamp-6 text-justify">
-                  {request.message}
-                </div>
+              <td className="px-4 h-40 w-52 border-r border-b border-gray-400">
+                <div className="line-clamp-6 text-start">{request.message}</div>
               </td>
 
               <td className="py-4 px-4 border-r border-b border-gray-400 ">

@@ -46,9 +46,9 @@ const ChangePassword = () => {
       const response = await post(`/adminlogintable/changepw/${id}`, values);
 
       if (response.status === 200) {
-        toast.success("New employee created");
+        toast.success("passsword change successfully");
       } else {
-        console.error("Failed to create employee.");
+        // console.error("Failed to create employee.");
         toast.error("Failed to create employee.");
       }
     } catch (error) {
@@ -56,7 +56,7 @@ const ChangePassword = () => {
         console.error("Employee with the same ID already exists.");
         toast.error(".Your Old Password is incorrect.");
       } else {
-        console.error("Error:", error);
+        // console.error("Error:", error);
         toast.error("An error occurred while creating employee.");
       }
     }
