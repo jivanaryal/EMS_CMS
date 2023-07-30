@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { MdDelete, MdOutlineUpdate } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -7,12 +7,17 @@ import DangerModal from "../../UI/DangerModal";
 import "react-toastify/dist/ReactToastify.css";
 
 const ManageDept = () => {
+  // Existing state variables
   const [info, setInfo] = useState([]);
-  // const navigate = useNavigate();
   const [toggle, setToggle] = useState([]);
   const [showDelete, setShowDelete] = useState(false);
   const [workingId, setWorkingId] = useState(null);
 
+  // New state variables for search functionality
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+
+  // Function to fetch data
   const fetchData = async () => {
     try {
       const res = await get("/department");
@@ -23,6 +28,7 @@ const ManageDept = () => {
     }
   };
 
+  // Function to delete an item
   const deleteItem = (id) => {
     remove(`/department/${id}`)
       .then((res) => {
@@ -34,7 +40,7 @@ const ManageDept = () => {
       })
       .catch((err) => {
         if (err.response && err.response.status === 409) {
-          toast.error("The department having foreign key");
+          toast.error("The department has a foreign key");
         } else {
           toast.error("Failed to remove the department");
         }
@@ -42,20 +48,41 @@ const ManageDept = () => {
       });
   };
 
+  // Function to execute delete operation after confirmation
   const success = () => {
     deleteItem(workingId);
   };
 
+  // Function to cancel the delete operation
   const failure = () => {
     setShowDelete(false);
   };
-  const newCallBack = useCallback(() => {
-    fetchData();
-  }, []);
 
-  const newData = useMemo(() => newCallBack(), [toggle]);
+  // Function to handle the search logic
+  const handleSearch = useCallback(() => {
+    const filteredInfo = info.filter((val) => {
+      const nameMatch = val.dept_name
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+      const locationMatch = val.dept_location
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+      return nameMatch || locationMatch;
+    });
+
+    setFilteredData(filteredInfo);
+  }, [info, searchQuery]);
+
+  // Fetch data and filter on component mount
+  useEffect(() => {
+    fetchData();
+    handleSearch();
+  }, [handleSearch]);
+
+  // ... other existing code ...
+
   return (
-    <div className="my-10 mx-10">
+    <div className="my-10 mx-10 relative">
       {showDelete && (
         <DangerModal
           onClick={success}
@@ -64,7 +91,17 @@ const ManageDept = () => {
         />
       )}
       <h1 className="font-bold text-xl">Manage Department</h1>
-      <div className="overflow-x-auto">
+      {/* Add search box */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search here"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="px-4 py-2 border rounded-md absolute right-0 top-0"
+        />
+      </div>
+      <div className="overflow-x-auto pt-2">
         <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
           <thead className="bg-gray-300 text-[#000000] uppercase text-lg leading-normal">
             <tr>
@@ -83,7 +120,8 @@ const ManageDept = () => {
             </tr>
           </thead>
           <tbody className="text-gray-800 text-md font-bold">
-            {info.map((val, i) => (
+            {/* Use filteredData instead of info to render the rows */}
+            {filteredData.map((val, i) => (
               <tr
                 key={i}
                 className="border-b border-gray-400 hover:bg-gray-100"
