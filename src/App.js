@@ -20,6 +20,7 @@ import EditTask from "./Components/Pages/Task/EditTask";
 import TaskDetails from "./Components/Pages/TaskStatus/TaskDetails";
 import LoginPage from "./Components/Pages/LoginPage/LoginPage";
 import ViewSingleEmployee from "./Components/Pages/Employees/ViewSingleEmployee";
+import ChangePassword from "./Components/Pages/LoginPage/ChangePassword";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="taskstatus" element={<TaskStatus />} />
             <Route path="taskstatus/detail/:id" element={<TaskDetails />} />
             <Route path="eg1" element={<Example1 />} />
+            <Route path="/setting" element={<ChangePassword />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
         </Routes>
