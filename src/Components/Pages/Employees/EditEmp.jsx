@@ -135,7 +135,7 @@ const AddSubSection = () => {
   FormFields[0].options = [...employee];
   return (
     <div>
-      <div className="text-3xl">
+      <div className="text-3xl cursor-pointer ml-2">
         <IoArrowBack onClick={() => handleGoBack()} />
       </div>
       <div className="mt-20 px-20">
