@@ -90,16 +90,20 @@ const ManageEmp = () => {
   // Function to handle the department filter
   const handleFilter = () => {
     if (selectedDept === "") {
-      fetchData();
+      setFilteredData(info); // Reset filteredData to the original data
     } else {
       const filteredData = info.filter((emp) => emp.dept_name === selectedDept);
-      setInfo(filteredData);
+      setFilteredData(filteredData);
     }
   };
 
   // Fetch data and filter on component mount
   useEffect(() => {
     fetchData();
+  }, [fetchData]);
+
+  // Filter data on searchQuery change
+  useEffect(() => {
     handleSearch();
   }, [handleSearch]);
 
@@ -189,7 +193,7 @@ const ManageEmp = () => {
           {filteredData.map((val, i) => (
             <tr
               key={i}
-              className="py-3 text-center px-2 border-r border-b border-gray-400"
+              className="border-b border-gray-400  hover:bg-gray-200 font-bold"
             >
               <td className="py-3 px-4 border-l border-gray-400 text-center">
                 {i + 1}

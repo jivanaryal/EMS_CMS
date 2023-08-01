@@ -1,15 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { GoSearch } from "react-icons/go";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { RiAdminFill } from "react-icons/ri";
 import SubNav from "./SubNav";
+import { ColorContext } from "../../../Hoc/Layouts/Layout";
+
+
 
 const Navbar = () => {
-  const [show, setShow] = useState(false);
-  const [Arrow, setArrow] = useState(false);
+
+  const { show, setShow } = useContext(ColorContext);
+   const navbarRef = useRef(null);
+
+  useEffect(() => {
+    // Function to handle clicks outside the Navbar component
+    const handleClickOutsideNavbar = (event) => {
+      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+        console.log(navbarRef.current,!navbarRef.current.contains(event.target))
+        setShow(false);
+      }
+    };
+
+    // Add event listener when the component mounts
+    document.addEventListener("click", handleClickOutsideNavbar);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("click", handleClickOutsideNavbar);
+    };
+  }, [setShow]);
 
   return (
     <div
+    ref={navbarRef}
       className="h-16 border-2 border-l-0 z-30 text-white   shadow-lg fixed top-0 w-full bg-secondColor navbar"
       style={{
         background: "linear-gradient(to right, #000460, #004e82)",
@@ -39,7 +62,7 @@ const Navbar = () => {
           <div className=" ">
             <MdKeyboardArrowDown
               onClick={() => {
-                setArrow(!Arrow);
+               
                 setShow(!show);
               }}
               className="text-4xl  cursor-pointer "

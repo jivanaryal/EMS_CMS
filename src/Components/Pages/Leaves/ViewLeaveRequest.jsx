@@ -90,10 +90,12 @@ const LeaveApprovalList = () => {
         </div>
       </Link>
       <h1 className="font-bold text-2xl mb-6">Pending Leave</h1>
-      <table className="w-full bg-white shadow-md rounded-lg overflow-hidden lg:text-md md:text-sm">
-        <thead className="bg-gray-300 text-black text-center text-lg first-line border-2 border-gray-400">
+      <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
+        <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
           <tr>
-            <th className="py-3 px-4 border-r border-b border-gray-400">ID</th>
+            <th className="py-3 px-4 border-r border-b border-gray-400">
+              S.No.
+            </th>
             <th className="py-3 px-4 border-r border-b border-gray-400">
               Employee Name
             </th>
@@ -116,7 +118,7 @@ const LeaveApprovalList = () => {
           </tr>
         </thead>
         <tbody className="text-gray-800 text-center  border-2 border-gray-400">
-          {fileterEmployee.map((request) => (
+          {fileterEmployee.map((request, i) => (
             <tr
               key={request.emp_id}
               className="border-b border-gray-400  hover:bg-gray-200 font-bold"
@@ -126,7 +128,7 @@ const LeaveApprovalList = () => {
               }}
             >
               <td className="py-4 px-4 border-r border-b border-gray-400">
-                {request.emp_id}
+                {i + 1}
               </td>
               <td className="py-4 px-4 border-r border-b border-gray-400">
                 {request.first_name}

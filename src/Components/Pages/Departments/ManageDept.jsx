@@ -17,16 +17,20 @@ const ManageDept = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
-  // Function to fetch data
-  const fetchData = async () => {
-    try {
-      const res = await get("/department");
-      console.log(res.data);
-      setInfo(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // Fetch data and filter on component mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await get("/department");
+        setInfo(res.data);
+        setFilteredData(res.data); // Set initial filteredData to fetched data
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // Function to delete an item
   const deleteItem = (id) => {
@@ -58,8 +62,7 @@ const ManageDept = () => {
     setShowDelete(false);
   };
 
-  // Function to handle the search logic
-  const handleSearch = useCallback(() => {
+  const handleSearch = () => {
     const filteredInfo = info.filter((val) => {
       const nameMatch = val.dept_name
         .toLowerCase()
@@ -71,13 +74,12 @@ const ManageDept = () => {
     });
 
     setFilteredData(filteredInfo);
-  }, [info, searchQuery]);
+  };
 
-  // Fetch data and filter on component mount
+  // Call handleSearch on searchQuery change
   useEffect(() => {
-    fetchData();
     handleSearch();
-  }, [handleSearch]);
+  }, [searchQuery]);
 
   // ... other existing code ...
 
@@ -103,7 +105,7 @@ const ManageDept = () => {
       </div>
       <div className="overflow-x-auto pt-2">
         <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-          <thead className="bg-gray-300 text-[#000000] uppercase text-lg leading-normal">
+          <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
             <tr>
               <th className="py-3 text-center px-2 border-r border-b border-gray-400">
                 S.No

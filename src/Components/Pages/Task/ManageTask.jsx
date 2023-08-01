@@ -13,6 +13,7 @@ const ManageTask = () => {
   const [toggle, setToggle] = useState([]);
   const [showDelete, setShowDelete] = useState(false);
   const [workingId, setWorkingId] = useState(null);
+  const [dataLimit, setDataLimit] = useState(10);
 
   const fetchData = useCallback(async () => {
     try {
@@ -61,18 +62,6 @@ const ManageTask = () => {
     [toggle]
   );
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  const newCallBack = useCallback(() => {
-    fetchData();
-  }, []);
-
-  const newData = useMemo(() => newCallBack(), [toggle]);
-
-  // Get unique department names
-
   const success = () => {
     deleteItem(workingId);
   };
@@ -81,6 +70,19 @@ const ManageTask = () => {
     setShowDelete(false);
   };
 
+  const handleDataLimitChange = (event) => {
+    setDataLimit(parseInt(event.target.value, 10));
+  };
+
+  const limitedData = useMemo(
+    () => info.slice(0, dataLimit),
+    [info, dataLimit]
+  );
+
+  useEffect(() => {
+    fetchData();
+  }, [toggle]);
+
   return (
     <div className="my-10 mx-2 ">
       {showDelete && (
@@ -88,8 +90,40 @@ const ManageTask = () => {
       )}
       <h1 className="font-bold text-xl">Manage Task </h1>
 
-      <table className="w-full rounded-lg shadow-sm">
-        <thead className="bg-gray-100 text-[#000000] uppercase text-sm leading-normal">
+      <div className="my-4">
+        <label className="mr-2">Show Entries:</label>
+        <div className="relative inline-block">
+          <select
+            value={dataLimit}
+            onChange={handleDataLimitChange}
+            className="border text-black border-gray-400 w-28 focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300 rounded px-2 py-1 appearance-none bg-white pr-8"
+          >
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+            {/* Add more options based on your requirement */}
+          </select>
+          <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+            <svg
+              className="w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
+        <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
           <tr>
             <th className="py-3 px-6 border-r border-b border-gray-400">
               S.No
@@ -103,21 +137,19 @@ const ManageTask = () => {
             <th className="py-3 px-6 border-r border-b border-gray-400">
               Task Title
             </th>
-
             <th className="py-3 px-6 border-r border-b border-gray-400">
               Status
             </th>
-
             <th className="py-3 px-6 border-r border-b border-gray-400">
               Action
             </th>
           </tr>
         </thead>
-        <tbody className="text-gray-600 text-sm font-bold">
-          {info.map((val, i) => (
+        <tbody className="text-gray-black text-sm font-bold">
+          {limitedData.map((val, i) => (
             <tr
               key={i}
-              className="py-3 text-center px-2 border-r border-b border-gray-400"
+              className="border-b border-gray-400  hover:bg-gray-200 font-bold"
             >
               <td className="py-3 px-4 border-l text-center">{i + 1}</td>
               <td className="py-3 px-4 border-l border-r border-gray-400">
@@ -138,7 +170,6 @@ const ManageTask = () => {
               <td className="py-3 px-4 border-l border-r border-gray-400">
                 {val.status}
               </td>
-
               <td className=" border-l border-r border-gray-400  ">
                 <div className="flex justify-center gap-2">
                   <MdDelete

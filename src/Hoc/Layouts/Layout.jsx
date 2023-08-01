@@ -1,10 +1,18 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../../Components/Navigation/Navbar/Navbar";
 import Sidebar from "../../Components/Navigation/Sidebar/Sidebar";
 
+export const ColorContext = createContext();
+
+
 const Layout = () => {
+   const [show, setShow] = useState(false);
+  const [Arrow, setArrow] = useState(false);
+
   return (
+    <ColorContext.Provider value={{show,setShow,Arrow,setArrow}}>
+
     <div className="flex jivan">
       <div className="flex-none w-1/6">
         <div className="sticky top-0 min-h-screen max-h-screen   bg-mainColor overflow-hidden  ">
@@ -32,6 +40,7 @@ const Layout = () => {
         </div>
       </div>
     </div>
+    </ColorContext.Provider>
   );
 };
 

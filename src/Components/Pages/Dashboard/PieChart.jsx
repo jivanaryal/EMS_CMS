@@ -24,6 +24,7 @@ const PieChart = ({ employee }) => {
         id: 1,
         label: "Total Employee",
         data: [maleNumber, femaleNumber],
+        backgroundColor: ["#007BFF", "#FFC0CB"],
       },
     ],
   };
