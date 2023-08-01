@@ -31,25 +31,41 @@ const ManageEmp = () => {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [toggle]);
 
   // Function to delete an item
   const deleteItem = useCallback(
     (id) => {
       try {
-        remove(`/employee/${id}`).then((res) => {
-          if (res.status === 200) {
-            setToggle(!toggle);
-            toast.success("The Employee record is removed", {
-              className: "custom-toast",
-            });
-          }
-        });
+        remove(`/employee/${id}`)
+          .then((res) => {
+            if (res.status === 200) {
+              setToggle(!toggle);
+              toast.success("The Employee record is removed", {
+                className: "custom-toast",
+              });
+            }
+          })
+          .catch((err) => {
+            if (err.response && err.response.status === 409) {
+              toast.error(
+                "Can't delete employee having foreign key reference",
+                {
+                  className: "custom-toast",
+                }
+              );
+            }
+          });
       } catch (err) {
         if (err.response && err.response.status === 409) {
-          toast.error("Can't delete employee having foreign key reference");
+          // Show toast message for the conflict error
+          toast.error("Can't delete employee having foreign key reference", {
+            className: "custom-toast",
+          });
         } else {
-          toast.error("Failed to remove the employee");
+          toast.error("Failed to remove the employee", {
+            className: "custom-toast",
+          });
         }
       }
     },
@@ -155,7 +171,7 @@ const ManageEmp = () => {
           placeholder="Search Here"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="px-4 py-2 border rounded-md absolute right-0 top-10"
+          className="px-4 py-2 border rounded-md absolute right-0 top-10 focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300  appearance-none bg-white "
         />
         {/* <button
           onClick={handleSearch}
@@ -249,7 +265,7 @@ const ManageEmp = () => {
           ))}
         </tbody>
       </table>
-      <ToastContainer position="bottom-left" />
+      <ToastContainer className="mt-11 text-sm " />
     </div>
   );
 };

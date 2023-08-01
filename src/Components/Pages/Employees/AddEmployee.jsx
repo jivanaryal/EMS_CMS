@@ -262,7 +262,7 @@ const AddSubSection = () => {
                       );
                     }
                   })}
-                  <ToastContainer position="bottom-right" />
+                  <ToastContainer className="mt-11 text-sm " />
                 </div>
 
                 <button

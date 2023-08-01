@@ -123,7 +123,7 @@ const AddSubSection = () => {
 
       update(`/employee/${id}`, formData).then((res) => {
         if (res.status === 200) {
-          toast.success("The employee is added");
+          toast.success("The employee data is updated");
         }
       });
     }
@@ -257,7 +257,7 @@ const AddSubSection = () => {
                       );
                     }
                   })}
-                  <ToastContainer position="bottom-right" />
+                  <ToastContainer className="mt-11 text-sm " />
                 </div>
 
                 <button

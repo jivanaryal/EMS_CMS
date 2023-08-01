@@ -111,7 +111,7 @@ const EditDept = () => {
           );
         }}
       </Formik>
-      <ToastContainer position="bottom-left" />
+      <ToastContainer className="mt-11 " />
     </div>
   );
 };

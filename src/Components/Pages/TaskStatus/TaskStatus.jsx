@@ -11,7 +11,7 @@ const Employee = () => {
     },
     {
       id: "view",
-      name: "Inprogress task",
+      name: "InComplete task",
     },
   ];
 

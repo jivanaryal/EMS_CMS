@@ -5,18 +5,18 @@ import { RiAdminFill } from "react-icons/ri";
 import SubNav from "./SubNav";
 import { ColorContext } from "../../../Hoc/Layouts/Layout";
 
-
-
 const Navbar = () => {
-
   const { show, setShow } = useContext(ColorContext);
-   const navbarRef = useRef(null);
+  const navbarRef = useRef(null);
 
   useEffect(() => {
     // Function to handle clicks outside the Navbar component
     const handleClickOutsideNavbar = (event) => {
       if (navbarRef.current && !navbarRef.current.contains(event.target)) {
-        console.log(navbarRef.current,!navbarRef.current.contains(event.target))
+        console.log(
+          navbarRef.current,
+          !navbarRef.current.contains(event.target)
+        );
         setShow(false);
       }
     };
@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <div
-    ref={navbarRef}
+      ref={navbarRef}
       className="h-16 border-2 border-l-0 z-30 text-white   shadow-lg fixed top-0 w-full bg-secondColor navbar"
       style={{
         background: "linear-gradient(to right, #000460, #004e82)",
@@ -62,7 +62,6 @@ const Navbar = () => {
           <div className=" ">
             <MdKeyboardArrowDown
               onClick={() => {
-               
                 setShow(!show);
               }}
               className="text-4xl  cursor-pointer "

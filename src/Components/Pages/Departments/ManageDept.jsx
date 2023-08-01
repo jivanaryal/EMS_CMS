@@ -30,7 +30,7 @@ const ManageDept = () => {
     };
 
     fetchData();
-  }, []);
+  }, [toggle]);
 
   // Function to delete an item
   const deleteItem = (id) => {
@@ -100,7 +100,7 @@ const ManageDept = () => {
           placeholder="Search here"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="px-4 py-2 border rounded-md absolute right-0 top-0"
+          className="px-4 py-2 border rounded-md absolute right-0 top-0 focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300 rounded px-2 py-1 appearance-none bg-white "
         />
       </div>
       <div className="overflow-x-auto pt-2">
@@ -162,7 +162,7 @@ const ManageDept = () => {
           </tbody>
         </table>
       </div>
-      <ToastContainer position="bottom-left" />
+      <ToastContainer className="mt-11 text-sm " />
     </div>
   );
 };

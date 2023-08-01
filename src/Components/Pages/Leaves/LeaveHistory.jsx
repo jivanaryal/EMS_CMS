@@ -166,7 +166,7 @@ const LeaveApprovalList = () => {
           ))}
         </tbody>
       </table>
-      <ToastContainer position="bottom-left" />
+      <ToastContainer className="mt-11 text-sm " />
     </div>
   );
 };

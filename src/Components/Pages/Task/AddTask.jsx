@@ -25,7 +25,7 @@ const FormFields = [
   },
   {
     name: "task_description",
-    type: "text",
+    type: "textarea",
   },
   {
     name: "task_end_date",
@@ -154,13 +154,22 @@ const AddTask = () => {
                           >
                             {val.name}
                           </label>
-                          <Field
-                            key={i}
-                            type={val.type}
-                            name={val.name}
-                            placeholder={`Enter ${val.name}`}
-                            className="border border-gray-400 p-1 rounded w-full"
-                          />
+                          {val.name === "task_description" ? (
+                            <Field
+                              as="textarea" // Use a textarea element for the "message" field
+                              type={val.type}
+                              name={val.name}
+                              className="border border-gray-400 rounded-md py-2 px-3 w-full resize-none h-24 " // Customize the width and height here
+                              placeholder={`Enter ${val.name}`}
+                            />
+                          ) : (
+                            <Field
+                              type={val.type}
+                              name={val.name}
+                              className="border border-gray-400 rounded-md py-2 px-3 w-full"
+                              placeholder={`Enter ${val.name}`}
+                            />
+                          )}
                           <ErrorMessage
                             name={val.name}
                             component={"div"}
@@ -170,7 +179,7 @@ const AddTask = () => {
                       );
                     }
                   })}
-                  <ToastContainer position="bottom-left" />
+                  <ToastContainer className="mt-11 text-sm " />
                 </div>
                 <button
                   type="submit"

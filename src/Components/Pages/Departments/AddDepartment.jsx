@@ -105,7 +105,7 @@ const AddDepartment = () => {
           </Form>
         )}
       </Formik>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer className="mt-11 text-sm " />
     </div>
   );
 };
