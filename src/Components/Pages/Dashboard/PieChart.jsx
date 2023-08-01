@@ -24,7 +24,6 @@ const PieChart = ({ employee }) => {
         id: 1,
         label: "Total Employee",
         data: [maleNumber, femaleNumber],
-        backgroundColor: ["#007BFF", "#FFC0CB"],
       },
     ],
   };
@@ -39,7 +38,7 @@ const PieChart = ({ employee }) => {
               labels: {
                 color: "black", // Set the label color to white
                 font: {
-                  size: 10,
+                  size: 16,
                 },
               },
             },
