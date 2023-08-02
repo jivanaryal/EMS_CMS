@@ -96,7 +96,7 @@ const AddSubSection = () => {
     // setNewImg(e.target.files[0]);
   };
 
-  const postFormData = (val) => {
+  const postFormData = (val, formikBag) => {
     console.log(val);
     const selectedOption = FormFields[0].options.find(
       (option) => option.dept_name === val.dept_name
@@ -132,6 +132,7 @@ const AddSubSection = () => {
         .then((res) => {
           if (res.status === 200) {
             toast.success("The employee is added");
+            formikBag.resetForm();
           }
         })
         .catch((err) => [console.log(err)]);
@@ -153,9 +154,9 @@ const AddSubSection = () => {
             image: [],
           }}
           validationSchema={schema}
-          onSubmit={(val) => {
+          onSubmit={(val, formikBag) => {
             console.log(val);
-            postFormData(val);
+            postFormData(val, formikBag);
           }}
         >
           {({ handleSubmit, values }) => {

@@ -37,7 +37,7 @@ const CreateEmp = () => {
       });
   }, []);
 
-  const postFormData = async (values) => {
+  const postFormData = async (values, formikBag) => {
     try {
       const response = await post(
         `/createemp/signup/${values.emp_name}`,
@@ -46,6 +46,7 @@ const CreateEmp = () => {
 
       if (response.status === 200) {
         toast.success("New employee created");
+        formikBag.resetForm();
       } else {
         console.error("Failed to create employee.");
         toast.error("Failed to create employee.");

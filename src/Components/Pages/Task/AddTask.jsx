@@ -46,7 +46,7 @@ const AddTask = () => {
       });
   }, []);
 
-  const postFormData = (values) => {
+  const postFormData = (values, formikBag) => {
     console.log(values);
     console.log();
     console.log(values.first_name);
@@ -69,6 +69,7 @@ const AddTask = () => {
         .then((res) => {
           if (res.status === 200) {
             toast.success("The task is assigned");
+            formikBag.resetForm();
           }
         })
         .catch((err) => {
@@ -94,8 +95,8 @@ const AddTask = () => {
           task_description: "",
           task_end_date: "",
         }}
-        onSubmit={(values) => {
-          postFormData(values);
+        onSubmit={(values, formikBag) => {
+          postFormData(values, formikBag);
         }}
       >
         {({ handleSubmit, setFieldValue, values }) => {

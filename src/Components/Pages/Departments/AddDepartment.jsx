@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import * as yup from "yup";
 // import axios from "axios";
@@ -32,11 +32,12 @@ const FormField = [
 ];
 
 const AddDepartment = () => {
-  const postFormData = async (value) => {
+  const postFormData = async (value, formikBag) => {
     post("/department", value)
       .then((res) => {
         if (res.status === 200) {
           toast.success("The department is added");
+          formikBag.resetForm();
         }
       })
       .catch((err) => {
@@ -62,9 +63,8 @@ const AddDepartment = () => {
           dept_location: "",
         }}
         validationSchema={schema}
-        onSubmit={(values) => {
-          postFormData(values);
-          // toast.success("Form submitted successfully!");
+        onSubmit={(values, formikBag) => {
+          postFormData(values, formikBag);
         }}
       >
         {({ handleSubmit }) => (
