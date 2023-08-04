@@ -191,7 +191,7 @@ const Dashboard = () => {
                           alt="Employee"
                           className="w-12 h-12 rounded-full mr-5"
                         />
-                        <div className="grid w-full grid-cols-3 gap-4  text-sm   lg:text-[10px] text-[#5E5E5E] font-bold items-center">
+                        <div className="grid w-full grid-cols-3 gap-4  text-sm   lg:text-[12px] text-[#5E5E5E] font-bold items-center">
                           <div className="text-gray-700 capitalize ">
                             {pendingLeave.first_name} {pendingLeave.middle_name}{" "}
                             {pendingLeave.last_name}
