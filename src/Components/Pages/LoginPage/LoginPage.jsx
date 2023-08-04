@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { post } from "../../../services/api";
 import bg from "../../../assets/Image/bg.jpg";
+import { useState } from "react";
 const schema = yup.object().shape({
   email: yup.string().required("Email is required").email("Invalid email"),
   password: yup.string().required("Password is required"),
@@ -26,6 +27,7 @@ const FormField = [
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [loginData, setLoginData] = useState(true);
   const postLoginForm = async (val) => {
     try {
       const res = await post("/adminlogintable/admin/login", val);
@@ -34,8 +36,10 @@ const LoginPage = () => {
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token);
         console.log(res.data);
+
         const admin_id = res.data.admin_id;
         console.log(res.data);
+        setLoginData(true);
         localStorage.setItem("admin_id", admin_id);
         navigate("/", { state: { admin_id } });
       }

@@ -20,6 +20,7 @@ const Dashboard = () => {
   const [lemployee, setLEmployee] = useState(0);
   const [ldepartment, setLdepartment] = useState(0);
   const [viewReq, setViewReq] = useState(0);
+  const [datas, setDatas] = useState(true);
 
   const data = [
     {
@@ -115,43 +116,68 @@ const Dashboard = () => {
   const sortedEmployees = [...employee].sort((a, b) => b.salary - a.salary);
   const topEmployees = sortedEmployees.slice(0, 5);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1000) {
+        setDatas(false);
+      } else {
+        setDatas(true);
+      }
+    };
+
+    // Call handleResize initially to set the initial state based on the window width
+    handleResize();
+
+    // Add the event listener for the resize event
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <UserAuthContextApi>
       <UserAuthContext.Provider>
         <div className="w-full">
           <div className="pb-4 w-12/12 mx-4">
             <div className="grid grid-cols-12 gap-4 ">
-              <div className=" col-span-8">
-                <div className="flex mt-10 gap-14">
-                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2 h-46 w-7/12  shadow-sm shadow-mainColor p-4">
+              <div className={`lg:col-span-8 col-span-12`}>
+                <div className="flex mt-10 gap-14 w-full">
+                  <div className="grid grid-cols-2   gap-8 md:grid-cols-2  shadow-sm shadow-mainColor p-4">
                     {data.map((val, i) => (
                       <Link to={val.path} key={i}>
                         <div
                           style={{ backgroundColor: val.colors }}
-                          className="rounded-lg h-36   w-full flex flex-col  gap-2 items-center text-sm shadow-md shadow-gray-300 py-4 mx-2 sm:mx-4 md:mx-2 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-6"
+                          className="rounded-lg lg:h-28 h-24      flex flex-col justify-center items-center gap-2   shadow-md shadow-gray-300   mx-2 sm:mx-4 md:mx-2 text-center hover:transition-all hover:scale-105 hover:delay-200 hover:duration-1000 px-10"
                         >
                           <div
-                            className="text-2xl font-bold text-white p-1 rounded-md flex"
+                            className="lg:text-xl text-sm  font-bold text-white p-1 rounded-md flex"
                             style={{ backgroundColor: val.colors1 }}
                           >
                             {val.icons}
                           </div>
 
-                          <div className="text-lg font-bold">{val.title}</div>
+                          <div className=" font-bold text-[14px]">
+                            {val.title}
+                          </div>
                           <span className="text-base font-bold">{val.num}</span>
                         </div>
                       </Link>
                     ))}
                   </div>
-                  <div className="w-80 flex-auto shadow-mainColor shadow-2">
+                  <div className="lg:w-80 w-64  md:block hidden flex-auto shadow-mainColor shadow-2">
                     <PieChart employee={employee} />
                   </div>
                 </div>
               </div>
               {/*             Pending Leave Requests */}
-              <div className="col-span-4 w-full mt-4">
+              <div
+                className={`lg:col-span-4 md:col-span-9 col-span-12 w-full mt-4 `}
+              >
                 <div className="employee_data pl-6 shadow-xl shadow-gray-300 rounded-lg">
-                  <h1 className="text-xl font-bold mb-8 pt-6 mt-4">
+                  <h1 className="lg:text-xl text-base font-bold mb-8 pt-6 mt-4">
                     Pending Leave Requests
                   </h1>
                   {uniquePendingLeaves.length > 0 ? (
@@ -165,7 +191,7 @@ const Dashboard = () => {
                           alt="Employee"
                           className="w-12 h-12 rounded-full mr-5"
                         />
-                        <div className="grid w-full grid-cols-3 gap-4  text-sm text-[#5E5E5E] font-bold items-center">
+                        <div className="grid w-full grid-cols-3 gap-4  text-sm   lg:text-[10px] text-[#5E5E5E] font-bold items-center">
                           <div className="text-gray-700 capitalize ">
                             {pendingLeave.first_name} {pendingLeave.middle_name}{" "}
                             {pendingLeave.last_name}
@@ -185,7 +211,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-6 py-6">
+            <div className="grid md:grid-cols-2 col-span-1 gap-6 py-6">
               {/* Top employee */}
               <div className=" employee_data  pl-6 shadow-sm shadow-mainColor  rounded-lg pb-2 mb-2">
                 <h1 className="text-2xl font-bold mb-8 pt-6 mt-4">
@@ -199,11 +225,11 @@ const Dashboard = () => {
                         alt="Employee"
                         className="w-12 h-12 rounded-full mr-5"
                       />
-                      <div className="grid w-full  grid-cols-3 gap-4 text-sm text-[#5E5E5E] font-bold items-center">
+                      <div className="grid w-full  sm:grid-cols-3 grid-cols-2 gap-4 text-sm text-[#5E5E5E] font-bold items-center">
                         <div className="text-gray-700 capitalize ">
                           {emp.first_name} {emp.middle_name} {emp.last_name}
                         </div>
-                        <div>{emp.dept_name}</div>
+                        <div className="md:block hidden">{emp.dept_name}</div>
 
                         <div className="font-bold text-black">
                           ${emp.salary}
@@ -213,7 +239,7 @@ const Dashboard = () => {
                   ))}
                 </div>
               </div>
-              <div className="shadow-md  shadow-mainColor">
+              <div className="shadow-md  shadow-mainColor md:block hidden">
                 <MyBarChart task={task} />
               </div>
             </div>

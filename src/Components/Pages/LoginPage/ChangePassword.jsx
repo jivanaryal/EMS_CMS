@@ -46,8 +46,7 @@ const ChangePassword = () => {
       const response = await post(`/adminlogintable/changepw/${id}`, values);
 
       if (response.status === 200) {
-        toast.success("passsword change successfully");
-        formikBag.resetForm();
+        toast.success("New password change");
       } else {
         toast.error("Failed to change password.");
       }
