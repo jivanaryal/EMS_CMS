@@ -142,7 +142,7 @@ const AddSubSection = () => {
   FormFields[0].options = [...employee];
   return (
     <div>
-      <div className="mt-20 px-20">
+      <div className="mt-20 md:px-20">
         <Formik
           initialValues={{
             dept_name: "",
@@ -162,7 +162,7 @@ const AddSubSection = () => {
           {({ handleSubmit, values }) => {
             return (
               <Form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 grid-cols-1  gap-6">
                   {FormFields.map((val, i) => {
                     if (val.type === "select") {
                       return (

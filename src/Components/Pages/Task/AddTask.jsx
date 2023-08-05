@@ -2,6 +2,18 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { get, post } from "../../../services/api";
 import { toast, ToastContainer } from "react-toastify";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  emp_name: yup.string().required("Employee name is required"),
+  task_priority: yup.string().required("Task priority is required"),
+  task_title: yup
+    .string()
+    .required("Task title is required")
+    .max(50, "Character length should not exceed 50"),
+  task_description: yup.string().required("Task description is required"),
+  task_end_date: yup.date().required("Task end date is required"),
+});
 
 const FormFields = [
   {
@@ -86,7 +98,7 @@ const AddTask = () => {
   FormFields[0].options = [...employee];
 
   return (
-    <div className="mt-10 px-20 ">
+    <div className="mt-10 md:px-20 px-0 ">
       <Formik
         initialValues={{
           emp_name: "",
@@ -98,11 +110,12 @@ const AddTask = () => {
         onSubmit={(values, formikBag) => {
           postFormData(values, formikBag);
         }}
+        validationSchema={schema}
       >
         {({ handleSubmit, setFieldValue, values }) => {
           return (
             <Form onSubmit={handleSubmit}>
-              <div className="shadow-2xl shadow-gray-400 px-4  w-7/12">
+              <div className="shadow-2xl shadow-gray-400 px-4  md:w-7/12 w-full">
                 <div className="grid grid-cols-1 w-full mb-3 gap-3">
                   {FormFields.map((val, i) => {
                     if (val.type === "select") {

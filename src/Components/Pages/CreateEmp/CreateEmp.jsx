@@ -5,6 +5,20 @@ import { get, post } from "../../../services/api";
 import { TbSelect } from "react-icons/tb";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordFill } from "react-icons/ri";
+import * as yup from "yup";
+
+const validationSchema = yup.object().shape({
+  emp_name: yup.string().required("Employee name is required"),
+  email: yup
+    .string()
+    .required("Email is required")
+    .email("Invalid email format"),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(6, "Password should be at least 6 characters long"),
+});
+
 const FormFields = [
   {
     name: "emp_name",
@@ -44,6 +58,9 @@ const CreateEmp = () => {
         values
       );
 
+      console.log("Response status:", response.status);
+      console.log("Response data:", response.data);
+
       if (response.status === 200) {
         toast.success("New employee created");
         formikBag.resetForm();
@@ -56,8 +73,7 @@ const CreateEmp = () => {
         console.error("Employee with the same ID already exists.");
         toast.error("Employee with the same ID already exists.");
       } else {
-        console.error("Error:", error);
-        toast.error("An error occurred while creating employee.");
+        console.error("An error occurred while creating employee.");
       }
     }
   };
@@ -79,7 +95,7 @@ const CreateEmp = () => {
           email: "",
           password: "",
         }}
-        // validationSchema={schema}
+        validationSchema={validationSchema}
         onSubmit={(values) => {
           postFormData(values);
         }}

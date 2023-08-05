@@ -2,8 +2,22 @@ import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { get, post } from "../../../services/api";
+import * as yup from "yup";
 
 import { RiLockPasswordFill } from "react-icons/ri";
+
+const validationSchema = yup.object().shape({
+  old_password: yup.string().required("Old password is required"),
+  new_password: yup
+    .string()
+    .required("New password is required")
+    .min(6, "New password should be at least 6 characters long"),
+  confirm_password: yup
+    .string()
+    .required("Confirm password is required")
+    .oneOf([yup.ref("new_password")], "Passwords do not match"),
+});
+
 const FormFields = [
   {
     name1: "Old Password",
@@ -76,7 +90,7 @@ const ChangePassword = () => {
           new_password: "",
           confirm_password: "",
         }}
-        // validationSchema={schema}
+        validationSchema={validationSchema}
         onSubmit={(values) => {
           postFormData(values);
         }}

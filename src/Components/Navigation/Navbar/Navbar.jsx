@@ -34,14 +34,14 @@ const Navbar = () => {
   return (
     <div
       ref={navbarRef}
-      className="h-16 border-2 border-l-0 z-30 text-white   shadow-lg fixed top-0 w-full bg-secondColor navbar"
+      className="h-16 border-2 border-l-0 z-30 text-white w-full   shadow-lg fixed top-0  bg-secondColor navbar"
       style={{
         background: "linear-gradient(to right, #000460, #004e82)",
       }}
     >
       <div
         className={`h-full flex items-center
-      pl-4  pr-7  ${sidebar ? "justify-around" : "justify-between pr-24"}`}
+      pl-4  pr-7  ${sidebar ? "justify-around" : "justify-around ml-"}`}
       >
         {/* search  */}
 
@@ -60,14 +60,14 @@ const Navbar = () => {
             Admin
           </div>
           <div className=" rounded-full ">
-            <RiAdminFill className="w-10 h-10 font-bold p-2 rounded-full border-2" />
+            <RiAdminFill className="w-10 h-10 font-bold p-2 sm:block hidden rounded-full border-2" />
           </div>
           <div className=" ">
             <MdKeyboardArrowDown
               onClick={() => {
                 setShow(!show);
               }}
-              className="text-4xl  cursor-pointer "
+              className="text-4xl sm:mr-0 mr-20  cursor-pointer "
             />
             {show && (
               <div className="w-44 text-black bg-white rounded-md shadow-sm shadow-gray-400 absolute top-[3.3rem] font-bold  right-[1px] -z-50  cursor-pointer border-1 border-gray-300 py-2 px-3">

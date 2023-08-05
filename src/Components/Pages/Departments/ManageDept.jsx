@@ -84,7 +84,7 @@ const ManageDept = () => {
   // ... other existing code ...
 
   return (
-    <div className="my-10 mx-10 relative">
+    <div className="my-10 mx-4 md:mx-10 lg:mx-16 relative overflow-y-hidden">
       {showDelete && (
         <DangerModal
           onClick={success}
@@ -94,16 +94,16 @@ const ManageDept = () => {
       )}
       <h1 className="font-bold text-xl">Manage Department</h1>
       {/* Add search box */}
-      <div className="mb-4">
+      <div className="mb-4 mt-6 md:mt-0">
         <input
           type="text"
           placeholder="Search here"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="px-4 py-2 border rounded-md absolute right-0 top-0 focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300 rounded px-2 py-1 appearance-none bg-white "
+          className="px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300 rounded px-2 py-1 appearance-none bg-white"
         />
       </div>
-      <div className="overflow-x-auto pt-2">
+      <div className="overflow-x-auto mt-4">
         <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
           <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
             <tr>
@@ -137,23 +137,23 @@ const ManageDept = () => {
                 <td className="py-3 text-center border-l border-r border-gray-400 capitalize">
                   {val.dept_location}
                 </td>
-                <td className="py-3 border-l  border-r border-gray-400  ">
-                  <div className="flex justify-center gap-3">
+                <td className="py-3 border-l border-r border-gray-400">
+                  <div className="flex justify-center md:justify-start gap-3">
                     <MdDelete
                       onClick={() => {
                         setWorkingId(val.dept_id);
                         setShowDelete(true);
                       }}
-                      className="text-3xl   hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300 cursor-pointer"
+                      className="text-3xl hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300 cursor-pointer"
                     />
                     <Link
                       state={val}
-                      className="text-3xl ml-2 hover:scale-110 hover:text-blue-500 transition-all delay-100 duration-300"
+                      className="text-3xl hover:scale-110 hover:text-blue-500 transition-all delay-100 duration-300"
                       to={{
                         pathname: `/department/${val.dept_id}`,
                       }}
                     >
-                      <MdOutlineUpdate className="text-3xl  cursor-pointer" />
+                      <MdOutlineUpdate className="text-3xl cursor-pointer" />
                     </Link>
                   </div>
                 </td>
@@ -162,7 +162,7 @@ const ManageDept = () => {
           </tbody>
         </table>
       </div>
-      <ToastContainer className="mt-11 text-sm " />
+      <ToastContainer className="mt-11 text-sm" />
     </div>
   );
 };

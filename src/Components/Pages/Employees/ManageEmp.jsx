@@ -180,91 +180,92 @@ const ManageEmp = () => {
           Search
         </button> */}
       </div>
-
-      <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-        <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
-          <tr>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
-              S.No
-            </th>
-            <th className="py-3 px-1 border-r border-b border-gray-400">
-              Employee Name
-            </th>
-            <th className="py-3 px-2 border-r border-b border-gray-400">
-              Images
-            </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
-              Position
-            </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
-              Salary
-            </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody className="text-gray-800 text-sm font-bold">
-          {/* Use filteredData instead of info to render the rows */}
-          {filteredData.map((val, i) => (
-            <tr
-              key={i}
-              className="border-b border-gray-400  hover:bg-gray-200 font-bold"
-            >
-              <td className="py-3 px-4 border-l border-gray-400 text-center">
-                {i + 1}
-              </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400">
-                {val.first_name} {val.middle_name} {val.last_name}
-              </td>
-              <td className=" py-1 border-l border-gray-400 border-r">
-                <div className="h-28 w-32 mx-auto">
-                  <img
-                    src={`http://localhost:5000/${val.image}`}
-                    className="object-cover  w-full h-full rounded-sm"
-                    alt="Employee"
-                  />
-                </div>
-              </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400 capitalize">
-                {val.position}
-              </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400">
-                {val.salary}
-              </td>
-              <td className=" border-l border-r border-gray-400">
-                <div className="flex justify-center gap-2">
-                  <MdDelete
-                    onClick={() => {
-                      setWorkingId(val.emp_id);
-                      setShowDelete(true);
-                    }}
-                    className="text-3xl  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
-                  />
-                  <Link
-                    state={val}
-                    className="hover:scale-110   transition-all delay-100 duration-300 hover:text-blue-500"
-                    to={{
-                      pathname: `/employee/${val.emp_id}`,
-                    }}
-                  >
-                    <MdOutlineUpdate className="text-3xl" />
-                  </Link>
-                  <Link
-                    state={val}
-                    className="hover:scale-110   transition-all delay-100 duration-300 hover:text-green-500"
-                    to={{
-                      pathname: `/employee/view/${val.emp_id}`,
-                    }}
-                  >
-                    <BsEyeFill className="text-3xl" />
-                  </Link>
-                </div>
-              </td>
+      <div className="overflow-x-auto">
+        <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
+          <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
+            <tr>
+              <th className="py-3 px-6 border-r border-b border-gray-400">
+                S.No
+              </th>
+              <th className="py-3 px-1 border-r border-b border-gray-400">
+                Employee Name
+              </th>
+              <th className="py-3 px-2 border-r border-b border-gray-400">
+                Images
+              </th>
+              <th className="py-3 px-6 border-r border-b border-gray-400">
+                Position
+              </th>
+              <th className="py-3 px-6 border-r border-b border-gray-400">
+                Salary
+              </th>
+              <th className="py-3 px-6 border-r border-b border-gray-400">
+                Action
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="text-gray-800 text-sm font-bold">
+            {/* Use filteredData instead of info to render the rows */}
+            {filteredData.map((val, i) => (
+              <tr
+                key={i}
+                className="border-b border-gray-400  hover:bg-gray-200 font-bold"
+              >
+                <td className="py-3 px-4 border-l border-gray-400 text-center">
+                  {i + 1}
+                </td>
+                <td className="py-3 px-4 border-l border-r border-gray-400">
+                  {val.first_name} {val.middle_name} {val.last_name}
+                </td>
+                <td className=" py-1 border-l border-gray-400 border-r">
+                  <div className="h-28 w-32 mx-auto">
+                    <img
+                      src={`http://localhost:5000/${val.image}`}
+                      className="object-cover  w-full h-full rounded-sm"
+                      alt="Employee"
+                    />
+                  </div>
+                </td>
+                <td className="py-3 px-4 border-l border-r border-gray-400 capitalize">
+                  {val.position}
+                </td>
+                <td className="py-3 px-4 border-l border-r border-gray-400">
+                  {val.salary}
+                </td>
+                <td className=" border-l border-r border-gray-400">
+                  <div className="flex justify-center gap-2">
+                    <MdDelete
+                      onClick={() => {
+                        setWorkingId(val.emp_id);
+                        setShowDelete(true);
+                      }}
+                      className="text-3xl  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
+                    />
+                    <Link
+                      state={val}
+                      className="hover:scale-110   transition-all delay-100 duration-300 hover:text-blue-500"
+                      to={{
+                        pathname: `/employee/${val.emp_id}`,
+                      }}
+                    >
+                      <MdOutlineUpdate className="text-3xl" />
+                    </Link>
+                    <Link
+                      state={val}
+                      className="hover:scale-110   transition-all delay-100 duration-300 hover:text-green-500"
+                      to={{
+                        pathname: `/employee/view/${val.emp_id}`,
+                      }}
+                    >
+                      <BsEyeFill className="text-3xl" />
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <ToastContainer className="mt-11 text-sm " />
     </div>
   );

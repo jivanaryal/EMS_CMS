@@ -10,14 +10,18 @@ const schema = yup.object().shape({
   dept_name: yup
     .string()
     .required("The Name is required")
-    .max(20, "Character length should not exceed 15")
-    .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
+    .max(20, "Character length should not exceed 20")
+    .matches(
+      /^[^\s].*[^\s]$/,
+      "Spaces are not allowed at the beginning or the end"
+    ),
   dept_location: yup
     .string()
     .required("The location is required")
     .max(15, "Character length should not exceed 15")
     .matches(/^[A-Za-z]+$/, "Only characters are allowed."),
 });
+
 const FormField = [
   {
     name: "dept_name",
@@ -69,8 +73,8 @@ const AddDepartment = () => {
       >
         {({ handleSubmit }) => (
           <Form onSubmit={handleSubmit} className="mt-16">
-            <div className="shadow-2xl shadow-gray-400 w-8/12 p-2">
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-1 w-11/12 mx-auto">
+            <div className="shadow-2xl shadow-gray-400 md:w-8/12 w-full p-2">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-1 lg:w-11/12  mx-auto">
                 {FormField.map((field, index) => (
                   <div key={index}>
                     <label
