@@ -28,18 +28,20 @@ const FormField = [
 const LoginPage = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState(true);
+  const [login, setLogin] = useState(false);
   const postLoginForm = async (val) => {
     try {
       const res = await post("/adminlogintable/admin/login", val);
 
       console.log(res.data);
       if (res.status === 200) {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token1", res.data.token);
         console.log(res.data);
+        setLogin(true);
 
         const admin_id = res.data.admin_id;
-        console.log(res.data);
         setLoginData(true);
+        console.log(res.data);
         localStorage.setItem("admin_id", admin_id);
         navigate("/", { state: { admin_id } });
       }
@@ -58,6 +60,7 @@ const LoginPage = () => {
       }
     }
   };
+
   return (
     <div
       className="flex justify-center items-center h-screen bg-gray-400 "
@@ -71,7 +74,7 @@ const LoginPage = () => {
         <h2 className="text-4xl font-bold mb-8 text-center text-white">
           Admin Login
         </h2>
-        <UserAuthContextApi>
+        <UserAuthContextApi login={login} loginData={loginData}>
           <UserAuthContext.Consumer>
             {(context) => {
               return (

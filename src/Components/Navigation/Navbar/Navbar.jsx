@@ -6,7 +6,8 @@ import SubNav from "./SubNav";
 import { ColorContext } from "../../../Hoc/Layouts/Layout";
 
 const Navbar = () => {
-  const { show, setShow } = useContext(ColorContext);
+  const { show, setShow, sidebar, setShowSidebar } = useContext(ColorContext);
+
   const navbarRef = useRef(null);
 
   useEffect(() => {
@@ -39,8 +40,8 @@ const Navbar = () => {
       }}
     >
       <div
-        className="w-full h-full flex items-center
-      pl-4 justify-around pr-7"
+        className={`h-full flex items-center
+      pl-4  pr-7  ${sidebar ? "justify-around" : "justify-between pr-24"}`}
       >
         {/* search  */}
 
@@ -55,7 +56,9 @@ const Navbar = () => {
 
         {/* profile */}
         <div className="flex relative  items-center gap-3">
-          <div className="font-bold text-lg text-white ">Admin</div>
+          <div className="font-bold text-lg text-white sm:block hidden  ">
+            Admin
+          </div>
           <div className=" rounded-full ">
             <RiAdminFill className="w-10 h-10 font-bold p-2 rounded-full border-2" />
           </div>

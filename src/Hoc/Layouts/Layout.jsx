@@ -16,7 +16,7 @@ const Layout = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 1000) {
+      if (window.innerWidth < 1020) {
         setShowSidebar(false);
       } else {
         setShowSidebar(true);
@@ -35,10 +35,6 @@ const Layout = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const screenWidth = window.innerWidth;
-  }, []);
-
   return (
     <UserAuthContextApi>
       <UserAuthContext.Provider>
@@ -46,10 +42,16 @@ const Layout = () => {
           value={{ show, setShow, Arrow, setArrow, sidebar, setShowSidebar }}
         >
           <div className="flex jivan">
-            <div className={`flex-none w-1/6 ${sidebar === false && "w-24"}`}>
+            <div
+              className={`flex-none w-1/6 ${
+                sidebar
+                  ? "transition-all delay-75 "
+                  : "w-24  transition-all delay-100 duration-300"
+              }`}
+            >
               <div className="sticky top-0 min-h-screen max-h-screen   bg-mainColor overflow-hidden  ">
                 <AiOutlineMenuFold
-                  className="text-3xl absolute text-white right-2 top-2 "
+                  className="text-3xl cursor-pointer lg:visible invisible absolute text-white right-2 top-2 "
                   onClick={() => {
                     setShowSidebar(!sidebar);
                   }}

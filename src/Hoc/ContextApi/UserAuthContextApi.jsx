@@ -3,15 +3,16 @@ import { useNavigate } from "react-router-dom";
 
 export const UserAuthContext = createContext();
 
-const UserAuthContextApi = ({ children }) => {
+const UserAuthContextApi = ({ children, login, setLogin, loginData }) => {
   const [token, setToken] = useState("");
   const navigate = useNavigate();
+  console.log(login, loginData);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("token1");
 
     if (storedToken) {
-      setToken(storedToken);
+      setToken(storedToken || loginData);
     }
 
     if (storedToken) {
