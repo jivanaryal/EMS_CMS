@@ -142,14 +142,14 @@ const ManageEmp = () => {
 
       {/* Department filter */}
       <div className="my-4">
-        <label className="mr-2">Filter by Department:</label>
+        <label className="mr-2 md:text-base ">Filter by Department:</label>
         <select
           value={selectedDept}
           onChange={(event) => setSelectedDept(event.target.value)}
           className="border border-gray-400 rounded px-2 py-1"
         >
           <option value="">All</option>
-          {/* Render the unique department options */}
+
           {uniqueDepartments.map((dept, i) => (
             <option key={i} value={dept}>
               {dept}
@@ -171,7 +171,7 @@ const ManageEmp = () => {
           placeholder="Search Here"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="px-4 py-2 border rounded-md absolute right-0 top-10 focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300  appearance-none bg-white "
+          className="px-4 py-2 border md:block hidden rounded-md absolute right-0 top-10 focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300  appearance-none bg-white "
         />
         {/* <button
           onClick={handleSearch}
@@ -182,21 +182,21 @@ const ManageEmp = () => {
       </div>
       <div className="overflow-x-auto">
         <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-          <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
+          <thead className="bg-gray-300 text-[#000000] uppercase md:text-sm text-xs leading-normal">
             <tr>
-              <th className="py-3 px-6 border-r border-b border-gray-400">
+              <th className="py-3 px-6 border-r border-b border-gray-400 hidden sm:table-cell">
                 S.No
               </th>
               <th className="py-3 px-1 border-r border-b border-gray-400">
                 Employee Name
               </th>
-              <th className="py-3 px-2 border-r border-b border-gray-400">
+              <th className="py-3 px-2 border-r border-b border-gray-400 hidden sm:table-cell">
                 Images
               </th>
-              <th className="py-3 px-6 border-r border-b border-gray-400">
+              <th className="py-3 px-6 border-r border-b border-gray-400 hidden sm:table-cell">
                 Position
               </th>
-              <th className="py-3 px-6 border-r border-b border-gray-400">
+              <th className="py-3 px-6 border-r border-b border-gray-400 hidden md:table-cell">
                 Salary
               </th>
               <th className="py-3 px-6 border-r border-b border-gray-400">
@@ -204,20 +204,20 @@ const ManageEmp = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="text-gray-800 text-sm font-bold">
+          <tbody className="text-gray-800   md:text-base text-xs font-bold">
             {/* Use filteredData instead of info to render the rows */}
             {filteredData.map((val, i) => (
               <tr
                 key={i}
                 className="border-b border-gray-400  hover:bg-gray-200 font-bold"
               >
-                <td className="py-3 px-4 border-l border-gray-400 text-center">
+                <td className="py-3 px-4 border-l border-gray-400 text-center hidden sm:table-cell">
                   {i + 1}
                 </td>
                 <td className="py-3 px-4 border-l border-r border-gray-400">
                   {val.first_name} {val.middle_name} {val.last_name}
                 </td>
-                <td className=" py-1 border-l border-gray-400 border-r">
+                <td className=" py-1 border-l border-gray-400 border-r hidden sm:table-cell">
                   <div className="h-28 w-32 mx-auto">
                     <img
                       src={`http://localhost:5000/${val.image}`}
@@ -226,10 +226,10 @@ const ManageEmp = () => {
                     />
                   </div>
                 </td>
-                <td className="py-3 px-4 border-l border-r border-gray-400 capitalize">
+                <td className="py-3 px-4 border-l border-r border-gray-400 capitalize hidden sm:table-cell">
                   {val.position}
                 </td>
-                <td className="py-3 px-4 border-l border-r border-gray-400">
+                <td className="py-3 px-4 border-l border-r border-gray-400 hidden md:table-cell">
                   {val.salary}
                 </td>
                 <td className=" border-l border-r border-gray-400">
@@ -239,7 +239,7 @@ const ManageEmp = () => {
                         setWorkingId(val.emp_id);
                         setShowDelete(true);
                       }}
-                      className="text-3xl  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
+                      className="lg:text-3xl md:text-xl text-lg  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
                     />
                     <Link
                       state={val}
@@ -248,7 +248,7 @@ const ManageEmp = () => {
                         pathname: `/employee/${val.emp_id}`,
                       }}
                     >
-                      <MdOutlineUpdate className="text-3xl" />
+                      <MdOutlineUpdate className="lg:text-3xl md:text-xl text-lg" />
                     </Link>
                     <Link
                       state={val}
@@ -257,7 +257,7 @@ const ManageEmp = () => {
                         pathname: `/employee/view/${val.emp_id}`,
                       }}
                     >
-                      <BsEyeFill className="text-3xl" />
+                      <BsEyeFill className="lg:text-3xl md:text-xl text-lg" />
                     </Link>
                   </div>
                 </td>

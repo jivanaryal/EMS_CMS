@@ -42,7 +42,6 @@ const AddTask = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   console.log(id);
-  console.log(location.state);
   useEffect(() => {
     get("/employee")
       .then((res) => {
@@ -88,6 +87,9 @@ const AddTask = () => {
         .then((res) => {
           if (res.status === 200) {
             toast.success("the task is assigned");
+            setTimeout(() => {
+              navigate("/task");
+            }, 1000);
           }
         })
         .catch((err) => {

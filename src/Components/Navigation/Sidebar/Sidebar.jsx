@@ -73,7 +73,7 @@ const Sidebar = () => {
             <Link to={val.path}>
               {" "}
               <div
-                className={`flex pl-4 py-2  shadow-base rounded-md   items-center mr-4 text-base text-[#ece1fc] border-[1px] text-center  gap-2 capitalize ${
+                className={`flex md:px-3 pl-1 pr-0 md:py-2 py-1  shadow-base rounded-md   items-center mr-4 text-base text-[#ece1fc] border-[1px] text-center  gap-2 capitalize ${
                   location.pathname === val.path &&
                   "text-gray-700 bg-[#F1F9FB] shadow-md shadow-gray-700 font-bold text-lg "
                 }`}

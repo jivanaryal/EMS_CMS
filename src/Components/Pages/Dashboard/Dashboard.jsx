@@ -159,7 +159,7 @@ const Dashboard = () => {
                             {val.icons}
                           </div>
 
-                          <div className=" font-bold text-[14px]">
+                          <div className=" font-bold md:text-base  text-[10px]">
                             {val.title}
                           </div>
                           <span className="text-base font-bold">{val.num}</span>
@@ -206,7 +206,9 @@ const Dashboard = () => {
                       </div>
                     ))
                   ) : (
-                    <div className="pb-4">No pending leave requests</div>
+                    <div className="pb-4 text-sm">
+                      No pending leave requests
+                    </div>
                   )}
                 </div>
               </div>
@@ -214,7 +216,7 @@ const Dashboard = () => {
             <div className="grid md:grid-cols-2 col-span-1 gap-6 py-6">
               {/* Top employee */}
               <div className=" employee_data  pl-6 shadow-sm shadow-mainColor  rounded-lg pb-2 mb-2">
-                <h1 className="text-2xl font-bold mb-8 pt-6 mt-4">
+                <h1 className="md:text-2xl text-lg font-bold md:mb-8 mb-4 pt-6 mt-4">
                   Top Employees
                 </h1>
                 <div className="w-full">
@@ -225,7 +227,7 @@ const Dashboard = () => {
                         alt="Employee"
                         className="w-12 h-12 rounded-full mr-5"
                       />
-                      <div className="grid w-full  sm:grid-cols-3 grid-cols-2 gap-4 text-sm text-[#5E5E5E] font-bold items-center">
+                      <div className="grid w-full  sm:grid-cols-3 grid-cols-2 gap-4 md:text-sm text-[10px] text-[#5E5E5E] font-bold items-center">
                         <div className="text-gray-700 capitalize ">
                           {emp.first_name} {emp.middle_name} {emp.last_name}
                         </div>

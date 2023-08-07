@@ -40,39 +40,39 @@ const TaskDetails = () => {
   }, []);
 
   return (
-    <div className="mt-10 mx-10 shadow-sm shadow-gray-400 p-4 min-h-screen">
+    <div className="mt-10  md:mx-10 shadow-sm shadow-gray-400 p-4   ">
       <h1 className="font-bold text-xl mb-4">View Task Details</h1>
       <div className="container border-gray-400 border-2">
-        <div className="nav font-extrabold text-xl border-gray-400 p-2 bg-gray-200 ">
+        <div className="nav font-extrabold text-xl border-gray-400 p-2 bg-gray-200">
           Task Details
         </div>
         {task.map((val, i) => {
           return (
-            <div className="body border-gray-400 border-t-2 ">
+            <div className="body border-gray-400 border-t-2 md:text-sm text-[11px]  ">
               <div className=" border-b-2 border-gray-400  grid grid-cols-4 px-2 hover:bg-gray-100">
-                <p className="font-semibold border-gray-400 border-r-2 w-full py-3">
+                <p className="font-semibold border-gray-400 border-r-2 w-full py-3  col-span-1">
                   Task Title
                 </p>
-                <p className="px-2 py-3">{val.task_title}</p>
+                <p className="px-2 py-3 col-span-3">{val.task_title}</p>
               </div>
               <div className="desc px-2 grid grid-cols-4 border-b-2 border-gray-400  hover:bg-gray-100">
-                <p className="font-semibold border-gray-400 border-r-2 py-3">
+                <p className="font-semibold border-gray-400 border-r-2 py-3 col-span-1">
                   Task Priority
                 </p>
-                <p className="px-2 py-3">{val.task_priority}</p>
+                <p className="px-2 py-3 col-span-3">{val.task_priority}</p>
               </div>
 
               <div className="desc px-2 grid grid-cols-4 border-b-2 border-gray-400  hover:bg-gray-100">
-                <p className="font-semibold border-gray-400 border-r-2 py-3">
+                <p className="font-semibold border-gray-400 border-r-2 py-3 col-span-1">
                   Task Description
                 </p>
-                <p className="px-2 py-3">{val.task_description}</p>
+                <p className="px-2 py-3 col-span-3">{val.task_description}</p>
               </div>
               <div className="assign px-2 grid grid-cols-4 border-b-2 border-gray-400  hover:bg-gray-100">
-                <p className="font-semibold border-gray-400 border-r-2 py-3">
+                <p className="font-semibold border-gray-400 border-r-2 py-3 col-span-1">
                   Task Assign Date
                 </p>
-                <p className="px-2 py-3">{val.task_assign_date}</p>
+                <p className="px-2 py-3 col-span-3">{val.task_assign_date}</p>
               </div>
               <div className="finish px-2 grid grid-cols-4 border-b-2 border-gray-400  hover:bg-gray-100">
                 <p className="font-semibold border-gray-400 border-r-2 py-3">
@@ -82,20 +82,24 @@ const TaskDetails = () => {
               </div>
               {/* remarks */}
               <div className="assign px-2 grid grid-cols-4  hover:bg-gray-100">
-                <p className="font-semibold border-gray-400 border-r-2 py-3">
+                <p className="font-semibold border-gray-400 border-r-2 py-3 col-span-1">
                   Employee Final Remarks
                 </p>
-                <p className="capitalize py-3">{val.emp_final_remark}</p>
+                <p className="capitalize py-3 px-2 col-span-3">
+                  {val.emp_final_remark}
+                </p>
               </div>
             </div>
           );
         })}
       </div>
       {/* Task history */}
-      <div className=" border-gray-400 border-2 mt-4">
-        <p className="p-2 text-center font-bold text-lg"> Task History</p>
+      <div className="border-gray-400 border-2 mt-4 overflow-x-auto">
+        <p className="p-2 text-center font-bold md:text-lg text-base">
+          Task History
+        </p>
         <table className="w-full border-2 border-gray-400">
-          <thead className=" bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+          <thead className="bg-gray-100 text-gray-600 uppercase md:text-sm text-[11px] leading-normal">
             <tr>
               <th className="py-3 px-6 border-r border-b border-gray-400">
                 SN.
@@ -114,7 +118,7 @@ const TaskDetails = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="text-gray-800 text-md font-light">
+          <tbody className="text-gray-800 md:text-md text-[10px] md:leading-4 leading-3  font-light">
             {taskHistory.map((val, i) => (
               <tr className="border-b border-gray-400 hover:bg-gray-100">
                 <td className="py-3 px-4 border-l border-r">{i + 1}</td>

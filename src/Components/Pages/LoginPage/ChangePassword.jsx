@@ -5,6 +5,7 @@ import { get, post } from "../../../services/api";
 import * as yup from "yup";
 
 import { RiLockPasswordFill } from "react-icons/ri";
+import { useNavigate } from "react-router";
 
 const validationSchema = yup.object().shape({
   old_password: yup.string().required("Old password is required"),
@@ -23,7 +24,6 @@ const FormFields = [
     name1: "Old Password",
     name: "old_password",
     type: "password",
-
     icons: <RiLockPasswordFill />,
   },
   {
@@ -43,7 +43,7 @@ const FormFields = [
 const ChangePassword = () => {
   const [employee, setEmployee] = useState([]);
   const id = localStorage.getItem("admin_id");
-  //   console.log(id);
+  const navigate = useNavigate();
 
   useEffect(() => {
     get("/employee")
@@ -61,6 +61,8 @@ const ChangePassword = () => {
 
       if (response.status === 200) {
         toast.success("New password change");
+        localStorage.clear();
+        navigate("/login");
       } else {
         toast.error("Failed to change password.");
       }
@@ -83,7 +85,7 @@ const ChangePassword = () => {
   FormFields[0].options = [...employee];
 
   return (
-    <div className="w-full px-6 sm:px-10 min-h-[90vh] flex justify-center items-center bg-opacity-10 bg-white">
+    <div className="w-full min-h-[90vh] flex justify-center items-center bg-opacity-10 bg-white">
       <Formik
         initialValues={{
           old_password: "",
@@ -96,8 +98,11 @@ const ChangePassword = () => {
         }}
       >
         {({ handleSubmit }) => (
-          <Form onSubmit={handleSubmit} className="">
-            <div className="shadow-lg shadow-mainColor   bg-slate-100 w-[35rem]  rounded-lg   backdrop-filter  bg-opacity-50 border-2 border-gray-300 pt-10  p-10">
+          <Form
+            onSubmit={handleSubmit}
+            className="w-full md:mx-10 mx-4 max-w-md "
+          >
+            <div className="shadow-lg shadow-mainColor bg-slate-100 rounded-lg border-2 border-gray-300 p-10">
               <div className="grid grid-cols-1 gap-6">
                 <p className="font-bold text-red-500 text-2xl">
                   Change Your Password
@@ -158,7 +163,7 @@ const ChangePassword = () => {
                             type={val.type}
                             placeholder={`enter ${val.name}`}
                             name={val.name}
-                            className=" outline-none py-2 px-1 w-full"
+                            className="outline-none py-2 px-1 w-full"
                           />
                         </div>
                         <ErrorMessage
@@ -174,7 +179,7 @@ const ChangePassword = () => {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded "
+                  className="bg-blue-500 mt-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 >
                   Submit
                 </button>
@@ -183,7 +188,7 @@ const ChangePassword = () => {
           </Form>
         )}
       </Formik>
-      <ToastContainer className="mt-11 text-sm " />
+      <ToastContainer className="mt-11 text-sm" />
     </div>
   );
 };

@@ -115,7 +115,7 @@ const AddTask = () => {
         {({ handleSubmit, setFieldValue, values }) => {
           return (
             <Form onSubmit={handleSubmit}>
-              <div className="shadow-2xl shadow-gray-400 px-4  md:w-7/12 w-full">
+              <div className="shadow-2xl shadow-gray-400 px-4  lg:w-10/12 w-11/12">
                 <div className="grid grid-cols-1 w-full mb-3 gap-3">
                   {FormFields.map((val, i) => {
                     if (val.type === "select") {

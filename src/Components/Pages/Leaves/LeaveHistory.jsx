@@ -49,7 +49,7 @@ const LeaveApprovalList = () => {
   );
 
   return (
-    <div className="my-10 mx-4 min-h-screen">
+    <div className="my-10 md:mx-4 mx-2 ">
       <div className="text-3xl cursor-pointer">
         <IoArrowBack onClick={() => handleGoBack()} />
       </div>
@@ -92,28 +92,31 @@ const LeaveApprovalList = () => {
             "linear-gradient(to right, #c1d6eb, #ccd9ec, #d6dce6, #e1e5ec, #ebeaf0)",
         }}
       >
-        <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal border-gray-400 border-2">
+        <thead className="bg-gray-300 text-[#000000] uppercase md:text-base text-[10px] leading-normal border-gray-400 border-2">
           <tr>
-            <th className="py-3 px-2  border-r border-b border-gray-400">
+            <th className="py-2 px-2  border-r border-b border-gray-400">
               S. No
             </th>
-            <th className="py-3 px-2  border-r border-b border-gray-400">
+            <th className="py-2 px-2  border-r border-b border-gray-400">
               Employee Name
             </th>
-            <th className="py-3 px-2  border-r border-b border-gray-400">
+            <th className="py-2 px-2  border-r border-b border-gray-400  hidden md:table-cell">
               Image
             </th>
-            <th className="py-3 px-2 border-r border-b border-gray-400">
+            <th className="py-2 px-2 border-r border-b border-gray-400  hidden md:table-cell">
               Start Date
             </th>
-            <th className="py-3 px-2 border-r border-b border-gray-400">
+            <th className="py-2 px-2 border-r border-b border-gray-400  hidden md:table-cell">
               End Date
             </th>
-            <th className="py-3 px-2 border-r border-b border-gray-400">
+            <th className="py-2 px-2 border-r border-b border-gray-400  hidden md:table-cell">
               Message
             </th>
-            <th className="py-3 px-4 border-r border-b border-gray-400">
+            <th className="py-2 px-4 border-r border-b border-gray-400  hidden md:table-cell">
               Status
+            </th>
+            <th className="py-2 px-4 border-r border-b border-gray-400  ">
+              Action
             </th>
           </tr>
         </thead>

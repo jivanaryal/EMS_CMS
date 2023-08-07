@@ -46,7 +46,7 @@ const Layout = () => {
               className={`flex-none w-1/6 ${
                 sidebar
                   ? "transition-all delay-75 "
-                  : "w-24  transition-all delay-100 duration-300"
+                  : "md:w-20 w-16  transition-all delay-100 duration-300"
               }`}
             >
               <div className="sticky top-0 min-h-screen max-h-screen   bg-mainColor overflow-hidden  ">

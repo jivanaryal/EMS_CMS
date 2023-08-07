@@ -79,14 +79,14 @@ const AddDepartment = () => {
                   <div key={index}>
                     <label
                       htmlFor={field.name}
-                      className="text-lg pl-2 font-semibold text-black capitalize"
+                      className="md:text-lg text-sm pl-2  font-semibold text-black capitalize"
                     >
                       {field.name1}
                     </label>
                     <Field
                       type={field.type}
                       name={field.name}
-                      className="border border-gray-400 rounded-md py-2 my-2 px-3 w-full"
+                      className="border border-gray-400 text-sm rounded-md py-2 my-2 px-3 w-full"
                       placeholder={`Enter ${field.name}`}
                     />
                     <ErrorMessage
@@ -100,7 +100,7 @@ const AddDepartment = () => {
               <div className=" w-11/12 mx-auto pt-3">
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors duration-300"
+                  className="md:px-4 md:py-2 px-2 py-1 bg-blue-500 text-white font-semibold md:text-base text-sm rounded-md hover:bg-blue-600 transition-colors duration-300"
                 >
                   Submit
                 </button>

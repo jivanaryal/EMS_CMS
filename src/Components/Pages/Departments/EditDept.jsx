@@ -36,6 +36,9 @@ const EditDept = () => {
       .then((res) => {
         if (res.status === 200) {
           toast.success(`The dept_id ${id} is updated`);
+          setTimeout(() => {
+            navigate("/department");
+          }, 1000);
           console.log("hello");
         }
       })

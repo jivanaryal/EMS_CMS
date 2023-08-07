@@ -124,6 +124,9 @@ const AddSubSection = () => {
       update(`/employee/${id}`, formData).then((res) => {
         if (res.status === 200) {
           toast.success("The employee data is updated");
+          setTimeout(() => {
+            navigate("/employee");
+          }, 1000);
         }
       });
     }

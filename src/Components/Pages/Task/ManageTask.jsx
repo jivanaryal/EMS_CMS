@@ -123,7 +123,7 @@ const ManageTask = () => {
       </div>
 
       <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-        <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
+        <thead className="bg-gray-300 text-[#000000] uppercase md:text-md text-xs  leading-normal">
           <tr>
             <th className="py-3 px-6 border-r border-b border-gray-400">
               S.No
@@ -131,13 +131,13 @@ const ManageTask = () => {
             <th className="py-3 px-1 border-r border-b border-gray-400">
               Employee Name
             </th>
-            <th className="border-gray-400 py-3 px-6 border-r border-b">
+            <th className="border-gray-400 py-3 px-6 border-r border-b hidden md:table-cell">
               Images
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
+            <th className="py-3 px-6 border-r border-b border-gray-400 hidden md:table-cell">
               Task Title
             </th>
-            <th className="py-3 px-6 border-r border-b border-gray-400">
+            <th className="py-3 px-6 border-r border-b border-gray-400 hidden md:table-cell">
               Status
             </th>
             <th className="py-3 px-6 border-r border-b border-gray-400">
@@ -145,7 +145,7 @@ const ManageTask = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="text-gray-black text-sm font-bold">
+        <tbody className="text-gray-black  font-bold md:text-base text-xs ">
           {limitedData.map((val, i) => (
             <tr
               key={i}
@@ -155,7 +155,7 @@ const ManageTask = () => {
               <td className="py-3 px-4 border-l border-r border-gray-400">
                 {val.emp_name}
               </td>
-              <td className="py-3 px-4  border-l border-r border-gray-400">
+              <td className="py-3 px-4  border-l border-r border-gray-400 hidden md:table-cell">
                 <div className="h-28 w-28  rounded-full">
                   <img
                     src={`http://localhost:5000/${val.image}`}
@@ -164,10 +164,10 @@ const ManageTask = () => {
                   />
                 </div>
               </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400">
+              <td className="py-3 px-4 border-l border-r border-gray-400 hidden md:table-cell">
                 {val.task_title}
               </td>
-              <td className="py-3 px-4 border-l border-r border-gray-400">
+              <td className="py-3 px-4 border-l border-r border-gray-400 hidden md:table-cell">
                 {val.status}
               </td>
               <td className=" border-l border-r border-gray-400  ">
@@ -177,7 +177,7 @@ const ManageTask = () => {
                       setWorkingId(val.task_id);
                       setShowDelete(true);
                     }}
-                    className="text-3xl  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
+                    className="lg:text-3xl md:text-xl text-lg  hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300"
                   />
                   <Link
                     state={val}
@@ -186,7 +186,7 @@ const ManageTask = () => {
                       pathname: `/task/${val.task_id}`,
                     }}
                   >
-                    <MdOutlineUpdate className="text-3xl" />
+                    <MdOutlineUpdate className="lg:text-3xl md:text-xl text-lg" />
                   </Link>
                   <Link
                     state={val}
@@ -195,7 +195,7 @@ const ManageTask = () => {
                       pathname: `/taskstatus/detail/${val.task_id}`,
                     }}
                   >
-                    <BsEyeFill className="text-3xl" />
+                    <BsEyeFill className="lg:text-3xl md:text-xl text-lg" />
                   </Link>
                 </div>
               </td>

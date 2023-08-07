@@ -105,7 +105,7 @@ const ManageDept = () => {
       </div>
       <div className="overflow-x-auto mt-4">
         <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-          <thead className="bg-gray-300 text-[#000000] uppercase text-base leading-normal">
+          <thead className="bg-gray-300 text-[#000000] uppercase md:text-base text-sm leading-normal">
             <tr>
               <th className="py-3 text-center px-2 border-r border-b border-gray-400">
                 S.No
@@ -113,7 +113,7 @@ const ManageDept = () => {
               <th className="py-3 px-1 border-r border-b border-gray-400">
                 Department Name
               </th>
-              <th className="py-3 px-2 border-r border-b border-gray-400">
+              <th className="py-3 px-2 border-r border-b border-gray-400 hidden md:table-cell">
                 Location
               </th>
               <th className="py-3 px-2 border-r border-b border-gray-400">
@@ -121,7 +121,7 @@ const ManageDept = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="text-gray-800 text-md font-bold">
+          <tbody className="text-gray-800  md:text-base text-[12px] font-bold">
             {/* Use filteredData instead of info to render the rows */}
             {filteredData.map((val, i) => (
               <tr
@@ -134,7 +134,7 @@ const ManageDept = () => {
                 <td className="py-3 text-center border-l border-gray-400 border-r capitalize">
                   {val.dept_name}
                 </td>
-                <td className="py-3 text-center border-l border-r border-gray-400 capitalize">
+                <td className="py-3 text-center border-l border-r border-gray-400 capitalize hidden md:table-cell">
                   {val.dept_location}
                 </td>
                 <td className="py-3 border-l border-r border-gray-400">
@@ -144,16 +144,16 @@ const ManageDept = () => {
                         setWorkingId(val.dept_id);
                         setShowDelete(true);
                       }}
-                      className="text-3xl hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300 cursor-pointer"
+                      className="md:text-3xl text-xl hover:scale-110 hover:text-red-500 transition-all delay-100 duration-300 cursor-pointer"
                     />
                     <Link
                       state={val}
-                      className="text-3xl hover:scale-110 hover:text-blue-500 transition-all delay-100 duration-300"
+                      className="md:text-3xl text-xl hover:scale-110 hover:text-blue-500 transition-all delay-100 duration-300"
                       to={{
                         pathname: `/department/${val.dept_id}`,
                       }}
                     >
-                      <MdOutlineUpdate className="text-3xl cursor-pointer" />
+                      <MdOutlineUpdate className="md:text-3xl text-xl cursor-pointer" />
                     </Link>
                   </div>
                 </td>

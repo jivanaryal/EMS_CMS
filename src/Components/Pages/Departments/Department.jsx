@@ -23,10 +23,10 @@ const Department = () => {
             <div key={i}>
               <div
                 onClick={() => setActive(val.id)}
-                className={`border-2 capitalize py-1 px-4 text-xl cursor-pointer shadow-md shadow-gray-700 rounded-md w-fit   mt-4
+                className={`border-2 capitalize py-1 shadow-gray-700 shadow-md md:px-2 px-1 md:text-xl sm:text-sm text-[14px] cursor-pointer rounded-md w-fit   mt-4
                                     ${
                                       val.id === Active
-                                        ? "bg-mainColor   text-[#ffffff] scale-110"
+                                        ? "bg-mainColor  text-[#ffffff] scale-110"
                                         : "bg-secondColor"
                                     }`}
               >

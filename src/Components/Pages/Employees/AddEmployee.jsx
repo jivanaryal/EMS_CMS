@@ -162,116 +162,127 @@ const AddSubSection = () => {
           {({ handleSubmit, values }) => {
             return (
               <Form onSubmit={handleSubmit}>
-                <div className="grid md:grid-cols-2 grid-cols-1  gap-6">
-                  {FormFields.map((val, i) => {
-                    if (val.type === "select") {
-                      return (
-                        <div key={i}>
-                          <label
-                            htmlFor={val.name}
-                            className="block font-bold mb-2"
-                          >
-                            {val.name}
-                          </label>
-                          <Field
-                            as={val.type}
-                            placeholder={`enter ${val.name}`}
-                            name={val.name}
-                            className="border border-gray-400 p-2 rounded w-full"
-                          >
-                            <option value="" selected disabled>
-                              {`select ${val.name1}`}
-                            </option>
-                            {val.options?.map((option, j) => {
-                              if (val.name === "dept_name") {
-                                return (
-                                  <option
-                                    key={j}
-                                    value={option.dept_name}
-                                    data-dept-id={option.dept_id}
-                                  >
-                                    {option.dept_name}
-                                  </option>
-                                );
-                              } else {
-                                return (
-                                  <option value={option.value} key={j}>
-                                    {option.label}
-                                  </option>
-                                );
-                              }
-                            })}
-                          </Field>
-                          <ErrorMessage
-                            name={val.name}
-                            component={"div"}
-                            className="text-red-600"
-                          />
-                        </div>
-                      );
-                    } else if (val.type === "file") {
-                      return (
-                        <div>
-                          <label htmlFor={val.type} className="block font-bold">
-                            {val.name}
-                          </label>
-                          <br />
-                          <div className="flex">
-                            <input
-                              type={val.type}
+                <div className="shadow-2xl md:shadow-none shadow-gray-400 md:w-full w-full p-2">
+                  <div className="grid md:grid-cols-2 grid-cols-1  gap-6">
+                    {FormFields.map((val, i) => {
+                      if (val.type === "select") {
+                        return (
+                          <div key={i}>
+                            <label
+                              htmlFor={val.name}
+                              className="block font-bold mb-2 text-sm md:text-base"
+                            >
+                              {val.name}
+                            </label>
+                            <Field
+                              as={val.type}
+                              placeholder={`enter ${val.name}`}
                               name={val.name}
-                              accept=".png,.jpg,.jpeg,.gif"
-                              required
-                              multiple
-                              onChange={(e) => handleChange(e)}
-                            />
-                            <div className=" ">
-                              <img
-                                src={
-                                  first
-                                    ? URL.createObjectURL(first)
-                                    : "https://cdn-icons-png.flaticon.com/512/1869/1869679.png"
+                              className="border border-gray-400 md:p-2 p-1 rounded w-full md:text-base text-sm"
+                            >
+                              <option
+                                value=""
+                                selected
+                                disabled
+                                className="block font-bold mb-2 text-sm md:text-base"
+                              >
+                                {`select ${val.name1}`}
+                              </option>
+                              {val.options?.map((option, j) => {
+                                if (val.name === "dept_name") {
+                                  return (
+                                    <option
+                                      key={j}
+                                      value={option.dept_name}
+                                      data-dept-id={option.dept_id}
+                                      className="block font-bold mb-2 text-sm md:text-base"
+                                    >
+                                      {option.dept_name}
+                                    </option>
+                                  );
+                                } else {
+                                  return (
+                                    <option value={option.value} key={j}>
+                                      {option.label}
+                                    </option>
+                                  );
                                 }
-                                className="w-44 h-44 rounded-xl border-2 bg-black px-2 border-black py-2 shadow-mainColor shadow-lg relative right-14 bottom-14"
-                                alt="preview"
+                              })}
+                            </Field>
+                            <ErrorMessage
+                              name={val.name}
+                              component={"div"}
+                              className="text-red-600"
+                            />
+                          </div>
+                        );
+                      } else if (val.type === "file") {
+                        return (
+                          <div>
+                            <label
+                              htmlFor={val.type}
+                              className="block font-bold"
+                            >
+                              {val.name}
+                            </label>
+                            <br />
+                            <div className="flex">
+                              <input
+                                type={val.type}
+                                name={val.name}
+                                accept=".png,.jpg,.jpeg,.gif"
+                                required
+                                multiple
+                                onChange={(e) => handleChange(e)}
                               />
+                              <div className=" ">
+                                <img
+                                  src={
+                                    first
+                                      ? URL.createObjectURL(first)
+                                      : "https://cdn-icons-png.flaticon.com/512/1869/1869679.png"
+                                  }
+                                  className="md:w-44 md:h-44 w-32 h-28 rounded-xl border-2 bg-black px-2 border-black py-2 shadow-mainColor shadow-lg relative right-14 bottom-14"
+                                  alt="preview"
+                                />
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    } else {
-                      return (
-                        <div key={i}>
-                          <label
-                            htmlFor={val.name}
-                            className="block font-bold mb-2"
-                          >
-                            {val.name}
-                          </label>
-                          <Field
-                            type={val.type}
-                            placeholder={`enter ${val.name}`}
-                            name={val.name}
-                            className="border border-gray-400 p-2 rounded w-full"
-                          />
-                          <ErrorMessage
-                            name={val.name}
-                            component={"div"}
-                            className="text-red-600"
-                          />
-                        </div>
-                      );
-                    }
-                  })}
-                  <ToastContainer className="mt-11 text-sm " />
-                </div>
+                        );
+                      } else {
+                        return (
+                          <div key={i}>
+                            <label
+                              htmlFor={val.name}
+                              className="block font-bold mb-2  text-sm md:text-base"
+                            >
+                              {val.name}
+                            </label>
+                            <Field
+                              type={val.type}
+                              placeholder={`enter ${val.name}`}
+                              name={val.name}
+                              className="border border-gray-400 md:p-2 p-1 rounded w-full md:text-base text-sm"
+                            />
+                            <ErrorMessage
+                              name={val.name}
+                              component={"div"}
+                              className="text-red-600"
+                            />
+                          </div>
+                        );
+                      }
+                    })}
+                    <ToastContainer className="mt-11 text-sm " />
+                  </div>
 
-                <button
-                  type="submit"
-                  className="bg-mainColor mb-5 relative bottom-24  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
-                >
-                  Submit
-                </button>
+                  <button
+                    type="submit"
+                    className="bg-mainColor  relative bottom-24  hover:bg-blue-700 text-white font-bold py-2 px-4  rounded"
+                  >
+                    Submit
+                  </button>
+                </div>
               </Form>
             );
           }}
