@@ -100,7 +100,7 @@ const AddDepartment = () => {
               <div className=" w-11/12 mx-auto pt-3">
                 <button
                   type="submit"
-                  className="md:px-4 md:py-2 px-2 py-1 bg-blue-500 text-white font-semibold md:text-base text-sm rounded-md hover:bg-blue-600 transition-colors duration-300"
+                  className="md:px-4 md:py-2 px-2 py-1 bg-mainColor text-white font-semibold md:text-base text-sm rounded-md hover:bg-blue-600 transition-colors duration-300"
                 >
                   Submit
                 </button>

@@ -98,7 +98,7 @@ const LeaveApprovalList = () => {
             "linear-gradient(to right, #c1d6eb, #ccd9ec, #d6dce6, #e1e5ec, #ebeaf0)",
         }}
       >
-        <thead className="bg-gray-300 text-[#000000] uppercase md:text-base text-[10px] leading-normal border-gray-400 border-2">
+        <thead className="bg-mainColor text-white uppercase md:text-base text-[10px] leading-normal border-gray-400 border-2">
           <tr>
             <th className="py-2 px-2  border-r border-b border-gray-400">
               S. No
@@ -170,6 +170,33 @@ const LeaveApprovalList = () => {
                   {" "}
                   {request.status}
                 </div>
+              </td>
+              <td className="py-4 px-4 border-r border-b border-gray-400 ">
+                {request.status === "pending" ? (
+                  <div className="flex">
+                    <button
+                      onClick={() => handleApprove(request.leave_id)}
+                      className="bg-green-500 hover:bg-green-600 text-white py-3 px-3  rounded mr-2"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      onClick={() => handleReject(request.leave_id)}
+                      className="bg-red-500 hover:bg-red-600 text-white  py-3 px-4 rounded "
+                    >
+                      Reject
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex">
+                    <button className="btn btn-disabled mr-3" disabled>
+                      Approve
+                    </button>
+                    <button className="btn btn-disabled" disabled>
+                      Reject
+                    </button>
+                  </div>
+                )}
               </td>
             </tr>
           ))}

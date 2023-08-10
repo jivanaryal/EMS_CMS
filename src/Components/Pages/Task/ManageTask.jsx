@@ -19,6 +19,7 @@ const ManageTask = () => {
     try {
       const res = await get("/task");
       if (res.status === 200) {
+        console.log(res.data);
         setInfo(res.data);
       } else {
         console.log("The data is not fetched");
@@ -123,7 +124,7 @@ const ManageTask = () => {
       </div>
 
       <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-        <thead className="bg-gray-300 text-[#000000] uppercase md:text-md text-xs  leading-normal">
+        <thead className="bg-mainColor text-white uppercase md:text-md text-xs  leading-normal">
           <tr>
             <th className="py-3 px-6 border-r border-b border-gray-400">
               S.No

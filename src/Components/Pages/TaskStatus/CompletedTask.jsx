@@ -27,7 +27,7 @@ const InProgressTask = () => {
     <div className="my-10 md:mx-10 mx-2 shadow-sm  shadow-gray-400 p-4">
       <h1 className="font-bold text-xl mb-4">View Inprogress Task</h1>
       <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-        <thead className=" text-black uppercase border border-gray-400 md:text-md text-xs leading-normal bg-gray-300 ">
+        <thead className="  uppercase border border-gray-400 md:text-md text-xs leading-normal bg-mainColor text-white ">
           <tr className="">
             <th className="py-3 text-start   px-6 border-r border-b border-gray-400">
               S.No

@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import * as yup from "yup";
 import { update } from "../../../services/api";
@@ -15,10 +15,12 @@ const schema = yup.object().shape({
 const FormField = [
   {
     name: "dept_name",
+    name1: "department name",
     type: "text",
   },
   {
     name: "dept_location",
+    name1: " location",
     type: "text",
   },
 ];
@@ -63,7 +65,7 @@ const EditDept = () => {
     navigate(-1);
   };
   return (
-    <div className="w-full min-h-screen">
+    <div className=" px-6 sm:px-10 py-10 ">
       <div className="text-3xl">
         <IoArrowBack onClick={() => handleGoBack()} />
       </div>
@@ -81,34 +83,39 @@ const EditDept = () => {
       >
         {({ handleSubmit }) => {
           return (
-            <Form
-              onSubmit={handleSubmit}
-              encType="multipart/form-data"
-              className="grid grid-cols-2 gap-2 mt-20"
-            >
-              {FormField.map((val, i) => (
-                <div
-                  key={i}
-                  className="w-10/12 mx-auto grid grid-cols-12 gap-6 place-content-center place-items-center"
-                >
-                  <label className="col-span-2" htmlFor={val.name}>
-                    {val.name}
-                  </label>
-                  <Field
-                    type={val.type}
-                    name={val.name}
-                    className="bg-gray-300 col-span-10 border-2 border-gray-400 rounded-md py-2 px-2 w-full"
-                    placeholder={`enter  ${val.name}`}
-                  />
+            <Form onSubmit={handleSubmit} className="mt-16">
+              <div className="shadow-2xl shadow-gray-400 md:w-8/12 w-full p-4">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-1 lg:w-11/12  mx-auto">
+                  {FormField.map((field, index) => (
+                    <div key={index}>
+                      <label
+                        htmlFor={field.name}
+                        className="md:text-lg text-sm pl-2  font-semibold text-black capitalize"
+                      >
+                        {field.name1}
+                      </label>
+                      <Field
+                        type={field.type}
+                        name={field.name}
+                        className="border border-gray-400 text-sm rounded-md py-2 my-2 px-3 w-full"
+                        placeholder={`Enter ${field.name}`}
+                      />
+                      <ErrorMessage
+                        name={field.name}
+                        component="div"
+                        className="text-red-500 text-sm mt-1"
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-              <div className="flex justify-end mt-9 w-ful">
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-colors duration-300 w-auto"
-                >
-                  Submit
-                </button>
+                <div className=" w-11/12 mx-auto pt-3">
+                  <button
+                    type="submit"
+                    className="md:px-4 md:py-2 px-2 py-1 bg-blue-500 text-white font-semibold md:text-base text-sm rounded-md hover:bg-blue-600 transition-colors duration-300"
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
             </Form>
           );

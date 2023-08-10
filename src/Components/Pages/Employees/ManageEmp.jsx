@@ -182,7 +182,7 @@ const ManageEmp = () => {
       </div>
       <div className="overflow-x-auto">
         <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-          <thead className="bg-gray-300 text-[#000000] uppercase md:text-sm text-xs leading-normal">
+          <thead className="bg-mainColor text-white uppercase md:text-sm text-xs leading-normal">
             <tr>
               <th className="py-3 px-6 border-r border-b border-gray-400 hidden sm:table-cell">
                 S.No

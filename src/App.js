@@ -18,6 +18,7 @@ import EditEmp from "./Components/Pages/Employees/EditEmp";
 import Example1 from "./dummy/Example1";
 import EditTask from "./Components/Pages/Task/EditTask";
 import TaskDetails from "./Components/Pages/TaskStatus/TaskDetails";
+import SingleTaskHistory from "./Components/Pages/TaskStatus/SingleTaskHistory";
 import LoginPage from "./Components/Pages/LoginPage/LoginPage";
 import ViewSingleEmployee from "./Components/Pages/Employees/ViewSingleEmployee";
 import ChangePassword from "./Components/Pages/LoginPage/ChangePassword";
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="task/:id" element={<EditTask />} />
             <Route path="taskstatus" element={<TaskStatus />} />
             <Route path="taskstatus/detail/:id" element={<TaskDetails />} />
+            <Route path="single/th/:id" element={<SingleTaskHistory />} />
             <Route path="eg1" element={<Example1 />} />
             <Route path="/setting" element={<ChangePassword />} />
           </Route>

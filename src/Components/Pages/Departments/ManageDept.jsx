@@ -104,19 +104,19 @@ const ManageDept = () => {
         />
       </div>
       <div className="overflow-x-auto mt-4">
-        <table className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
-          <thead className="bg-gray-300 text-[#000000] uppercase md:text-base text-sm leading-normal">
+        <table className="table-auto w-full rounded-lg border-collapse border border-mainColor shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]">
+          <thead className="bg-mainColor  text-white uppercase md:text-base text-sm leading-normal">
             <tr>
-              <th className="py-3 text-center px-2 border-r border-b border-gray-400">
+              <th className="py-3 text-center px-2 border-r border-b border-mainColor">
                 S.No
               </th>
-              <th className="py-3 px-1 border-r border-b border-gray-400">
+              <th className="py-3 px-1 border-r border-b border-mainColor">
                 Department Name
               </th>
-              <th className="py-3 px-2 border-r border-b border-gray-400 hidden md:table-cell">
+              <th className="py-3 px-2 border-r border-b border-mainColor hidden md:table-cell">
                 Location
               </th>
-              <th className="py-3 px-2 border-r border-b border-gray-400">
+              <th className="py-3 px-2 border-r border-b border-mainColor">
                 Action
               </th>
             </tr>
@@ -126,18 +126,18 @@ const ManageDept = () => {
             {filteredData.map((val, i) => (
               <tr
                 key={i}
-                className="border-b border-gray-400 hover:bg-gray-100"
+                className="border-b border-mainColor hover:bg-gray-100"
               >
-                <td className="py-3 text-center border-l border-gray-400">
+                <td className="py-3 text-center border-l border-mainColor">
                   {i + 1}
                 </td>
-                <td className="py-3 text-center border-l border-gray-400 border-r capitalize">
+                <td className="py-3 text-center border-l border-mainColor border-r capitalize">
                   {val.dept_name}
                 </td>
-                <td className="py-3 text-center border-l border-r border-gray-400 capitalize hidden md:table-cell">
+                <td className="py-3 text-center border-l border-r border-mainColor capitalize hidden md:table-cell">
                   {val.dept_location}
                 </td>
-                <td className="py-3 border-l border-r border-gray-400">
+                <td className="py-3 border-l border-r border-mainColor">
                   <div className="flex justify-center md:justify-start gap-3">
                     <MdDelete
                       onClick={() => {

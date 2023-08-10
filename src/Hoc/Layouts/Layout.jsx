@@ -60,18 +60,18 @@ const Layout = () => {
               </div>
             </div>
             <div
-              className="flex-auto z-10  bg-[#F6FAFB] "
-              style={{
-                background:
-                  "linear-gradient(to right, #c1d6eb, #ccd9ec, #d6dce6, #e1e5ec, #ebeaf0)",
-              }}
+              className="flex-auto z-10 bg-slate-100 "
+              // style={{
+              //   background:
+              //     "linear-gradient(to right, #c1d6eb, #ccd9ec, #d6dce6, #e1e5ec, #ebeaf0)",
+              // }}
             >
               <div
                 className="z-50"
-                style={{
-                  background:
-                    "linear-gradient(to right, #c1d6eb, #e1e7ec, #d6dce6, #c2c9de)",
-                }}
+                // style={{
+                //   background:
+                //     "linear-gradient(to right, #c1d6eb, #e1e7ec, #d6dce6, #c2c9de)",
+                // }}
               >
                 <Navbar />
               </div>

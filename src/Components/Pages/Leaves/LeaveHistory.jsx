@@ -92,7 +92,7 @@ const LeaveApprovalList = () => {
             "linear-gradient(to right, #c1d6eb, #ccd9ec, #d6dce6, #e1e5ec, #ebeaf0)",
         }}
       >
-        <thead className="bg-gray-300 text-[#000000] uppercase md:text-base text-[10px] leading-normal border-gray-400 border-2">
+        <thead className="bg-mainColor text-white uppercase md:text-base text-[10px] leading-normal border-gray-400 border-2">
           <tr>
             <th className="py-2 px-2  border-r border-b border-gray-400">
               S. No
@@ -106,21 +106,18 @@ const LeaveApprovalList = () => {
             <th className="py-2 px-2 border-r border-b border-gray-400  hidden md:table-cell">
               Start Date
             </th>
-            <th className="py-2 px-2 border-r border-b border-gray-400  hidden md:table-cell">
+            <th className="py-2 px-2 border-r border-b border-gray-400  hidden sm:table-cell">
               End Date
             </th>
             <th className="py-2 px-2 border-r border-b border-gray-400  hidden md:table-cell">
               Message
             </th>
-            <th className="py-2 px-4 border-r border-b border-gray-400  hidden md:table-cell">
-              Status
-            </th>
             <th className="py-2 px-4 border-r border-b border-gray-400  ">
-              Action
+              Status
             </th>
           </tr>
         </thead>
-        <tbody className="text-gray-800 text-center  border-2 border-gray-400">
+        <tbody className="text-gray-800 text-center md:text-base text-xs border-2 border-gray-400">
           {limitedData.map((request, i) => (
             <tr
               key={request.leave_id}
@@ -134,28 +131,28 @@ const LeaveApprovalList = () => {
                 {request.middle_name}
                 {request.last_name}
               </td>
-              <td className="py-4 px-2 border-l border-r  border-gray-400">
+              <td className="py-4 px-2 border-l border-r  border-gray-400 hidden md:table-cell">
                 <img
                   src={`http://localhost:5000/${request.image}`}
                   alt=""
                   className="w-24 rounded-full h-24"
                 />
               </td>
-              <td className="py-4 px-2 border-l border-r  border-gray-400">
+              <td className="py-4 px-2 border-l border-r  border-gray-400 hidden md:table-cell">
                 {request.start_date}
               </td>
-              <td className="py-4 px-2 border-l border-r  border-gray-400">
+              <td className="py-4 px-2 border-l border-r  border-gray-400 hidden sm:table-cell">
                 {request.end_date}
               </td>
-              <td className="px-2 h-32 border-gray-400 border-l border-r">
+              <td className="px-2 h-32 border-gray-400 border-l border-r hidden md:table-cell">
                 <div className="line-clamp-6 text-justify">
                   {request.message}
                 </div>
               </td>
 
-              <td>
+              <td className="pl-4">
                 <div
-                  className={`mx-4 outline-none w-fit border-l opacity- text-lg  text-center font-black capitalize ${
+                  className={` px-1 outline-none w-fit border-l bg-opacity-750 text-white md:text-lg  text-center font-black capitalize ${
                     request.status === "rejected" && "bg-red-500 text-white"
                   } ${
                     request.status === "approved" && "bg-green-500 text-white"

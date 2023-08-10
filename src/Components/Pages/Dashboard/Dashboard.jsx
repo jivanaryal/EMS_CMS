@@ -140,7 +140,7 @@ const Dashboard = () => {
   return (
     <UserAuthContextApi>
       <UserAuthContext.Provider>
-        <div className="w-full bg-[#ffffff]">
+        <div className="w-full bg-slate-100">
           <div className="pb-4 w-12/12 mx-4">
             <div className="grid grid-cols-12 gap-4 ">
               <div className={`lg:col-span-8 col-span-12`}>

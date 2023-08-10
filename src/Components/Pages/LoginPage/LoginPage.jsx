@@ -43,7 +43,10 @@ const LoginPage = () => {
         setLoginData(true);
         console.log(res.data);
         localStorage.setItem("admin_id", admin_id);
-        navigate("/", { state: { admin_id } });
+        toast.success("Login Sucessfully");
+        setTimeout(() => {
+          navigate("/", { state: { admin_id } });
+        }, 1000);
       }
     } catch (error) {
       console.log(error);
