@@ -9,10 +9,8 @@ import * as yup from "yup";
 
 const validationSchema = yup.object().shape({
   emp_name: yup.string().required("Employee name is required"),
-  email: yup
-    .string()
-    .required("Email is required")
-    .email("Invalid email format"),
+  userName: yup.string().required("userName is required"),
+
   password: yup
     .string()
     .required("Password is required")
@@ -27,8 +25,8 @@ const FormFields = [
     icons: <TbSelect />,
   },
   {
-    name: "email",
-    type: "email",
+    name: "userName",
+    type: "text",
     icons: <AiOutlineMail />,
   },
   {
@@ -92,7 +90,7 @@ const CreateEmp = () => {
       <Formik
         initialValues={{
           emp_name: "",
-          email: "",
+          userName: "",
           password: "",
         }}
         validationSchema={validationSchema}

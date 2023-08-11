@@ -13,7 +13,7 @@ const UserAuthContextApi = ({ children, login, setLogin, loginData }) => {
     const storedToken = localStorage.getItem("token1");
 
     if (storedToken) {
-      setToken(storedToken);
+    
       if (location === "/login") {
         navigate("/");
       }

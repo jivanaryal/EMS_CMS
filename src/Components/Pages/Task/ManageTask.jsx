@@ -175,6 +175,7 @@ const ManageTask = () => {
                 <div className="flex justify-center gap-2">
                   <MdDelete
                     onClick={() => {
+                      console.log("val.task_id", val.task_id);
                       setWorkingId(val.task_id);
                       setShowDelete(true);
                     }}
