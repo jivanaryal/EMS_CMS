@@ -89,7 +89,7 @@ const LeaveApprovalList = () => {
           Leave History
         </div>
       </Link>
-      <h1 className="font-bold text-2xl mb-6">Pending Leave</h1>
+      <h1 className="font-bold text-2xl mb-6">Pending Leave Request</h1>
 
       <table
         className="table-auto w-full rounded-lg border-collapse border border-gray-400 shadow-lg bg-gradient-to-r from-[#c1d6eb] to-[#ebeaf0]"
@@ -159,7 +159,7 @@ const LeaveApprovalList = () => {
                 </div>
               </td>
 
-              <td>
+              <td className="px-2 h-32 border-gray-400 border-l border-r">
                 <div
                   className={`mx-4 outline-none w-fit border-l opacity- text-lg  text-center font-black capitalize ${
                     request.status === "rejected" && "bg-red-500 text-white"

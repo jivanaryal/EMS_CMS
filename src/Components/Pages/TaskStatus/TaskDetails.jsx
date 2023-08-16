@@ -135,7 +135,9 @@ const TaskDetails = () => {
                 </td>
                 <td className="py-3 px-4 border-l border-r border-gray-400">
                   <Link to={`/single/th/${val.th_id}`}>
-                    <button>view here</button>
+                    <button className="py-1 px-2 bg-mainColor font-medium text-white rounded-sm hover:bg-blue-700 ">
+                      view here
+                    </button>
                   </Link>
                 </td>
               </tr>

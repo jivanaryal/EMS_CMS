@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 const LeaveApprovalList = () => {
   const [leaveRequests, setLeaveRequests] = useState([]);
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState(""); // New state for search query
   const [dataLimit, setDataLimit] = useState(10);
 
   // Fetch the pending leave requests from the backend
@@ -43,10 +44,15 @@ const LeaveApprovalList = () => {
     setDataLimit(parseInt(event.target.value, 10));
   };
 
-  const limitedData = useMemo(
-    () => filteredEmployee.slice(0, dataLimit),
-    [leaveRequests, dataLimit]
-  );
+  const limitedData = useMemo(() => {
+    const filteredByStatus = filteredEmployee.slice(0, dataLimit);
+    if (!searchQuery) {
+      return filteredByStatus;
+    }
+    return filteredByStatus.filter((request) =>
+      request.first_name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [leaveRequests, dataLimit, searchQuery]);
 
   return (
     <div className="my-10 md:mx-4 mx-2 ">
@@ -60,7 +66,7 @@ const LeaveApprovalList = () => {
           <select
             value={dataLimit}
             onChange={handleDataLimitChange}
-            className="border text-black border-gray-400 w-28 focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300 rounded px-2 py-1 appearance-none bg-white pr-8"
+            className="border  text-black border-gray-400 w-28 focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300 rounded px-2 py-1 appearance-none bg-white pr-8"
           >
             <option value={10}>10</option>
             <option value={20}>20</option>
@@ -83,6 +89,29 @@ const LeaveApprovalList = () => {
               ></path>
             </svg>
           </div>
+        </div>
+        <div className="flex justify-end">
+          <input
+            type="text"
+            placeholder="Search by Employee Name"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="border text-black border-gray-400 w-48 focus:outline-none focus:ring focus:border-blue-300 focus:bg-blue-50 transition-all duration-300 rounded px-2 py-1 appearance-none bg-white pr-8"
+          />
+          {/* <button
+            className=" inset-y-0 right-0 flex items-center px-2 bg-gray-300 text-gray-600 rounded-r"
+            onClick={() => {
+              // Perform search logic here based on the searchQuery
+            }}
+          >
+            Search
+          </button> */}
+          {/* <button
+            className=" inset-y-0 right-10 flex items-center px-2 bg-gray-300 text-gray-600 rounded-r"
+            onClick={() => setSearchQuery("")}
+          >
+            Clear
+          </button> */}
         </div>
       </div>
       <table

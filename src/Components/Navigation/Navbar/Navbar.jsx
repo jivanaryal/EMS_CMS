@@ -41,7 +41,7 @@ const Navbar = () => {
     >
       <div
         className={`h-full flex items-center
-      pl-4  pr-7  ${sidebar ? "justify-around" : "justify-around ml-"}`}
+      pl-4  pr-7  ${sidebar ? "justify-around" : "justify-between mr-14 "}`}
       >
         {/* search  */}
 

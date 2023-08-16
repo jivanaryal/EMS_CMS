@@ -94,8 +94,8 @@ const CreateEmp = () => {
           password: "",
         }}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
-          postFormData(values);
+        onSubmit={(values, formikBag) => {
+          postFormData(values, formikBag);
         }}
       >
         {({ handleSubmit }) => (

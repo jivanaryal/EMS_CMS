@@ -20,6 +20,7 @@ const ManageTask = () => {
       const res = await get("/task");
       if (res.status === 200) {
         console.log(res.data);
+      
         setInfo(res.data);
       } else {
         console.log("The data is not fetched");
